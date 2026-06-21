@@ -1,0 +1,31 @@
+.pageContainer {
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+.splitGrid {
+  display: grid;
+  grid-template-columns: 3fr 1fr !important;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .splitGrid {
+    grid-template-columns: 1.6fr 1fr; /* 60% Left Area viewport, 40% Right side details column */
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

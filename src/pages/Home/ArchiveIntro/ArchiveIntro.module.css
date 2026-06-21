@@ -1,0 +1,209 @@
+/* Clean, Global Uniform Section Layout */
+.sectionContainer {
+  /* margin: 50px auto; */
+  padding: 50px 80px !important; /* Standardized uniform breathing room (80px top/bottom, 24px sides) */
+  display: grid;
+  grid-template-columns: 1fr;
+  box-sizing: border-box;
+  border-top: 1px double var(--accent-secondary);
+
+}
+
+@media (min-width: 768px) {
+  .sectionContainer {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 80px;
+    padding: 100px 24px; /* Uniform desktop bump so everything lines up perfectly on scroll */
+  }
+}
+/* Investigators Container Block */
+.investigatorsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .investigatorsCol {
+    grid-column: span 1 / span 1;
+    padding-top: 8px;
+    text-align: left;
+  }
+}
+
+/* Header Adjustments */
+.sectionHeader {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main); /* Standardized for adaptive main text contrast */
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .sectionHeader {
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-main); 
+    opacity: 0.75; /* Uses light alpha filter variant to mimic old #575251 muted states safely across both themes */
+  }
+}
+
+/* Cards Grid context */
+.cardsWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 50px; 
+  text-align: center; 
+}
+
+@media (min-width: 1024px) {
+  .cardsWrapper {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: left; 
+  }
+}
+
+.investigatorCard {
+  padding: 0; 
+  border-left: none; 
+}
+
+@media (min-width: 1024px) {
+  .investigatorCard {
+    padding-left: 16px;
+    border-left: 2px solid transparent; 
+  }
+}
+
+/* Explicit color parameters stay standard in light mode configurations */
+.wesleyan { border-left-color: #98002e; }
+.wesleyan .investigatorName { color: #98002e; } 
+
+.holyCross { border-left-color: #602d8e; }
+.holyCross .investigatorName { color: #602d8e; } 
+
+/* Dark theme logic modifications for desktop institutional labels to prevent illegible tracking */
+.dark .wesleyan .investigatorName { color: var(--text-main); }
+.dark .holyCross .investigatorName { color: var(--text-main); }
+.dark .wesleyan { border-left-color: var(--accent-primary); }
+.dark .holyCross { border-left-color: var(--accent-secondary); }
+
+/* Typography Scale Hooks */
+.investigatorName {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 4px 0;
+  color: var(--text-main);
+}
+
+@media (min-width: 1024px) {
+  .investigatorName {
+    font-size: 1.125rem;
+  }
+}
+
+.institution {
+  font-size: 0.8rem;
+  color: var(--text-main);
+  opacity: 0.7; /* Standardizes a readable gray baseline context without hardcoding values */
+}
+
+/* Content Right Column Setup */
+.contentCol {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .contentCol {
+    grid-column: span 2 / span 2;
+  }
+}
+
+.mainHeading {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 16px 0;
+}
+
+@media (min-width: 1024px) {
+  .mainHeading {
+    font-size: 2rem;
+  }
+}
+
+.divider {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: 0 0 24px 0;
+}
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--text-main);
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  max-width: 672px;
+}
+
+@media (min-width: 1024px) {
+  .textGroup {
+    font-size: 1rem;
+  }
+}
+
+.textGroup p {
+  margin: 0;
+}
+
+/* Methodology Link Integration */
+.linkWrapper {
+  margin-top: 36px;
+}
+
+.methodologyLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-secondary); /* Connected to secondary brand colors across dark/light mode */
+  text-decoration: none;
+  border-bottom: 2px solid rgba(224, 85, 26, 0.3);
+  padding-bottom: 4px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.methodologyLink:hover {
+  border-color: var(--accent-secondary);
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}
+
+.methodologyLink:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Dark mode adjustment adjustments for inline links components */
+.dark .methodologyLink {
+  border-bottom-color: rgba(229, 154, 110, 0.3);
+}

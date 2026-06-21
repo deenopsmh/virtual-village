@@ -1,0 +1,173 @@
+.heroContainer {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--bg-main);
+}
+
+.masonryGrid {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-rows: 60px;
+  grid-auto-flow: dense;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;
+}
+
+.masonryItem {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  
+  /* Force container box to respect the explicit row height mapping from React */
+  height: 100%; 
+  
+  /* Fallback skeleton shade to hide empty boxes prior to layout parsing */
+  background-color: var(--bg-surface); 
+}
+
+.masonryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transform: scale(1.12);
+
+  animation: slowPan 35s ease-in-out infinite alternate;
+}
+
+.masonryItem:nth-child(2n) .masonryImage {
+  animation-duration: 45s;
+}
+
+.masonryItem:nth-child(3n) .masonryImage {
+  animation-duration: 55s;
+}
+
+.masonryItem:nth-child(4n) .masonryImage {
+  animation-direction: alternate-reverse;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+  pointer-events: none;
+
+  background: var(--hero-overlay);
+
+  backdrop-filter: blur(.5px);
+}
+
+@keyframes slowPan {
+  0% {
+    transform: scale(1.15) translate(0px, 0px);
+  }
+  50% {
+    transform: scale(1.18) translate(-10px, 8px);
+  }
+  100% {
+    transform: scale(1.15) translate(8px, -5px);
+  }
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 2;
+  width: min(90%, 900px);
+  padding: 3rem;
+  text-align: center;
+}
+
+.smallHeader {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main); /* Upgraded from var(--text-muted) to guarantee WCAG AA contrast against overlays */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.mainHeader {
+  margin-bottom: 2rem;
+
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  color: var(--accent-secondary);
+}
+
+.ctaGroup {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  flex: 1 1 160px;
+  max-width: 250px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+
+  text-align: center;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btnPrimary {
+  background: var(--accent-secondary);
+  color: var(--bg-surface); /* Contrast enhancement: swaps pale background text for a clear readable look */
+  border: 1px solid transparent;
+}
+
+.btnSecondary {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 600px) {
+  .ctaGroup {
+    flex-wrap: nowrap;
+  }
+
+  .btn {
+    flex: 1;
+    max-width: none;
+  }
+}

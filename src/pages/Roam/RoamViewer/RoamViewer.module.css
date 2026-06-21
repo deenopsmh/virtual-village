@@ -1,0 +1,262 @@
+.viewerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.canvasContainer {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: #1c1917;
+  border-radius: 20px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.grab { cursor: grab; }
+.grabbing { cursor: grabbing; }
+
+.transformLayer {
+  position: absolute;
+  width: 160%;
+  height: 130%;
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.panImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* --- MAP OVERLAY CARD AND PULSE MECHANICS --- */
+.miniMapWrapper {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 170px;
+  height: 170px;
+  background-color: #fcfbfa;
+  border: 3px solid #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.miniMapHidden {
+  opacity: 0;
+  visibility: hidden; 
+  pointer-events: none;
+}
+
+.miniMapGraphic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mapPin {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #c2410c; 
+  border: 1.5px solid #ffffff;
+  padding: 0;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+}
+
+.mapPinActive {
+  background-color: #9a3412;
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+
+.pulseRadarRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  border: 2px solid #ea580c;
+  border-radius: 50%;
+  animation: radarPulseBeat 1.8s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes radarPulseBeat {
+  0% {
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+  }
+  100% {
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+  }
+}
+
+.bottomControlHudZone {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 30; 
+}
+
+@media (min-width: 768px) {
+  .bottomControlHudZone {
+    left: 24px;
+    transform: none;
+  }
+}
+.navigationDock {
+  display: flex;
+  align-items: center;
+  background-color: rgba(252, 251, 250, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid #e7e5e0;
+  padding: 4px 12px;
+  border-radius: 30px;
+  gap: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.verticalAxisGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.navArrow, 
+.navCenterUp,
+.navCenterDown {
+  background: none;
+  border: none;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1c1917;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navCenterUp,
+.navCenterDown {
+  padding: 2px 12px;
+  font-size: 1rem;
+}
+
+.navArrow:hover,
+.navCenterUp:hover,
+.navCenterDown:hover {
+  background-color: #f5f4f0;
+  color: #92400e;
+}
+
+.navArrow:disabled,
+.navCenterUp:disabled,
+.navCenterDown:disabled {
+  color: #d6d3d1;
+  cursor: not-allowed;
+  background: none !important;
+}
+
+/* --- SLIDEOUT OVERLAY TOGGLE BUTTON --- */
+.mapToggleButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.mapToggleActive {
+  background-color: rgba(252, 251, 250, 0.95);
+  backdrop-filter: blur(8px);
+  opacity: 1;
+}
+
+.mapToggleMuted {
+  background-color: rgba(28, 25, 23, 0.65);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  opacity: 0.6;
+}
+
+.mapToggleMuted:hover {
+  opacity: 0.9;
+}
+
+/* --- COMPONENT LABELS --- */
+.topControlOverlay {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 15;
+}
+
+.metaChip {
+  background-color: rgba(252, 251, 250, 0.95);
+  color: #1c1917;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.hotspot {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: rgba(252, 251, 250, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #44403c;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  cursor: pointer;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+}
+
+.walkSpot { border-left: 3px solid #b45309; }
+.interviewSpot { border-left: 3px solid #9f1239; }
+
+.thumbnailStripContainer { display: flex; flex-direction: column; gap: 8px; }
+.stripLabel { font-size: 10px; text-transform: uppercase; font-weight: 700; color: #78716c; }
+.stripScrollbox { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 4px; }
+.thumbCard { position: relative; flex: 0 0 100px; height: 64px; border-radius: 8px; border: 2px solid #e7e5e0; background-size: cover; background-position: center; cursor: pointer; padding: 0; }
+.activeThumb { border-color: #b45309; }
+.thumbMiniScrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); display: flex; align-items: flex-end; padding: 4px 6px; }
+.thumbMiniScrim span { color: #ffffff; font-size: 9px; font-weight: 600; }
+

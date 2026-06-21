@@ -1,0 +1,230 @@
+.detailsContainer {
+  background-color: #fcfbfa; /* Soft paper white background matching mockups */
+  border: 1px solid #e7e5e0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+/* Tab Header Navigation Bar default layout */
+.tabHeader {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #f5f4f0;
+  padding: 6px;
+  gap: 4px;
+}
+
+/* Fix Modification Rule: Forces single button to fill entire visual row width beautifully */
+.singleTabHeader {
+  grid-template-columns: 1fr;
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #78716c;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.tabActive {
+  background-color: #ffffff;
+  color: #1c1917;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Inner Layout Body content */
+.contentBody {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.metaHeadings {
+  display: flex;
+  flex-direction: column;
+}
+
+.locationLabel {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #a8a29e;
+  margin-bottom: 2px;
+}
+
+.locationTitle {
+  font-family: Georgia, Cambria, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1c1917;
+  margin: 0 0 4px 0;
+}
+
+.locationSub {
+  font-size: 0.8rem;
+  color: #78716c;
+  margin: 0;
+}
+
+.tabContentBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.narrativeParagraph {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #44403c;
+  margin: 0;
+}
+
+/* Things To Do Subsections */
+.todoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todoHeader {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #a8a29e;
+  margin: 0;
+}
+
+.todoList {
+  margin: 0;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #44403c;
+}
+
+.todoList li::marker {
+  color: #d97706; /* Core project amber dot accent markers */
+}
+
+/* Interview UI Blocks */
+.interviewProfile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatarFrame {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #e7e5e0;
+}
+
+.profileMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.interviewLabel {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #92400e;
+  margin-bottom: 2px;
+}
+
+.subjectName {
+  font-family: Georgia, Cambria, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1c1917;
+  margin: 0 0 2px 0;
+}
+
+.subjectRole {
+  font-size: 0.8rem;
+  color: #78716c;
+}
+
+/* Custom Audio Player Layout HUD */
+.audioPlayerHud {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f5f4f0;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.playButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: #92400e; /* Terracotta/Amber action tone */
+  color: #ffffff;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.playButton:hover {
+  background-color: #78350f;
+}
+
+.waveformTrack {
+  flex: 1;
+  height: 6px;
+  background-color: #e7e5e0;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progressBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: #92400e;
+}
+
+.audioTimer {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #78716c;
+}
+
+/* Quote Layout Styling */
+.quoteBlock {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 3px solid #e7e5e0;
+  font-family: Georgia, Cambria, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #44403c;
+}

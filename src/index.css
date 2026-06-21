@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --bg-main: #FAF8F5;
+  --bg-surface: #F3EFEA;
+  --text-main: #1C2624;
+  --accent-primary: #234E52;
+  --accent-secondary: #C8460F;
+  --border-color: #2D3B38;
+  --hero-overlay: rgba(250, 248, 245, 0.72);
+}
+
+html.dark {
+  --bg-main: #0F1615;
+  --bg-surface: #1A2422;
+  --text-main: #EAE5DC;
+  --accent-primary: #4FA3A5;
+  --accent-secondary: #E59A6E;
+  --border-color:  #E2DED9;
+  --hero-overlay: rgba(15, 22, 21, 0.78);
+}
+
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  transition: background-color 0.35s ease,
+              color 0.35s ease,
+              border-color 0.35s ease,
+              fill 0.35s ease,
+              stroke 0.35s ease;
+}
