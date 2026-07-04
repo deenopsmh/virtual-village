@@ -20,7 +20,6 @@ export default function RoamDetail({ activeNode }) {
   return (
     <div className={styles.detailsContainer}>
       
-      {/* TAB CONTROLS: Dynamically applies a clean single-tab layout style if no interview exists */}
       <div className={`${styles.tabHeader} ${!hasInterview ? styles.singleTabHeader : ''}`}>
         <button 
           className={`${styles.tabButton} ${activeTab === 'about' ? styles.tabActive : ''}`}
@@ -39,10 +38,8 @@ export default function RoamDetail({ activeNode }) {
         )}
       </div>
 
-      {/* DYNAMIC CONTENT AREA */}
       <div className={styles.contentBody}>
         
-        {/* CONTEXT HEADINGS */}
         <div className={styles.metaHeadings}>
           <span className={styles.locationLabel}>You are at</span>
           <h3 className={styles.locationTitle}>{name}</h3>
@@ -50,7 +47,6 @@ export default function RoamDetail({ activeNode }) {
         </div>
 
         {activeTab === 'about' || !hasInterview ? (
-          /* TAB 1: ABOUT THIS PLACE */
           <div className={styles.tabContentBlock}>
             <p className={styles.narrativeParagraph}>{about?.text}</p>
             
@@ -66,10 +62,8 @@ export default function RoamDetail({ activeNode }) {
             )}
           </div>
         ) : (
-          /* TAB 2: INTERVIEW ORAL HISTORY */
           <div className={styles.tabContentBlock}>
             
-            {/* Subject Profile Block */}
             <div className={styles.interviewProfile}>
               {interview.avatar && (
                 <div 
@@ -84,7 +78,6 @@ export default function RoamDetail({ activeNode }) {
               </div>
             </div>
 
-            {/* Audio Component HUD */}
             <div className={styles.audioPlayerHud}>
               <button 
                 className={styles.playButton} 
@@ -98,7 +91,6 @@ export default function RoamDetail({ activeNode }) {
               <span className={styles.audioTimer}>0:42 / 2:18</span>
             </div>
 
-            {/* Quote Blockquote */}
             {interview.quote && (
               <blockquote className={styles.quoteBlock}>
                 “{interview.quote}”

@@ -57,7 +57,7 @@ export default function NavigationPortals() {
           tint="rgba(36, 90, 15, 0.5)"
 
           title="Scholarly Histories & Archive"
-          description="Research papers, archival records, census documents, historical references, and academic resources."
+          description="Historical materials from more than two centuries of village life and a professional historian's account."
         />
 
         <PortalCard

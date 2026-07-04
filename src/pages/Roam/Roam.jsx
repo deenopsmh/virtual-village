@@ -5,9 +5,7 @@ import { ROAM_DATA } from './RoamData';
 import styles from './Roam.module.css';
 
 export default function Roam() {
-  // Initialize with our foundational Point D dataset node
   const [currentNodeId, setCurrentNodeId] = useState("point-D");
-
   const currentNode = ROAM_DATA[currentNodeId];
 
 const handleNodeTransition = (nodeId) => {
@@ -17,23 +15,20 @@ const handleNodeTransition = (nodeId) => {
     console.error(`Route failed: Node ID "${nodeId}" does not exist in ROAM_DATA.`);
   }
 };
+
   return (
     <main className={styles.pageContainer}>
       <div className={styles.splitGrid}>
         
-        {/* LEFT COLUMN: VIEWER CANVAS WITH MINI-MAP HUD */}
-        <div className={styles.leftColumn}>
           <RoamViewer 
             activeNode={currentNode} 
             allNodes={Object.values(ROAM_DATA)}
             onNavigate={handleNodeTransition} 
           />
-        </div>
 
-        {/* RIGHT COLUMN: TEXT CONTENT SYNCED INTERFACES */}
-        <div className={styles.rightColumn}>
-          <RoamDetail activeNode={currentNode} />
-        </div>
+          <RoamDetail 
+            activeNode={currentNode} 
+          />
 
       </div>
     </main>

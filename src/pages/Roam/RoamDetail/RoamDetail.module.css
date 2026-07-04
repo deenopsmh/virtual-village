@@ -1,19 +1,25 @@
 .detailsContainer {
-  background-color: #fcfbfa; /* Soft paper white background matching mockups */
-  border: 1px solid #e7e5e0;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
-  overflow: hidden;
+  overflow-y: auto;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
   height: 500px;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-main) transparent;
 }
 
-/* Tab Header Navigation Bar default layout */
+.detailsContainer::-webkit-scrollbar-button {
+  display: none !important;
+}
+
 .tabHeader {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  background-color: #f5f4f0;
+  background-color: var(--bg-main);
   padding: 6px;
   gap: 4px;
 }
@@ -37,12 +43,11 @@
 }
 
 .tabActive {
-  background-color: #ffffff;
-  color: #1c1917;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Inner Layout Body content */
 .contentBody {
   padding: 32px 24px;
   display: flex;
@@ -60,7 +65,7 @@
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #a8a29e;
+  color: var(--text-main);
   margin-bottom: 2px;
 }
 
@@ -68,13 +73,13 @@
   font-family: Georgia, Cambria, serif;
   font-size: 1.75rem;
   font-weight: 700;
-  color: #1c1917;
+  color: var(--text-main);
   margin: 0 0 4px 0;
 }
 
 .locationSub {
   font-size: 0.8rem;
-  color: #78716c;
+  color: --text-main;
   margin: 0;
 }
 
@@ -88,7 +93,7 @@
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #44403c;
+  color: var(--text-main);
   margin: 0;
 }
 
@@ -104,7 +109,7 @@
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #a8a29e;
+  color: var(--text-main);
   margin: 0;
 }
 
@@ -115,11 +120,11 @@
   flex-direction: column;
   gap: 8px;
   font-size: 0.9rem;
-  color: #44403c;
+  color: var(--text-main);
 }
 
 .todoList li::marker {
-  color: #d97706; /* Core project amber dot accent markers */
+  color: var(--accent-secondary); /* Core project amber dot accent markers */
 }
 
 /* Interview UI Blocks */
@@ -135,7 +140,7 @@
   border-radius: 12px;
   background-size: cover;
   background-position: center;
-  border: 1px solid #e7e5e0;
+  border: 1px solid var(--border-color);
 }
 
 .profileMeta {
@@ -147,7 +152,7 @@
   font-size: 9px;
   text-transform: uppercase;
   font-weight: 700;
-  color: #92400e;
+  color: var(--accent-secondary);
   margin-bottom: 2px;
 }
 
@@ -155,13 +160,13 @@
   font-family: Georgia, Cambria, serif;
   font-size: 1.35rem;
   font-weight: 700;
-  color: #1c1917;
+  color: var(--text-main);
   margin: 0 0 2px 0;
 }
 
 .subjectRole {
   font-size: 0.8rem;
-  color: #78716c;
+  color: var(--text-main);
 }
 
 /* Custom Audio Player Layout HUD */
@@ -169,7 +174,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: #f5f4f0;
+  background-color: var(--text-main);
   padding: 12px;
   border-radius: 12px;
 }
@@ -179,24 +184,25 @@
   height: 32px;
   border-radius: 50%;
   border: none;
-  background-color: #92400e; /* Terracotta/Amber action tone */
-  color: #ffffff;
+  background-color: var(--accent-secondary); 
+  color: var(--text-main);
   font-size: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s ease-in-out;
 }
 
 .playButton:hover {
-  background-color: #78350f;
+  background-color: var(--accent-secondary);
+  opacity: .8;
 }
 
 .waveformTrack {
   flex: 1;
   height: 6px;
-  background-color: #e7e5e0;
+  background-color: lightgray;
   border-radius: 3px;
   position: relative;
   overflow: hidden;
@@ -207,7 +213,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background-color: #92400e;
+  background-color: var(--accent-secondary);
 }
 
 .audioTimer {
@@ -221,10 +227,10 @@
 .quoteBlock {
   margin: 0;
   padding-left: 16px;
-  border-left: 3px solid #e7e5e0;
+  border-left: 3px solid var(--border-color);
   font-family: Georgia, Cambria, serif;
   font-style: italic;
   font-size: 1.05rem;
   line-height: 1.5;
-  color: #44403c;
+  color: var(--text-main);
 }
