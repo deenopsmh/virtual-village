@@ -1,0 +1,170 @@
+.aboutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 5vw; /* Using your responsive horizontal spacing padding rule */
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* HERO SECTION */
+.heroSection {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.overlineHeader {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 3px; /* Matches your layout's clean overline text tracking */
+  font-weight: 700;
+  color: var(--accent-secondary);
+  margin-bottom: 12px;
+}
+
+.mainTitle {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  max-width: 750px;
+  margin: 0 auto;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* SPLIT CONTENT (TEXT + IMAGE) */
+.splitContentSection {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 50px;
+  align-items: flex-start;
+  margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .splitContentSection {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.textContent h2 { 
+  font-size: 1.75rem;
+  margin-bottom: 18px;
+}
+
+.textContent h3 { 
+  font-size: 1.35rem; 
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+
+.textContent p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+/* IMAGE WORKPLACE */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.aboutImage {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.imageCaption {
+  margin-top: 12px;
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.4;
+  opacity: 0.75;
+}
+
+/* LAYOUT FEATURES CARDS */
+.featuresSection {
+  margin-bottom: 80px;
+}
+
+.featuresSection h2 {
+  font-size: 1.75rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.featureCard {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  padding: 25px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.featureCard:hover {
+  border-color: var(--accent-secondary);
+}
+
+.featureCard h4 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.featureCard p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* DIVIDER */
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 60px 0;
+}
+
+/* ACKNOWLEDGEMENTS SECTION */
+.acknowledgementsSection {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.acknowledgementsSection h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.creditsMeta {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  border-left: 2px solid var(--accent-secondary);
+  padding-left: 15px;
+}
+
+.creditsMeta p {
+  margin: 6px 0;
+}
+
+.acknowledgementsText {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  opacity: 0.9;
+}

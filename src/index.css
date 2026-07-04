@@ -2,10 +2,10 @@
 @import "tailwindcss";
 
 :root {
-  --font-serif: 'Lora', Georgia, serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 
-  --bg-main: #FAF8F5;
+  --bg-main: #fff4e3;
   --bg-surface: #F3EFEA;
   --text-main: #1C2624;
   --accent-primary: #234E52;
@@ -31,6 +31,10 @@ body {
   background: var(--bg-main);
   color: var(--text-main);
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
 }
 
 * {

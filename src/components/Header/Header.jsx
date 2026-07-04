@@ -2,36 +2,40 @@ import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import logo from "../../assets/logo.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
+
+  const [darkMode, setDarkMode] = useState(
+    true
+    //   () => {
+  //   return localStorage.getItem("theme") === "dark";
+  // }
+);
 
   const location = useLocation();
 
   const navLinks = [
     { to: "/about", label: "About" },
     { to: "/roam", label: "Roam" },
-    { to: "/maps", label: "Maps" },
     { to: "/topics", label: "Topics" },
-    { to: "/my-life", label: "My Life" },
+    { to: "/maps", label: "Maps" },
+    { to: "/history", label: "History" },
     { to: "/resources", label: "Resources" },
   ];
 
-  /* close menu on route change */
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  /* lock scroll when menu open */
+  // Locks the scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => (document.body.style.overflow = "auto");
   }, [isOpen]);
 
-  /* theme toggle */
+  // Triggers dark/light mode on click
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -45,10 +49,9 @@ export default function Header() {
   return (
     <header className={styles.header}>
 
-      {/* LOGO */}
       <Link to="/">
         <div className={styles["logo-container"]}>
-          <img src={logo} className={styles.logo} alt="logo" />
+          {/* <img src={logo} className={styles.logo} alt="A Virtual Village Logo" /> */}
           <div className={styles["logo-text"]}>
             <span>A Virtual Village</span>
             <h1>Chainpur, Bihar</h1>
@@ -56,7 +59,6 @@ export default function Header() {
         </div>
       </Link>
 
-      {/* DESKTOP NAV */}
       <nav className={styles.nav}>
         {navLinks.map((link) => (
           <NavLink key={link.to} to={link.to}>
@@ -65,23 +67,13 @@ export default function Header() {
         ))}
       </nav>
 
-      {/* THEME TOGGLE */}
-      <button
-        onClick={() => setDarkMode((p) => !p)}
-        style={{
-          marginLeft: "1rem",
-          background: "none",
-          border: "1px solid var(--border-color)",
-          color: "var(--text-main)",
-          padding: "6px 10px",
-          borderRadius: "8px",
-          cursor: "pointer"
-        }}
-      >
-        {darkMode ? "☀️" : "🌙"}
-      </button>
+      <div className={styles.desktopToggle}>
+        <ThemeToggle
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+        />
+      </div>
 
-      {/* BURGER */}
       <button
         className={`${styles.burger} ${isOpen ? styles.burgerActive : ""}`}
         onClick={() => setIsOpen(!isOpen)}
@@ -91,7 +83,6 @@ export default function Header() {
         <span />
       </button>
 
-      {/* OVERLAY */}
       <div
         className={`${styles.overlay} ${
           isOpen ? styles.overlayActive : ""
@@ -99,7 +90,6 @@ export default function Header() {
         onClick={() => setIsOpen(false)}
       />
 
-      {/* MOBILE MENU */}
       <div
         className={`${styles.mobileMenu} ${
           isOpen ? styles.open : ""
@@ -115,6 +105,14 @@ export default function Header() {
               {link.label}
             </NavLink>
           ))}
+            
+        <div className={styles.mobileToggle}>
+          <ThemeToggle
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+          />
+        </div>
+
         </div>
       </div>
 

@@ -1,232 +1,23 @@
-/* Base Container */
 .sectionContainer {
   margin: 50px auto;
-  border-top: 1px double var(--accent-secondary);
-
   padding: 50px 80px;
-  box-sizing: border-box;
+  border-top: 1px double var(--accent-secondary);
 }
+.subTitle { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-secondary); margin-bottom: 4px; } .mainTitle { font-family: Georgia, Cambria, "Times New Roman", Times, serif; font-size: 1.875rem; font-weight: 700; color: var(--text-main); margin: 0; }
 
-/* Header Text Styles */
+
 .sectionHeader {
   margin-bottom: 40px;
 }
 
-.subTitle {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent-secondary); /* Dynamic brand secondary color */
-  margin-bottom: 4px;
-}
-
-.mainTitle {
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: var(--text-main); /* Adaptive main heading text */
-  margin: 0;
-}
-
-/* Responsive Grid System */
 .portalGrid {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 24px;
+  grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
   .portalGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-}
-
-/* Core Card Styles */
-.portalCard {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--border-color); /* Responsive theme borders */
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  background-color: var(--bg-surface); /* Safe container color backing layers */
-}
-
-.portalCard:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-/* Background Image Adjustments & Animation Hooks */
-.cardBg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.5s ease;
-  z-index: 0;
-}
-
-.portalCard:hover .cardBg {
-  transform: scale(1.04);
-}
-
-/* Spans & Heights overrides */
-.h64 { height: 256px; }
-.h72 { height: 288px; }
-
-@media (min-width: 768px) {
-  .colSpan1 { grid-column: span 1 / span 1; }
-  .colSpan2 { grid-column: span 2 / span 2; }
-}
-
-/* Overlay Solutions */
-.gradientOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, #0c0a09 0%, rgba(28, 25, 23, 0.4) 60%, transparent 100%);
-  z-index: 1;
-}
-
-.tintOverlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(35, 78, 82, 0.85); /* Deep Teal Filter */
-  z-index: 1;
-}
-
-.lightTintOverlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(226, 222, 217, 0.9); /* Warm Gray Cream Filter */
-  z-index: 1;
-}
-
-/* Structural asset updates for Dark Mode overlay balance filters */
-.dark .lightTintOverlay {
-  background-color: rgba(26, 36, 34, 0.9); /* Shifts warm gray to an organic deep slate backing layer */
-}
-
-.vignetteOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, #0c0a09 0%, rgba(74, 40, 24, 0.65) 50%, #0c0a09 100%);
-  z-index: 1;
-}
-
-/* Inner Layout Utilities */
-.cardContent {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  box-sizing: border-box;
-}
-
-.flexBetween {
-  justify-content: space-between;
-}
-
-.alignEnd {
-  align-items: flex-end;
-}
-
-/* Inner Text Layouts */
-.textWrapper {
-  max-width: 448px;
-}
-
-.textRight {
-  text-align: right;
-}
-
-.bottomTextWrapper {
-  margin-top: 64px;
-}
-
-/* Typography & Decorative UI Nodes inside cards */
-.cardTitle {
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 0 4px 0;
-  color: #ffffff; /* Explicitly fixed white contrast for dark overlays */
-}
-
-.stoneTheme .cardTitle {
-  color: var(--text-main); /* Swapped from hard stone tint to dynamic contrast mode */
-}
-
-.cardDescription {
-  font-size: 0.75rem;
-  line-height: 1.625;
-  margin: 0;
-  color: #d6d3d1;
-}
-
-.stoneTheme .cardDescription {
-  color: var(--text-main);
-  opacity: 0.8;
-}
-
-.iconBadge {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(12, 10, 9, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  margin-bottom: auto; 
-}
-
-.stoneTheme .iconBadge {
-  border-color: rgba(0, 0, 0, 0.15);
-  background-color: rgba(0, 0, 0, 0.04);
-}
-
-.dark .stoneTheme .iconBadge {
-  border-color: rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-.terracottaTheme .iconBadge {
-  border-color: rgba(255, 255, 255, 0.2);
-  background-color: rgba(12, 10, 9, 0.5);
-}
-
-.emojiIcon {
-  font-size: 1.25rem;
-  margin-bottom: 8px;
-}
-
-.watermark {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  color: rgba(241, 245, 249, 0.1);
-  font-size: 3rem;
-  font-family: monospace;
-  user-select: none;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.metaBadgeTeal {
-  display: block;
-  font-size: 10px;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #2dd4bf; /* Pure element accent tint for light mode interfaces */
-}
-
-.dark .metaBadgeTeal {
-  color: var(--accent-primary); /* Swaps to clean teal brand tokens on dark screens to shield accessibility */
 }

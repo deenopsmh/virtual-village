@@ -7,10 +7,7 @@
   padding: 0 5vw;
   border-bottom: 1px solid var(--border-color);
   background: var(--bg-main);
-  position: relative;
-  z-index: 1001;
 }
-
 
 .logo-container {
   display: flex;
@@ -24,50 +21,46 @@
 
 .logo-text {
   margin-left: 10px;
+  color: var(--text-main);
 }
 
 .logo-text span {
   font-size: 16px;
   letter-spacing: 3px;
-  color: var(--text-main);
 }
 
 .logo-text h1 {
   font-size: 22px;
   letter-spacing: 5px;
-  color: var(--text-main);
 }
 
-/* ================= DESKTOP NAV ================= */
 
 .nav {
   display: flex;
   gap: 2.5rem;
 }
 
-.nav a {
+.nav a, .nav-text-container a {
   text-decoration: none;
   color: var(--text-main);
   font-weight: 500;
   transition: 0.2s ease-in-out;
 }
 
-.nav a:hover {
+.nav a:hover, .nav-text-container a:hover  {
   color: var(--accent-secondary);
   text-decoration: underline 2px solid var(--accent-secondary);
+  transform: scale(1.2);
 }
 
-/* ================= BURGER ================= */
 
 .burger {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40px;
   height: 40px;
   gap: 5px;
-  background: none;
   border: none;
   cursor: pointer;
   z-index: 1200;
@@ -82,9 +75,10 @@
 }
 
 .burgerActive span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 
+/* Removes the middle line that allows the burger to look like an X */
 .burgerActive span:nth-child(2) {
   opacity: 0;
 }
@@ -93,14 +87,12 @@
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* ================= OVERLAY ================= */
 
 .overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
   z-index: 900;
-
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -111,7 +103,6 @@
   pointer-events: auto;
 }
 
-/* ================= MOBILE MENU ================= */
 
 .mobileMenu {
   position: fixed;
@@ -123,13 +114,11 @@
   background: var(--bg-main);
   transform: translateX(100%);
   transition: transform 0.3s ease;
-
   z-index: 1000;
-
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 2rem;
-
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -139,15 +128,14 @@
 }
 
 .nav-text-container {
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
-  font-size: large;
 }
 
-/* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
   .nav {
@@ -156,5 +144,15 @@
 
   .burger {
     display: flex;
+  }
+
+  .desktopToggle {
+    display: none;
+  }
+
+
+  .mobileToggle .themeToggle {
+    font-size: 18px;
+    padding: 12px;
   }
 }

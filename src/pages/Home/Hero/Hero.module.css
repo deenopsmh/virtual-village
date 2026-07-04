@@ -32,10 +32,7 @@
   overflow: hidden;
   border-radius: 4px;
   
-  /* Force container box to respect the explicit row height mapping from React */
   height: 100%; 
-  
-  /* Fallback skeleton shade to hide empty boxes prior to layout parsing */
   background-color: var(--bg-surface); 
 }
 
@@ -100,7 +97,7 @@
   font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-main); /* Upgraded from var(--text-muted) to guarantee WCAG AA contrast against overlays */
+  color: var(--text-main);
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -136,6 +133,7 @@
   font-weight: 600;
 
   text-align: center;
+  border: 1px solid var(--border-color);
 
   transition:
     transform 0.2s ease,
@@ -149,16 +147,14 @@
   transform: translateY(-2px);
 }
 
-.btnPrimary {
+.btnSecondary {
   background: var(--accent-secondary);
-  color: var(--bg-surface); /* Contrast enhancement: swaps pale background text for a clear readable look */
-  border: 1px solid transparent;
+  color: var(--bg-surface); 
 }
 
-.btnSecondary {
+.btnPrimary {
   background: var(--bg-surface);
   color: var(--text-main);
-  border: 1px solid var(--border-color);
 }
 
 @media (max-width: 600px) {

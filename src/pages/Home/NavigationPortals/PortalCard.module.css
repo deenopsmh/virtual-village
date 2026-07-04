@@ -1,0 +1,95 @@
+.portalCard {
+  position: relative;
+  overflow: hidden;
+  height: 270px;
+
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.portalCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+
+@media (min-width: 768px) {
+  .span2 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .span2 {
+    grid-column: span 1;
+  }
+}
+
+.cardBg {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+
+  transition: transform .4s ease;
+}
+
+.portalCard:hover .cardBg {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+}
+
+.cardContent {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 24px;
+}
+
+.textContent {
+    min-height: 110px;   
+}
+
+.iconBadge {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+
+  font-size: 20px;
+}
+
+.cardTitle {
+  margin: 0 0 8px;
+  color: white;
+  font-size: 1.20rem;
+  font-weight: 600;
+}
+
+.cardDescription {
+  margin: 0;
+
+  color: rgba(255,255,255,.85);
+
+  line-height: 1.6;
+  font-size: .9rem;
+}
