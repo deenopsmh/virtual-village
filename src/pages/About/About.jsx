@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './About.module.css';
-import img2 from '../../assets/VV3 Images - Copy/A to B.JPG'
-import img3 from '../../assets/VV3 Images - Copy/AA to BB.JPG'
-
+import ResponsiveImage from '../../components/ResponsiveImage';
 
 export default function About() {
   return (
@@ -42,19 +40,19 @@ export default function About() {
         </div>
 
         <div className={styles.imageWrapper}>
-          <img 
-            src={img2} 
-            alt="Historical landscape of Chainpur, Bihar" 
-            className={styles.aboutImage}
-          /> <br/>
-                    <img 
-            src={img3} 
+
+            <ResponsiveImage 
+            src="VV3 Images - Copy/A to B.jpg" 
             alt="Historical landscape of Chainpur, Bihar" 
             className={styles.aboutImage}
           />
-          {/* <div className={styles.imageCaption}>
-            Figure 1: Documenting structural and environmental changes in Chainpur over two decades of active field research.
-          </div> */}
+          <br/>
+          <ResponsiveImage 
+            src="VV3 Images - Copy/AA to BB.jpg" 
+            alt="Historical landscape of Chainpur, Bihar" 
+            className={styles.aboutImage}
+/>
+
         </div>
       </section>
 
