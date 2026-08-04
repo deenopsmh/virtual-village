@@ -1,13 +1,8 @@
 import React from 'react';
 import styles from './NavigationPortals.module.css';
 import PortalCard from "./PortalCard";
+import ResponsiveImage from '../../../components/ResponsiveImage';
 
-// Importing your selected assets
-import img1 from '/src/assets/C to V.JPG';
-import img2 from '/src/assets/D to AA.JPG';
-import img3 from '/src/assets/D to G.JPG';
-import img4 from '/src/assets/D to Sherpur.JPG';
-import img5 from '/src/assets/D to Sherpur.JPG';
 
 export default function NavigationPortals() {
   return (
@@ -25,7 +20,7 @@ export default function NavigationPortals() {
       <div className={styles.portalGrid}>
         <PortalCard
           span={2}
-          image={img1}
+          image="VV3 Images - Copy\G to K EDIT.JPG"
           icon="🧭"
           title="Roam"
           tint="rgba(97, 35, 2, 0.57)"
@@ -34,7 +29,7 @@ export default function NavigationPortals() {
         />
 
         <PortalCard
-          image={img2}
+          image="VV3 Images - Copy\VV3 map 11Jl26 CROP.JPG"
           icon="🗺️"
           title="Interactive Maps"
           tint="rgba(8, 20, 73, 0.5)"
@@ -43,7 +38,7 @@ export default function NavigationPortals() {
         />
 
         <PortalCard
-          image={img3}
+          image="VV3 Images - Copy\AA to D Shyam Babu_s store\AA to D Shyam Babu_s store gesticulations.JPG"
           icon="📑"
           title="Thematic Topics"
           tint="rgba(70,50,20,.45)"
@@ -52,7 +47,7 @@ export default function NavigationPortals() {
         />
 
         <PortalCard
-          image={img1}
+          image="VV3 Images - Copy\Sayyid family masjid structure from courtyard.JPG"
           icon="📚"
           tint="rgba(36, 90, 15, 0.5)"
 
@@ -61,7 +56,7 @@ export default function NavigationPortals() {
         />
 
         <PortalCard
-          image={img4}
+          image="VV3 Images - Copy\prem in action.JPG"
           icon="🎙️"
           title="Oral Histories"
           description="Personal testimonies and life stories from the heart of the village."

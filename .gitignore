@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 .env
+src/assets/VV3 Images - Copy/
+public/images/optimized/**/*.hash

@@ -12,16 +12,29 @@
   --accent-secondary: #C8460F;
   --border-color: #2D3B38;
   --hero-overlay: rgba(250, 248, 245, 0.72);
-}
 
+  --waypoint-fill: #c2410c;
+  --waypoint-stroke: #ffffff;
+  --waypoint-ring: #ea580c;
+
+  --path-stroke-solid: #c2410c;
+  --path-stroke-moving: #ea580c;
+  --path-shadow: #c2410c;
+}
 html.dark {
   --bg-main: #0F1615;
   --bg-surface: #1A2422;
   --text-main: #EAE5DC;
   --accent-primary: #4FA3A5;
   --accent-secondary: #E59A6E;
-  --border-color:  #E2DED9;
+  --border-color: #E2DED9;
   --hero-overlay: rgba(15, 22, 21, 0.78);
+
+--waypoint-fill: #fdfcfb;
+  --waypoint-stroke: #0f766e;
+  --path-stroke-solid: #38bdf8;
+  --path-stroke-moving: #0ee7ff;
+  --path-shadow: rgba(56, 189, 248, 0.75);
 }
 
 

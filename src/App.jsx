@@ -23,7 +23,7 @@ export default function App() {
           
         />
                 <Route 
-          path="/roam" 
+          path="/roam/*" 
           element={
             <div>
                 <Roam/>

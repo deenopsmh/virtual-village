@@ -1,4 +1,5 @@
 import styles from "./PortalCard.module.css";
+import ResponsiveImage from "../../../components/ResponsiveImage";
 
 export default function PortalCard({
   title,
@@ -14,25 +15,44 @@ export default function PortalCard({
         span === 2 ? styles.span2 : ""
       }`}
     >
-      <div
+
+      <ResponsiveImage
+        src={image}
+        alt=""
         className={styles.cardBg}
-        style={{ backgroundImage: `url(${image})` }}
+        sizes="(max-width: 768px) 100vw, 33vw"
       />
 
-      <div className={styles.overlay} 
-      
-        style={{ backgroundColor: tint || "rgba(0,0,0,0.35)" }}
 
+      <div
+        className={styles.overlay}
+        style={{
+          backgroundColor:
+            tint || "rgba(0,0,0,0.35)"
+        }}
       />
 
-        <div className={styles.cardContent}>
-        {icon && <div className={styles.iconBadge}>{icon}</div>}
+
+      <div className={styles.cardContent}>
+
+        {icon && (
+          <div className={styles.iconBadge}>
+            {icon}
+          </div>
+        )}
 
         <div className={styles.textContent}>
-            <h4 className={styles.cardTitle}>{title}</h4>
-            <p className={styles.cardDescription}>{description}</p>
+          <h4 className={styles.cardTitle}>
+            {title}
+          </h4>
+
+          <p className={styles.cardDescription}>
+            {description}
+          </p>
         </div>
-        </div>
+
+      </div>
+
     </div>
   );
 }

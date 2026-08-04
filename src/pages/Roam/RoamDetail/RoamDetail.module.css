@@ -19,12 +19,9 @@
 .tabHeader {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  background-color: var(--bg-main);
-  padding: 6px;
-  gap: 4px;
+  background: white;
 }
 
-/* Fix Modification Rule: Forces single button to fill entire visual row width beautifully */
 .singleTabHeader {
   grid-template-columns: 1fr;
 }
@@ -36,16 +33,24 @@
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #78716c;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 3px;
   transition: all 0.2s ease;
+  color: #78716c;
+
+}
+.tabButton:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.274);
+    color: var(--text-main);
+    border-radius: 0;
+
 }
 
 .tabActive {
-  background-color: var(--bg-main);
   color: var(--text-main);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.274);
+  border: 1px solid color-mix(in srgb, var(--border-color) 70%, transparent);
+  background: var(--bg-main);
 }
 
 .contentBody {
@@ -105,7 +110,7 @@
 }
 
 .todoHeader {
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -114,19 +119,32 @@
 }
 
 .todoList {
-  margin: 0;
-  padding-left: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 0.9rem;
+  font-family: var(--font-serif);
+  padding-left: 1.25rem;
+  font-size: small;
+}
+
+.todoList li {
+  margin-bottom: 0.35rem;
+}
+
+.todoItemButton {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  transition: .2s ease-in-out;
+}
+
+.todoItemButton:hover {
   color: var(--text-main);
+  opacity: 0.8;
+  text-decoration: underline;
+  transform: translateX(2px);
 }
-
-.todoList li::marker {
-  color: var(--accent-secondary); /* Core project amber dot accent markers */
-}
-
 /* Interview UI Blocks */
 .interviewProfile {
   display: flex;
@@ -174,7 +192,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: var(--text-main);
+  border: 2px solid var(--text-main);
   padding: 12px;
   border-radius: 12px;
 }
@@ -185,7 +203,7 @@
   border-radius: 50%;
   border: none;
   background-color: var(--accent-secondary); 
-  color: var(--text-main);
+  color: white;
   font-size: 0.75rem;
   display: flex;
   align-items: center;

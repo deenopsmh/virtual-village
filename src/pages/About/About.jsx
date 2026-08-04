@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './About.module.css';
-import img2 from '/src/assets/D to AA.JPG';
-import img3 from '/src/assets/D to G.JPG';
+import img2 from '../../assets/VV3 Images - Copy/A to B.JPG'
+import img3 from '../../assets/VV3 Images - Copy/AA to BB.JPG'
 
 
 export default function About() {
