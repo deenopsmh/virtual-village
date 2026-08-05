@@ -235,16 +235,16 @@ export const ROAM_DATA = {
                 "title": "",
                 "focus_point": ""
               },
-              {
-                "src": "VV3 Images - Copy/A to B tank/A to B tank ghat distant",
-                "title": "",
-                "focus_point": ""
-              },
-              {
-                "src": "VV3 Images - Copy/A to B tank/A to B tank oblong",
-                "title": "",
-                "focus_point": ""
-              }
+              // {
+              //   "src": "VV3 Images - Copy/A to B tank/A to B tank ghat distant",
+              //   "title": "",
+              //   "focus_point": ""
+              // },
+              // {
+              //   "src": "VV3 Images - Copy/A to B tank/A to B tank oblong",
+              //   "title": "",
+              //   "focus_point": ""
+              // }
             ],
             "interview": null
           }
@@ -556,7 +556,7 @@ export const ROAM_DATA = {
                   {
                     "src": "VV3 Images - Copy/A Ravidas mandir/A Ravidas mandir murti",
                     "title": "",
-                    "focus_point": ""
+                    "focus_point": { top: 38.7, left: 47.9 }
                   }
                 ],
                 "interview": null
