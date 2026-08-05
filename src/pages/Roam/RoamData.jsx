@@ -140,12 +140,7 @@ export const ROAM_DATA = {
             "title": "Thana Road, 2004"
           }
         ],
-        "interview": {
-          "subject": "Ram Prasad",
-          "role": "Shop owner, Thana Road",
-          "avatar": "VV3 Images - Copy/interviews/ram-prasad",
-          "quote": "We used to boil water every morning before the shop opened."
-        }
+        "interview": null
       }
     },
     "activities": {
@@ -421,7 +416,7 @@ export const ROAM_DATA = {
             "eras": {
               "2020s": {
                 "label": "Vest Shop and Sari House",
-                "description": "The sign reads “Kripa Vest Shop and Sari House”",
+                "description": "The sign reads 'Kripa Vest Shop and Sari House'",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/A Kripa Vastraliya and Sari House sign",
@@ -442,7 +437,7 @@ export const ROAM_DATA = {
         "eras": {
           "2020s": {
             "label": "Fashion Boy Clothing Shop",
-            "description": "A ready-made clothing store stands behind a chai (“tea”) stall.",
+            "description": "A ready-made clothing store stands behind a chai ('tea') stall.",
             "images": [
               {
                 "src": "VV3 Images - Copy/A to Chand Fashion Boy shop enter",
@@ -500,7 +495,7 @@ export const ROAM_DATA = {
         "eras": {
           "2020s": {
             "label": "A Ravidas Mandir ('temple')",
-            "description": "Ravidas represents an important religious figure for Chainpur's Dalit (“crushed” or low ritual status) communities. He lived in Benares (Varanasi) around the 14th century and is revered by many because he emphasized devotion to a formless deity without distinction of one's jati (“caste”) or other social status.",
+            "description": "Ravidas represents an important religious figure for Chainpur's Dalit ('crushed' or low ritual status) communities. He lived in Benares (Varanasi) around the 14th century and is revered by many because he emphasized devotion to a formless deity without distinction of one's jati ('caste') or other social status.",
             "images": [
               {
                 "src": "VV3 Images - Copy/A Ravidas mandir/A Ravidas mandir close",
@@ -555,7 +550,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Murti (“Statue”) of Ravidas",
+                "label": "Murti ('Statue') of Ravidas",
                 "description": "A murti of Ravidas stands central to the temple.",
                 "images": [
                   {
@@ -641,7 +636,7 @@ export const ROAM_DATA = {
             "eras": {
               "2020s": {
                 "label": "Fruit",
-                "description": "Kela (“bananas”), santara (“tangerines”), seb (“apples”), and anar (“pomegranate”) are some of the fruits on sale today.",
+                "description": "Kela ('bananas'), santara ('tangerines'), seb ('apples'), and anar ('pomegranate') are some of the fruits on sale today.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/A to B fruit shop/A to B fruit shop detail",
@@ -718,7 +713,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Sri Gauri Shankar Mahadev Mandir (“Temple”)",
+            "label": "Sri Gauri Shankar Mahadev Mandir ('Temple')",
             "description": "Entrance to a temple dedicated to the goddess Gauri and the gods Shiv and Vishnu.",
             "images": [
               {
@@ -756,7 +751,7 @@ export const ROAM_DATA = {
             "eras": {
               "2020s": {
                 "label": "Ramayan Epic Reading Advertisement",
-                "description": "This advertisement posted on the temple grounds for the “25 Vān Shrī Rāmchit Mānas Mahādhiveshan” (“25th Annual Great Recitation of the Ramchitmanas”). The text is among the most popular religious texts in north India, describing the epic of Ram and his wife Sita in Hindi.",
+                "description": "This advertisement posted on the temple grounds for the '25 Vān Shrī Rāmchit Mānas Mahādhiveshan' ('25th Annual Great Recitation of the Ramchitmanas'). The text is among the most popular religious texts in north India, describing the epic of Ram and his wife Sita in Hindi.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/A to B Mahadev Mandir/A to B Shankar Mahadev Mandir detail sign",
@@ -909,8 +904,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Mazars (“Tombs”) of Two Sufis",
-                "description": "Devotees sometimes mark their devotion to a dead Sufi by adorning their mazar with a chadar (“sheet”) covered in Islamic texts and/or images.",
+                "label": "Mazars ('Tombs') of Two Sufis",
+                "description": "Devotees sometimes mark their devotion to a dead Sufi by adorning their mazar with a chadar ('sheet') covered in Islamic texts and/or images.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/A to B cemetery/A to B cemetery detail detail mazars",
@@ -928,7 +923,7 @@ export const ROAM_DATA = {
                 "eras": {
                   "2020s": {
                     "label": "Chadar Image Details",
-                    "description": "Along with the special number “786” and the Islamic symbol of a star and the crescent moon, the images on these identical chadars (“sheets”) show the Prophet's Mosque in Medina, one of the most popular pilgrimage sites for Muslims worldwide.",
+                    "description": "Along with the special number '786' and the Islamic symbol of a star and the crescent moon, the images on these identical chadars ('sheets') show the Prophet's Mosque in Medina, one of the most popular pilgrimage sites for Muslims worldwide.",
                     "images": [
                       {
                         "src": "VV3 Images - Copy/A to B cemetery/A to B cemetery detail detail detail mazars parallel",
@@ -950,7 +945,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Sadhu (“Hindu Ascetic”)",
+            "label": "Sadhu ('Hindu Ascetic')",
             "description": "Sadhus practice a life of detachment from the world. The degree of that detachment varies among them, with some earning a living through a profession and others living the life on a wanderer reliant on the generosity of others.",
             "images": [
               {
@@ -1015,7 +1010,7 @@ export const ROAM_DATA = {
             "eras": {
               "2020s": {
                 "label": "Fruit",
-                "description": "Kela (“bananas”), santara (“tangerines”), seb (“apples”), and anar (“pomegranate”) are some of the fruits on sale today.",
+                "description": "Kela ('bananas'), santara ('tangerines'), seb ('apples'), and anar ('pomegranate') are some of the fruits on sale today.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/A to B fruit shop/A to B fruit shop detail",
@@ -1092,7 +1087,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Sri Gauri Shankar Mahadev Mandir (“Temple”)",
+            "label": "Sri Gauri Shankar Mahadev Mandir ('Temple')",
             "description": "Entrance to a temple dedicated to the goddess Gauri and the gods Shiv and Vishnu.",
             "images": [
               {
@@ -1130,7 +1125,7 @@ export const ROAM_DATA = {
             "eras": {
               "2020s": {
                 "label": "Ramayan Epic Reading Advertisement",
-                "description": "This advertisement posted on the temple grounds for the “25 Vān Shrī Rāmchit Mānas Mahādhiveshan” (“25th Annual Great Recitation of the Ramchitmanas”). The text is among the most popular religious texts in north India, describing the epic of Ram and his wife Sita in Hindi.",
+                "description": "This advertisement posted on the temple grounds for the '25 Vān Shrī Rāmchit Mānas Mahādhiveshan' ('25th Annual Great Recitation of the Ramchitmanas'). The text is among the most popular religious texts in north India, describing the epic of Ram and his wife Sita in Hindi.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/A to B Mahadev Mandir/A to B Shankar Mahadev Mandir detail sign",
@@ -1225,7 +1220,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "As the sun begins to set...",
+                "label": "Sun Setting",
                 "description": "As the sun begins to set, a man drives his water buffalo out of the fields behind Chainpur's bus stand and the many buildings lining the Chand to Bhabua road.",
                 "images": [
                   {
@@ -1283,8 +1278,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Mazars (“Tombs”) of Two Sufis",
-                "description": "Devotees sometimes mark their devotion to a dead Sufi by adorning their mazar with a chadar (“sheet”) covered in Islamic texts and/or images.",
+                "label": "Mazars ('Tombs') of Two Sufis",
+                "description": "Devotees sometimes mark their devotion to a dead Sufi by adorning their mazar with a chadar ('sheet') covered in Islamic texts and/or images.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/A to B cemetery/A to B cemetery detail detail mazars",
@@ -1302,7 +1297,7 @@ export const ROAM_DATA = {
                 "eras": {
                   "2020s": {
                     "label": "Chadar Image Details",
-                    "description": "Along with the special number “786” and the Islamic symbol of a star and the crescent moon, the images on these identical chadars (“sheets”) show the Prophet's Mosque in Medina, one of the most popular pilgrimage sites for Muslims worldwide.",
+                    "description": "Along with the special number '786' and the Islamic symbol of a star and the crescent moon, the images on these identical chadars ('sheets') show the Prophet's Mosque in Medina, one of the most popular pilgrimage sites for Muslims worldwide.",
                     "images": [
                       {
                         "src": "VV3 Images - Copy/A to B cemetery/A to B cemetery detail detail detail mazars parallel",
@@ -1324,7 +1319,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Sadhu (“Hindu Ascetic”)",
+            "label": "Sadhu ('Hindu Ascetic')",
             "description": "Sadhus practice a life of detachment from the world. The degree of that detachment varies among them, with some earning a living through a profession and others living the life on a wanderer reliant on the generosity of others.",
             "images": [
               {
@@ -1371,8 +1366,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Islamic decorations",
-            "description": "A clockface chalked on this store's door helps advertise the business of Golden Watch. The Islamic symbol of a crescent moon with star hangs above a similarly chalked image of the Taj Mahal in Agra. The artist includes a view of the garden in which this most iconic of Indian buildings stands. Meanwhile, the Arabic numbers above the door (“786”) represent the Islamic system of abjad that assigns letters in words to numbers as a form of religious arithmetic. 786 is particularly auspicious.",
+            "label": "Islamic decorations",
+            "description": "A clockface chalked on this store's door helps advertise the business of Golden Watch. The Islamic symbol of a crescent moon with star hangs above a similarly chalked image of the Taj Mahal in Agra. The artist includes a view of the garden in which this most iconic of Indian buildings stands. Meanwhile, the Arabic numbers above the door ('786') represent the Islamic system of abjad that assigns letters in words to numbers as a form of religious arithmetic. 786 is particularly auspicious.",
             "images": [
               {
                 "src": "VV3 Images - Copy/B to FF (r) Taj on door",
@@ -1390,7 +1385,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See posters on a building",
+            "label": "Posters on a Building",
             "description": "Multiple candidates have posted their advertisements here.",
             "images": [
               {
@@ -1408,7 +1403,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See a political candidate's poster",
+                "label": "Political Candidate's Poster",
                 "description": "The poster by this political candidate for Chainpur's panchayat (village counsel) congratulates those celebrating the Hindu holidays of Dashara, Dhanteras, Diwali, and Dala Chat Puja.",
                 "images": [
                   {
@@ -1429,7 +1424,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Chainpur's expansion",
+            "label": "Chainpur's expansion",
             "description": "Chainpur continues to grow, especially along the road between the thana and Chainpur Chowk. New homes and businesses emerge annually.",
             "images": [
               {
@@ -1448,7 +1443,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a school bus for one of the local private schools",
+            "label": "Local Private School School Bus",
             "description": "Education is one of the fastest growing economic sectors in the Chainpur area, as well as in India as a whole. Parents have the choice of many more private schools and better government schools than two decades earlier.",
             "images": [
               {
@@ -1467,7 +1462,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See water buffalo",
+            "label": "Water Buffalo",
             "description": "Water buffalo play a critical role in the agricultural economy. Not only do locals relish its milk - thicker and sweeter than a cow's - but also they take its dung, form it into patties mixed with straw, and dry it in the sun. The results are evident in the background and are used to fuel kitchen fires and fires to keep those guarding fields warm at night.",
             "images": [
               {
@@ -1514,8 +1509,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Islamic decorations",
-            "description": "A clockface chalked on this store's door helps advertise the business of Golden Watch. The Islamic symbol of a crescent moon with star hangs above a similarly chalked image of the Taj Mahal in Agra. The artist includes a view of the garden in which this most iconic of Indian buildings stands. Meanwhile, the Arabic numbers above the door (“786”) represent the Islamic system of abjad that assigns letters in words to numbers as a form of religious arithmetic. 786 is particularly auspicious.",
+            "label": "Islamic Decorations",
+            "description": "A clockface chalked on this store's door helps advertise the business of Golden Watch. The Islamic symbol of a crescent moon with star hangs above a similarly chalked image of the Taj Mahal in Agra. The artist includes a view of the garden in which this most iconic of Indian buildings stands. Meanwhile, the Arabic numbers above the door ('786') represent the Islamic system of abjad that assigns letters in words to numbers as a form of religious arithmetic. 786 is particularly auspicious.",
             "images": [
               {
                 "src": "VV3 Images - Copy/B to FF (r) Taj on door",
@@ -1533,7 +1528,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See posters on a building",
+            "label": "Posters on a Building",
             "description": "Multiple candidates have posted their advertisements here.",
             "images": [
               {
@@ -1551,7 +1546,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See a political candidate's poster",
+                "label": "Political Candidate's Poster",
                 "description": "The poster by this political candidate for Chainpur's panchayat (village counsel) congratulates those celebrating the Hindu holidays of Dashara, Dhanteras, Diwali, and Dala Chat Puja.",
                 "images": [
                   {
@@ -1572,7 +1567,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Chainpur's expansion",
+            "label": "Chainpur's Expansion",
             "description": "Chainpur continues to grow, especially along the road between the thana and Chainpur Chowk. New homes and businesses emerge annually.",
             "images": [
               {
@@ -1591,7 +1586,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a school bus for one of the local private schools",
+            "label": "Local Private School School Bus",
             "description": "Education is one of the fastest growing economic sectors in the Chainpur area, as well as in India as a whole. Parents have the choice of many more private schools and better government schools than two decades earlier.",
             "images": [
               {
@@ -1610,7 +1605,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See water buffalo",
+            "label": "Water Buffalo",
             "description": "Water buffalo play a critical role in the agricultural economy. Not only do locals relish its milk - thicker and sweeter than a cow's - but also they take its dung, form it into patties mixed with straw, and dry it in the sun. The results are evident in the background and are used to fuel kitchen fires and fires to keep those guarding fields warm at night.",
             "images": [
               {
@@ -1655,7 +1650,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a family store",
+            "label": "A Family Store",
             "description": "The Agrawal family has run this shop for more than three decades. In the 1990s, it not only developed photographic film and made photocopies, but also had the first international telephone booth in Chainpur. Technological advances have made most of these services redundant.",
             "images": [
               {
@@ -1674,7 +1669,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Chainpur's first franchise store",
+            "label": "Chainpur's First Franchise Store",
             "description": "Oppo opened the first franchise store to appear in Chainpur. The Chinese smartphone and electronics company has had its own retail stores in India only since 2017.",
             "images": [
               {
@@ -1694,7 +1689,7 @@ export const ROAM_DATA = {
         "eras": {
           "2020s": {
             "label": "Dried gobar patties",
-            "description": "These dried patties are a mixture of straw and gobar (“cow dung”). Although their smoke when burned in homes is unhealthy, they remain an inexpensive fuel source for those who cannot afford electricity or natural gas.",
+            "description": "These dried patties are a mixture of straw and gobar ('cow dung'). Although their smoke when burned in homes is unhealthy, they remain an inexpensive fuel source for those who cannot afford electricity or natural gas.",
             "images": [
               {
                 "src": "VV3 Images - Copy/EE to FF west dried gobar",
@@ -1712,8 +1707,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Read a Cool Creators ad",
-            "description": "Cool Creators advertises a wide variety of products, including “fridges, standing closets, beds, sofas, blenders, irons, induction ovens, fans, coolers, and mobiles, etc.” Although written in Hindi and using some Hindi-origin terms, many of the words used on this ad derive from English terms taken up when the Western-originated technology was adopted by consumers.",
+            "label": "A Cool Creators ad",
+            "description": "Cool Creators advertises a wide variety of products, including 'fridges, standing closets, beds, sofas, blenders, irons, induction ovens, fans, coolers, and mobiles, etc.' Although written in Hindi and using some Hindi-origin terms, many of the words used on this ad derive from English terms taken up when the Western-originated technology was adopted by consumers.",
             "images": [
               {
                 "src": "VV3 Images - Copy/EE to FF west sign EDIT",
@@ -1757,7 +1752,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a family store",
+            "label": "A Family Store",
             "description": "The Agrawal family has run this shop for more than three decades. In the 1990s, it not only developed photographic film and made photocopies, but also had the first international telephone booth in Chainpur. Technological advances have made most of these services redundant.",
             "images": [
               {
@@ -1776,7 +1771,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Chainpur's first franchise store",
+            "label": "Chainpur's First Franchise Store",
             "description": "Oppo opened the first franchise store to appear in Chainpur. The Chinese smartphone and electronics company has had its own retail stores in India only since 2017.",
             "images": [
               {
@@ -1796,7 +1791,7 @@ export const ROAM_DATA = {
         "eras": {
           "2020s": {
             "label": "Dried gobar patties",
-            "description": "These dried patties are a mixture of straw and gobar (“cow dung”). Although their smoke when burned in homes is unhealthy, they remain an inexpensive fuel source for those who cannot afford electricity or natural gas.",
+            "description": "These dried patties are a mixture of straw and gobar ('cow dung'). Although their smoke when burned in homes is unhealthy, they remain an inexpensive fuel source for those who cannot afford electricity or natural gas.",
             "images": [
               {
                 "src": "VV3 Images - Copy/EE to FF west dried gobar",
@@ -1814,8 +1809,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Read a Cool Creators ad",
-            "description": "Cool Creators advertises a wide variety of products, including “fridges, standing closets, beds, sofas, blenders, irons, induction ovens, fans, coolers, and mobiles, etc.” Although written in Hindi and using some Hindi-origin terms, many of the words used on this ad derive from English terms taken up when the Western-originated technology was adopted by consumers.",
+            "label": "A Cool Creators ad",
+            "description": "Cool Creators advertises a wide variety of products, including 'fridges, standing closets, beds, sofas, blenders, irons, induction ovens, fans, coolers, and mobiles, etc.' Although written in Hindi and using some Hindi-origin terms, many of the words used on this ad derive from English terms taken up when the Western-originated technology was adopted by consumers.",
             "images": [
               {
                 "src": "VV3 Images - Copy/EE to FF west sign EDIT",
@@ -1844,7 +1839,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "The road to Chowk Bazaar passes a pair of Chainpur's many mandirs (“temples”) and masjids (“mosques”).",
+        "description": "The road to Chowk Bazaar passes a pair of Chainpur's many mandirs ('temples') and masjids ('mosques').",
         "images": [
           {
             "src": "VV3 Images - Copy/EE masjid/EE east 1",
@@ -1861,7 +1856,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit the Shiv mandir (“temple”)",
+            "label": "Shiv mandir ('temple')",
             "description": "This small Shiv mandir stands nearly opposite a masjid and demonstrates common features to the area's temples.",
             "images": [
               {
@@ -1879,7 +1874,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See temple architecture",
+                "label": "Temple Architecture",
                 "description": "Although small, this temple follows a common north Indian pattern of a porch-like entrance (mandapa) preceding the main, mountain-shaped garbhagriha in which the central deity resides.",
                 "images": [
                   {
@@ -1898,8 +1893,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See entrance",
-                "description": "A mantra above the mandir's entrance exclaims “Salutation to you Sri Shiva.” The entrance gives the impression of entering a mountain.",
+                "label": "Mandir Entrance",
+                "description": "A mantra above the mandir's entrance exclaims 'Salutation to you Sri Shiva.' The entrance gives the impression of entering a mountain.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/EE mandir/EE mandir Salutation to you Sri Shiva",
@@ -1917,8 +1912,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See entrance into garbagriha",
-                "description": "Leaves adorn the entrance into the garbagriha (“inner sanctuary”), which has a Shiv lingam and a murti of Nandi at center.",
+                "label": "Entrance into Garbagriha",
+                "description": "Leaves adorn the entrance into the garbagriha ('inner sanctuary'), which has a Shiv lingam and a murti of Nandi at center.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/EE mandir/EE temple entrance into garbagriha",
@@ -1936,7 +1931,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See garbagriha detail",
+                "label": "Garbagriha Details",
                 "description": "The Shiv lingam and the yoni in which it sits represent Shiv and Devi, and their union. Nandi the bull is Shiv's loyal devotee while on the wall opposite them an image of the goddess Durga - another expression of Devi - looks back at the visitor.",
                 "images": [
                   {
@@ -1957,7 +1952,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit the masjid",
+            "label": "Chainpur's Busy Masjid",
             "description": "One of Chainpur's mosques can be found in the busy main bazaar. The posters on it reflect various elements of Muslim life in the area. The mosque is associated with the Deobandi movement.",
             "images": [
               {
@@ -1975,8 +1970,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the proclamation of faith",
-                "description": "Above the entrance to the mosque, the Islamic proclamation of faith - shahadah - declares La ilaha illah Allah, Muhammadur rasul Allah (“There is one God, and Muhammad is His Prophet”).",
+                "label": "Islamic Proclamation of Faith",
+                "description": "Above the entrance to the mosque, the Islamic proclamation of faith - shahadah - declares La ilaha illah Allah, Muhammadur rasul Allah ('There is one God, and Muhammad is His Prophet').",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/EE masjid/EE east enter",
@@ -1994,7 +1989,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See ads for a girls' school, pilgrimage travel, and a celebration of the Prophet Muhammad's birthday",
+                "label": "Ads for a girls' school, pilgrimage travel, and a celebration of the Prophet Muhammad's birthday",
                 "description": "Although most Muslim women in Chainpur do not wear niqab (the covering of all of the head except for the face), this Urdu advertisement for a girls' school shows a student wearing it. To the left, a Hindi ad for Fatima Travels offers various prices for pilgrimage packages to hajj or umra. Above this, an ad in Hindi and Urdu for a conference and celebration to take place on the eve of the Prophet Muhammad's birthday.",
                 "images": [
                   {
@@ -2013,7 +2008,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See an ad for an award ceremony",
+                "label": "An Ad for an Award Ceremony",
                 "description": "This poster, mostly in Urdu, announces an event awarding ceremonial turbans to those involved in Islamic studies. Urdu's script derives from Arabic and Persian orthography and can be a highly developed art form.",
                 "images": [
                   {
@@ -2044,7 +2039,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "In Chainpur, signs of agricultural activity are seldom far out of sight.  Goats feed while a motorcycle roars past.  An orange-painted mandir (“temple”) stands across the street from a white-washed masjid (“mosque”).",
+        "description": "In Chainpur, signs of agricultural activity are seldom far out of sight.  Goats feed while a motorcycle roars past.  An orange-painted mandir ('temple') stands across the street from a white-washed masjid ('mosque').",
         "images": [
           {
             "src": "VV3 Images - Copy/EE masjid/EE east 1",
@@ -2061,7 +2056,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit the Shiv mandir (“temple”)",
+            "label": "Shiv Mandir ('temple')",
             "description": "This small Shiv mandir stands nearly opposite a masjid and demonstrates common features to the area's temples.",
             "images": [
               {
@@ -2079,7 +2074,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See temple architecture",
+                "label": "Temple Architecture",
                 "description": "Although small, this temple follows a common north Indian pattern of a porch-like entrance (mandapa) preceding the main, mountain-shaped garbhagriha in which the central deity resides.",
                 "images": [
                   {
@@ -2098,8 +2093,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See entrance",
-                "description": "A mantra above the mandir's entrance exclaims “Salutation to you Sri Shiva.” The entrance gives the impression of entering a mountain.",
+                "label": "Mandir Entrance",
+                "description": "A mantra above the mandir's entrance exclaims 'Salutation to you Sri Shiva.' The entrance gives the impression of entering a mountain.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/EE mandir/EE mandir Salutation to you Sri Shiva",
@@ -2117,8 +2112,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See entrance into garbagriha",
-                "description": "Leaves adorn the entrance into the garbagriha (“inner sanctuary”), which has a Shiv lingam and a murti of Nandi at center.",
+                "label": "Entrance into Garbagriha",
+                "description": "Leaves adorn the entrance into the garbagriha ('inner sanctuary'), which has a Shiv lingam and a murti of Nandi at center.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/EE mandir/EE temple entrance into garbagriha",
@@ -2136,7 +2131,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See garbagriha detail",
+                "label": "Garbagriha Details",
                 "description": "The Shiv lingam and the yoni in which it sits represent Shiv and Devi, and their union. Nandi the bull is Shiv's loyal devotee while on the wall opposite them an image of the goddess Durga - another expression of Devi - looks back at the visitor.",
                 "images": [
                   {
@@ -2157,7 +2152,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit the masjid",
+            "label": "Chainpurs' Busy Masjid",
             "description": "One of Chainpur's mosques can be found in the busy main bazaar. The posters on it reflect various elements of Muslim life in the area. The mosque is associated with the Deobandi movement.",
             "images": [
               {
@@ -2175,8 +2170,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the proclamation of faith",
-                "description": "Above the entrance to the mosque, the Islamic proclamation of faith - shahadah - declares La ilaha illah Allah, Muhammadur rasul Allah (“There is one God, and Muhammad is His Prophet”).",
+                "label": "The Proclamation of Faith",
+                "description": "Above the entrance to the mosque, the Islamic proclamation of faith - shahadah - declares La ilaha illah Allah, Muhammadur rasul Allah ('There is one God, and Muhammad is His Prophet').",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/EE masjid/EE east enter",
@@ -2194,7 +2189,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See ads for a girls' school, pilgrimage travel, and a celebration of the Prophet Muhammad's birthday",
+                "label": "Ads for a girls' school, pilgrimage travel, and a celebration of the Prophet Muhammad's birthday",
                 "description": "Although most Muslim women in Chainpur do not wear niqab (the covering of all of the head except for the face), this Urdu advertisement for a girls' school shows a student wearing it. To the left, a Hindi ad for Fatima Travels offers various prices for pilgrimage packages to hajj or umra. Above this, an ad in Hindi and Urdu for a conference and celebration to take place on the eve of the Prophet Muhammad's birthday.",
                 "images": [
                   {
@@ -2213,7 +2208,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See an ad for an award ceremony",
+                "label": "An ad for an Award Ceremony",
                 "description": "This poster, mostly in Urdu, announces an event awarding ceremonial turbans to those involved in Islamic studies. Urdu's script derives from Arabic and Persian orthography and can be a highly developed art form.",
                 "images": [
                   {
@@ -2244,7 +2239,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "Heading east from this intersection leads one past an abandoned chai dukhan (“tea shop”) and down this paved road to the muhalla (“neighborhood”) of Sonahtiya.",
+        "description": "Heading east from this intersection leads one past an abandoned chai dukhan ('tea shop') and down this paved road to the muhalla ('neighborhood') of Sonahtiya.",
         "images": [
           {
             "src": "VV3 Images - Copy/C to V",
@@ -2261,7 +2256,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See the pollution from plastic packaging",
+            "label": "Pollution from Plastic Packaging",
             "description": "Discarded plastic packaging litters most village spaces not occupied by habitations, businesses, or cultivated fields. Without any regular trash collection service, the village has few options.",
             "images": [
               {
@@ -2279,7 +2274,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See details of pollution",
+                "label": "Details of pollution",
                 "description": "Emptied plastic bags, plastic bottles, and plastic cups used for chai comprise some of the litter.",
                 "images": [
                   {
@@ -2327,8 +2322,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit a purohit (ritual specialist) serving the Harsu Brahm mandir (“temple”)",
-            "description": "Ramesh Tripathi sits outside his family's home business, awaiting those who need his services at the village's most important mandir (“temple”).",
+            "label": "A purohit (ritual specialist) serving the Harsu Brahm mandir ('temple')",
+            "description": "Ramesh Tripathi sits outside his family's home business, awaiting those who need his services at the village's most important mandir ('temple').",
             "images": [
               {
                 "src": "VV3 Images - Copy/C to GG Tripathi home/C to GG left enter",
@@ -2345,8 +2340,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Read an advertisement for services offered by a family of pujaris (ritual specialists)",
-                "description": "Below an invocation to Sri Harsu Brahm, the village's most popular resident deity, the advertisement identifies this place as “Yellow House” and gives the names of the pujaris whose family was the “Founder of Sri Harsu Brahm Trust and layer of the temple corner stone.” It then gives more names of the family's pujaris and their address in Chainpur. Pilgrims are offered a beautiful and clean place to stay. “The cure of bodily, divine, material obstructions happens here.”",
+                "label": "An advertisement for services offered by a family of pujaris (ritual specialists)",
+                "description": "Below an invocation to Sri Harsu Brahm, the village's most popular resident deity, the advertisement identifies this place as 'Yellow House' and gives the names of the pujaris whose family was the 'Founder of Sri Harsu Brahm Trust and layer of the temple corner stone.' It then gives more names of the family's pujaris and their address in Chainpur. Pilgrims are offered a beautiful and clean place to stay. 'The cure of bodily, divine, material obstructions happens here.'",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/C to GG Tripathi home/C to GG left detail detail",
@@ -2364,7 +2359,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See Ramesh Tripathi leave for the mandir",
+                "label": "Ramesh Tripathi leaving for the Mandir",
                 "description": "Ramesh Tripathi prepares to visit the mandir of Harsu Brahm to serve as pujari.",
                 "images": [
                   {
@@ -2383,8 +2378,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "View the pujari's ritual implements",
-                "description": "In his basket, the pujari brings raisins for prasad (gifts to and from deities), a bell for drawing the deity's attention, a brass lota (“water vessel”) for pouring libations, and red- and yellow-colored thread for tying protective rakshasutra bracelets around devotee wrists following the puja.",
+                "label": "The Pujari's Ritual Implements",
+                "description": "In his basket, the pujari brings raisins for prasad (gifts to and from deities), a bell for drawing the deity's attention, a brass lota ('water vessel') for pouring libations, and red- and yellow-colored thread for tying protective rakshasutra bracelets around devotee wrists following the puja.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/C to GG Tripathi home/C to GG east Ramesh Tripathi basket with prasad",
@@ -2431,8 +2426,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit a purohit (ritual specialist) serving the Harsu Brahm mandir (“temple”)",
-            "description": "Ramesh Tripathi sits outside his family's home business, awaiting those who need his services at the village's most important mandir (“temple”).",
+            "label": "A Purohit (ritual specialist) Serving the Harsu Brahm Mandir ('temple')",
+            "description": "Ramesh Tripathi sits outside his family's home business, awaiting those who need his services at the village's most important mandir ('temple').",
             "images": [
               {
                 "src": "VV3 Images - Copy/C to GG Tripathi home/C to GG left enter",
@@ -2449,8 +2444,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Read an advertisement for services offered by a family of pujaris (ritual specialists)",
-                "description": "Below an invocation to Sri Harsu Brahm, the village's most popular resident deity, the advertisement identifies this place as “Yellow House” and gives the names of the pujaris whose family was the “Founder of Sri Harsu Brahm Trust and layer of the temple corner stone.” It then gives more names of the family's pujaris and their address in Chainpur. Pilgrims are offered a beautiful and clean place to stay. “The cure of bodily, divine, material obstructions happens here.”",
+                "label": "An advertisement for services offered by a family of pujaris (ritual specialists)",
+                "description": "Below an invocation to Sri Harsu Brahm, the village's most popular resident deity, the advertisement identifies this place as 'Yellow House' and gives the names of the pujaris whose family was the 'Founder of Sri Harsu Brahm Trust and layer of the temple corner stone.' It then gives more names of the family's pujaris and their address in Chainpur. Pilgrims are offered a beautiful and clean place to stay. 'The cure of bodily, divine, material obstructions happens here.'",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/C to GG Tripathi home/C to GG left detail detail",
@@ -2468,7 +2463,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See Ramesh Tripathi leave for the mandir",
+                "label": "Ramesh Tripathi leaving for the Mandir",
                 "description": "Ramesh Tripathi prepares to visit the mandir of Harsu Brahm to serve as pujari.",
                 "images": [
                   {
@@ -2487,8 +2482,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "View the pujari's ritual implements",
-                "description": "In his basket, the pujari brings raisins for prasad (gifts to and from deities), a bell for drawing the deity's attention, a brass lota (“water vessel”) for pouring libations, and red- and yellow-colored thread for tying protective rakshasutra bracelets around devotee wrists following the puja.",
+                "label": "The Pujari's Ritual Implements",
+                "description": "In his basket, the pujari brings raisins for prasad (gifts to and from deities), a bell for drawing the deity's attention, a brass lota ('water vessel') for pouring libations, and red- and yellow-colored thread for tying protective rakshasutra bracelets around devotee wrists following the puja.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/C to GG Tripathi home/C to GG east Ramesh Tripathi basket with prasad",
@@ -2535,7 +2530,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See bicycle repair business",
+            "label": "Bicycle Repair Business",
             "description": "east Sitaram and Raju Paswan daily set up their bicycle repair business on the curbside in front of a vegetable store. Sitaram wears a shirt and lungi (long cloth worn around his waist) while Raju wears a T-shirt, shorts, and a gamcha, the cloth wrapped around the neck or slung on the shoulder that is pervasive among rural Bihari men.",
             "images": [
               {
@@ -2554,7 +2549,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit a paan shop",
+            "label": "A Paan Shop",
             "description": "Rajesh Kumar Chaurasiya has run his paan shop here for decades. He is surrounded by various plastic- and foil-wrapped treats but his speciality is preparing paan.",
             "images": [
               {
@@ -2572,7 +2567,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Learn about the wonders of paan",
+                "label": "The wonders of Paan",
                 "description": "Consisting of betel nut wrapped in a leaf along with other ingredients, paan has been a delicacy in north India for centuries, once served in the courts of royalty. Betel causes a mild effect for the chewer while other ingredients - including coconut, tobacco, or cardamom - can be added. The shops of well-respected pan walas become destinations in their own right.",
                 "images": [
                   {
@@ -2591,8 +2586,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Read the sign",
-                "description": "The sign outside the shop reads “Brother Ramji, paan wala.” “Wala” means someone who does something.",
+                "label": "Paan Shop Sign",
+                "description": "The sign outside the shop reads 'Brother Ramji, paan wala.' 'Wala' means someone who does something.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/GG to AA Rajesh Kumar Chaurasiya paan dukhan/GG to AA Rajesh Kumar Chaurasiya paan dukhan enter",
@@ -2638,7 +2633,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See bicycle repair business",
+            "label": "Bicycle Repair Business",
             "description": "east Sitaram and Raju Paswan daily set up their bicycle repair business on the curbside in front of a vegetable store. Sitaram wears a shirt and lungi (long cloth worn around his waist) while Raju wears a T-shirt, shorts, and a gamcha, the cloth wrapped around the neck or slung on the shoulder that is pervasive among rural Bihari men.",
             "images": [
               {
@@ -2657,7 +2652,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit a paan shop",
+            "label": "A Paan Shop",
             "description": "Rajesh Kumar Chaurasiya has run his paan shop here for decades. He is surrounded by various plastic- and foil-wrapped treats but his speciality is preparing paan.",
             "images": [
               {
@@ -2675,7 +2670,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Learn about the wonders of paan",
+                "label": "The Wonders of Paan",
                 "description": "Consisting of betel nut wrapped in a leaf along with other ingredients, paan has been a delicacy in north India for centuries, once served in the courts of royalty. Betel causes a mild effect for the chewer while other ingredients - including coconut, tobacco, or cardamom - can be added. The shops of well-respected pan walas become destinations in their own right.",
                 "images": [
                   {
@@ -2694,8 +2689,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Read the sign",
-                "description": "The sign outside the shop reads “Brother Ramji, paan wala.” “Wala” means someone who does something.",
+                "label": "Paan Shop Sign",
+                "description": "The sign outside the shop reads 'Brother Ramji, paan wala.' 'Wala' means someone who does something.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/GG to AA Rajesh Kumar Chaurasiya paan dukhan/GG to AA Rajesh Kumar Chaurasiya paan dukhan enter",
@@ -2725,7 +2720,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "The north-south road from the bus stand terminates in Chowk Bazaar. Chowk refers to a habitation's major intersection. In Chainpur, the road from the north intersects not only with the most important road leading east and west but also the entrance to the qila (“fort”) where the busiest Hindu temple stands. That entrance begins under the large orange arch seen at the road's end.",
+        "description": "The north-south road from the bus stand terminates in Chowk Bazaar. Chowk refers to a habitation's major intersection. In Chainpur, the road from the north intersects not only with the most important road leading east and west but also the entrance to the qila ('fort') where the busiest Hindu temple stands. That entrance begins under the large orange arch seen at the road's end.",
         "images": [
           {
             "src": "VV3 Images - Copy/AA TO D",
@@ -2742,7 +2737,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit a cloth store and social place",
+            "label": "A Cloth Store and Social Place",
             "description": "The Chaurasiya family has run this clothing store for two generations.",
             "images": [
               {
@@ -2760,7 +2755,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the store's role as a social place",
+                "label": "The Store's Role as a Social Place",
                 "description": "A group of friends - with diverse religious backgrounds, most of whom met in high school, and including a foreign ethnographer - have long made this store their social center.",
                 "images": [
                   {
@@ -2779,7 +2774,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See an argument",
+                "label": "An Argument",
                 "description": "While the store owner folds material and his customer checks his phone, two friends argue with one another across the shop and an ideological divide.",
                 "images": [
                   {
@@ -2798,8 +2793,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See Muslim men prepare for Ramzan",
-                "description": "Fahim and Mukhtar prepare to go to mosques for namaz (“regular prayer”) during Ramzan (or Ramadan), the month when Muslims celebrate the first revelation of the Quran. Although Fahim regularly covers his head for Islamic reasons, Mukhtar only does for this month.",
+                "label": "Muslim Men Prepare for Ramzan",
+                "description": "Fahim and Mukhtar prepare to go to mosques for namaz ('regular prayer') during Ramzan (or Ramadan), the month when Muslims celebrate the first revelation of the Quran. Although Fahim regularly covers his head for Islamic reasons, Mukhtar only does for this month.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/AA to D Shyam Babu_s store/AA to D Shyam Babu_s store Ramzan gear",
@@ -2819,7 +2814,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit Benarsi Bari's chai dukhan (“tea stall”)",
+            "label": "Benarsi Bari's chai dukhan ('tea stall')",
             "description": "For patrons with the time, Benarsi Bari's chai dukhan offer tables and chairs inside. Others will hurriedly stop and enjoy their tea while briefly standing.",
             "images": [
               {
@@ -2837,7 +2832,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Visit Benarsi Bari",
+                "label": "Visiting Benarsi Bari",
                 "description": "Benarsi Bari doesn't own the tea shop but runs it, offering customers hot tea and fried snacks.",
                 "images": [
                   {
@@ -2856,8 +2851,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Read the shop's sign",
-                "description": "Shivash Tea and Food Shop.\nAddress: Sri Harsu Brahm Dham Road, Chainpur\nMakuni [“stuffed bread”], aloo chap [“potato fritters”], pakoras [“friend vegetables”], and channa [“chick peas”] can be found in our place.\nNote: Meals can also be had with an hour's notice.",
+                "label": "Shivash Tea and Food Shop Sign",
+                "description": "Shivash Tea and Food Shop.\nAddress: Sri Harsu Brahm Dham Road, Chainpur\nMakuni ['stuffed bread'], aloo chap ['potato fritters'], pakoras ['friend vegetables'], and channa ['chick peas'] can be found in our place.\nNote: Meals can also be had with an hour's notice.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/D to AA Benarsi Bari chai dukhan/D to AA Benarsi Bari chai dukhan sign",
@@ -2877,8 +2872,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Get stuck in a traffic jam",
-            "description": "The growth in numbers of both Chainpur residents and pilgrims to Harsu Brahm's mandir (“temple”) has made the chowk almost impassable from traffic at times.",
+            "label": "Traffic Jam",
+            "description": "The growth in numbers of both Chainpur residents and pilgrims to Harsu Brahm's mandir ('temple') has made the chowk almost impassable from traffic at times.",
             "images": [
               {
                 "src": "VV3 Images - Copy/D to AA traffic jam",
@@ -2896,7 +2891,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See two-wheeled solutions",
+            "label": "Two-Wheeled Solutions",
             "description": "Two-wheeled transport offers an option that proves less expensive than cars, which most cannot afford, and better able to negotiate sometimes thick traffic and/or narrow roads.",
             "images": [
               {
@@ -2942,7 +2937,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit a cloth store and social place",
+            "label": "A Cloth Store and Social Place",
             "description": "The Chaurasiya family has run this clothing store for two generations.",
             "images": [
               {
@@ -2960,7 +2955,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the store's role as a social place",
+                "label": "The Store's Role as a Social Place",
                 "description": "A group of friends - with diverse religious backgrounds, most of whom met in high school, and including a foreign ethnographer - have long made this store their social center.",
                 "images": [
                   {
@@ -2979,7 +2974,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See an argument",
+                "label": "An argument",
                 "description": "While the store owner folds material and his customer checks his phone, two friends argue with one another across the shop and an ideological divide.",
                 "images": [
                   {
@@ -2998,8 +2993,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See Muslim men prepare for Ramzan",
-                "description": "Fahim and Mukhtar prepare to go to mosques for namaz (“regular prayer”) during Ramzan (or Ramadan), the month when Muslims celebrate the first revelation of the Quran. Although Fahim regularly covers his head for Islamic reasons, Mukhtar only does for this month.",
+                "label": "Muslim Men Prepare for Ramzan",
+                "description": "Fahim and Mukhtar prepare to go to mosques for namaz ('regular prayer') during Ramzan (or Ramadan), the month when Muslims celebrate the first revelation of the Quran. Although Fahim regularly covers his head for Islamic reasons, Mukhtar only does for this month.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/AA to D Shyam Babu_s store/AA to D Shyam Babu_s store Ramzan gear",
@@ -3019,7 +3014,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit Benarsi Bari's chai dukhan (“tea stall”)",
+            "label": "Benarsi Bari's chai dukhan ('tea stall')",
             "description": "For patrons with the time, Benarsi Bari's chai dukhan offer tables and chairs inside. Others will hurriedly stop and enjoy their tea while briefly standing.",
             "images": [
               {
@@ -3037,7 +3032,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Visit Benarsi Bari",
+                "label": "Visiting Benarsi Bari",
                 "description": "Benarsi Bari doesn't own the tea shop but runs it, offering customers hot tea and fried snacks.",
                 "images": [
                   {
@@ -3056,8 +3051,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Read the shop's sign",
-                "description": "Shivash Tea and Food Shop.\nAddress: Sri Harsu Brahm Dham Road, Chainpur\nMakuni [“stuffed bread”], aloo chap [“potato fritters”], pakoras [“friend vegetables”], and channa [“chick peas”] can be found in our place.\nNote: Meals can also be had with an hour's notice.",
+                "label": "Shivash Tea and Food Shop Sign",
+                "description": "Shivash Tea and Food Shop.\nAddress: Sri Harsu Brahm Dham Road, Chainpur\nMakuni ['stuffed bread'], aloo chap ['potato fritters'], pakoras ['friend vegetables'], and channa ['chick peas'] can be found in our place.\nNote: Meals can also be had with an hour's notice.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/D to AA Benarsi Bari chai dukhan/D to AA Benarsi Bari chai dukhan sign",
@@ -3077,8 +3072,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Get stuck in a traffic jam",
-            "description": "The growth in numbers of both Chainpur residents and pilgrims to Harsu Brahm's mandir (“temple”) has made the chowk almost impassable from traffic at times.",
+            "label": "Traffic Jam",
+            "description": "The growth in numbers of both Chainpur residents and pilgrims to Harsu Brahm's mandir ('temple') has made the chowk almost impassable from traffic at times.",
             "images": [
               {
                 "src": "VV3 Images - Copy/D to AA traffic jam",
@@ -3096,7 +3091,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See two-wheeled solutions",
+            "label": "Two-Wheeled Solutions",
             "description": "Two-wheeled transport offers an option that proves less expensive than cars, which most cannot afford, and better able to negotiate sometimes thick traffic and/or narrow roads.",
             "images": [
               {
@@ -3124,7 +3119,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "The entrance to the qila (“fort”) from which a raja (“ruler”) is said to have reigned over the area until an injustice he committed against his Brahman vizier (“senior advisor”) led the man to commit suicide. Harsu Pandey thus became Harsu Brahm, a vengeful ghost who destroyed the raja and most of his family.",
+        "description": "The entrance to the qila ('fort') from which a raja ('ruler') is said to have reigned over the area until an injustice he committed against his Brahman vizier ('senior advisor') led the man to commit suicide. Harsu Pandey thus became Harsu Brahm, a vengeful ghost who destroyed the raja and most of his family.",
         "images": [
           {
             "src": "",
@@ -3141,8 +3136,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Enter the qila",
-            "description": "A visitor, hunched with age, walks into the qila (“fort”), passing the bazaar serving devotees of Harsu Brahm with various ritual objects.",
+            "label": "Entering the Qila",
+            "description": "A visitor, hunched with age, walks into the qila ('fort'), passing the bazaar serving devotees of Harsu Brahm with various ritual objects.",
             "images": [
               {
                 "src": "VV3 Images - Copy/D to E actual",
@@ -3160,8 +3155,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Look up at the historic arch",
-            "description": "This arch has stood above the entrance to the qila for centuries. Locals believe that it represents the only surviving section of a wall that once surrounded the fort, which today is otherwise only evident from the large artificial mound on which the Harsu Brahm mandir (“temple”) stands.",
+            "label": "The Historic Arch",
+            "description": "This arch has stood above the entrance to the qila for centuries. Locals believe that it represents the only surviving section of a wall that once surrounded the fort, which today is otherwise only evident from the large artificial mound on which the Harsu Brahm mandir ('temple') stands.",
             "images": [
               {
                 "src": "VV3 Images - Copy/D to E arch",
@@ -3197,8 +3192,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the Brahm's photos for sale",
-                "description": "Besides various ritual implements, framed photos of Harsu Brahm's murti (“material manifestation”) comprise part of this shop's merchandise.",
+                "label": "The Brahm's Photos for Sale",
+                "description": "Besides various ritual implements, framed photos of Harsu Brahm's murti ('material manifestation') comprise part of this shop's merchandise.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/D to E shop detail with murti images",
@@ -3216,7 +3211,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See ritual items for sale",
+                "label": "Ritual Items for Sale",
                 "description": "Wooden sandals and coconuts, bound in colored cloth, represent important ritual offerings to Harsu Brahm.",
                 "images": [
                   {
@@ -3236,7 +3231,7 @@ export const ROAM_DATA = {
             "eras": {
               "2020s": {
                 "label": "Shop for bangles or toys",
-                "description": "While visiting the mandir (“temple”), some devotees might shop for bangles or toys.",
+                "description": "While visiting the mandir ('temple'), some devotees might shop for bangles or toys.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/D to E bangles shop",
@@ -3256,8 +3251,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a pilgrim's car",
-            "description": "The plates on this car suggest that it came Uttar Pradesh, the state neighboring Bihar to the west. This indicates how broadly devotion to Harsu Brahm has spread. Meanwhile, the poster behind advertises the services of a purohit (ritual specialist) who serves the brahm's mandir (“temple”). Toys and games stand alongside malas (“flower necklaces”) and decorated cloths used as gifts to the deity propitiated by the devotee.",
+            "label": "A Pilgrim's Car",
+            "description": "The plates on this car suggest that it came Uttar Pradesh, the state neighboring Bihar to the west. This indicates how broadly devotion to Harsu Brahm has spread. Meanwhile, the poster behind advertises the services of a purohit (ritual specialist) who serves the brahm's mandir ('temple'). Toys and games stand alongside malas ('flower necklaces') and decorated cloths used as gifts to the deity propitiated by the devotee.",
             "images": [
               {
                 "src": "VV3 Images - Copy/E detail pilgrims from UP EDIT",
@@ -3275,8 +3270,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a Sufi's tomb",
-            "description": "The entrance to this Sufi's mazar (“tomb”) is marked by two invocations of the Islamic name for god - “Allah” - and the auspicious number 786.",
+            "label": "A Sufi's Tomb",
+            "description": "The entrance to this Sufi's mazar ('tomb') is marked by two invocations of the Islamic name for god - 'Allah' - and the auspicious number 786.",
             "images": [
               {
                 "src": "VV3 Images - Copy/D to E Sufi tomb/D to E Sufi tomb enter",
@@ -3293,8 +3288,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See decorated chadars",
-                "description": "Devotees often cover Sufi mazars with decorated chadars (“coverings”). The chadar on the larger tomb has images of the Prophet's Mosque in Madina and the smaller one has images of the Kaba in Makkah, both in Saudi Arabia.",
+                "label": "Decorated Chadars",
+                "description": "Devotees often cover Sufi mazars with decorated chadars ('coverings'). The chadar on the larger tomb has images of the Prophet's Mosque in Madina and the smaller one has images of the Kaba in Makkah, both in Saudi Arabia.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/D to E Sufi tomb/D to E Sufi tomb detail",
@@ -3325,7 +3320,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "These merchants make maximal use of their space, packing their wares densely on either side of the exit from the qila (“fort”).",
+        "description": "These merchants make maximal use of their space, packing their wares densely on either side of the exit from the qila ('fort').",
         "images": [
           {
             "src": "",
@@ -3342,8 +3337,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Enter the qila",
-            "description": "A visitor, hunched with age, walks into the qila (“fort”), passing the bazaar serving devotees of Harsu Brahm with various ritual objects.",
+            "label": "Entering the Qila",
+            "description": "A visitor, hunched with age, walks into the qila ('fort'), passing the bazaar serving devotees of Harsu Brahm with various ritual objects.",
             "images": [
               {
                 "src": "VV3 Images - Copy/D to E actual",
@@ -3361,8 +3356,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Look up at the historic arch",
-            "description": "This arch has stood above the entrance to the qila for centuries. Locals believe that it represents the only surviving section of a wall that once surrounded the fort, which today is otherwise only evident from the large artificial mound on which the Harsu Brahm mandir (“temple”) stands.",
+            "label": "The Historic Arch",
+            "description": "This arch has stood above the entrance to the qila for centuries. Locals believe that it represents the only surviving section of a wall that once surrounded the fort, which today is otherwise only evident from the large artificial mound on which the Harsu Brahm mandir ('temple') stands.",
             "images": [
               {
                 "src": "VV3 Images - Copy/D to E arch",
@@ -3398,8 +3393,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the Brahm's photos for sale",
-                "description": "Besides various ritual implements, framed photos of Harsu Brahm's murti (“material manifestation”) comprise part of this shop's merchandise.",
+                "label": "The Brahm's Photos for Sale",
+                "description": "Besides various ritual implements, framed photos of Harsu Brahm's murti ('material manifestation') comprise part of this shop's merchandise.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/D to E shop detail with murti images",
@@ -3417,7 +3412,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See ritual items for sale",
+                "label": "Ritual Items for Sale",
                 "description": "Wooden sandals and coconuts, bound in colored cloth, represent important ritual offerings to Harsu Brahm.",
                 "images": [
                   {
@@ -3436,8 +3431,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Shop for bangles or toys",
-                "description": "While visiting the mandir (“temple”), some devotees might shop for bangles or toys.",
+                "label": "Shopping for Bangles or Toys",
+                "description": "While visiting the mandir ('temple'), some devotees might shop for bangles or toys.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/D to E bangles shop",
@@ -3457,8 +3452,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a pilgrim's car",
-            "description": "The plates on this car suggest that it came Uttar Pradesh, the state neighboring Bihar to the west. This indicates how broadly devotion to Harsu Brahm has spread. Meanwhile, the poster behind advertises the services of a purohit (ritual specialist) who serves the brahm's mandir (“temple”). Toys and games stand alongside malas (“flower necklaces”) and decorated cloths used as gifts to the deity propitiated by the devotee.",
+            "label": "A Pilgrim's Car",
+            "description": "The plates on this car suggest that it came Uttar Pradesh, the state neighboring Bihar to the west. This indicates how broadly devotion to Harsu Brahm has spread. Meanwhile, the poster behind advertises the services of a purohit (ritual specialist) who serves the brahm's mandir ('temple'). Toys and games stand alongside malas ('flower necklaces') and decorated cloths used as gifts to the deity propitiated by the devotee.",
             "images": [
               {
                 "src": "VV3 Images - Copy/E detail pilgrims from UP EDIT",
@@ -3476,8 +3471,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a Sufi's tomb",
-            "description": "The entrance to this Sufi's mazar (“tomb”) is marked by two invocations of the Islamic name for god - “Allah” - and the auspicious number 786.",
+            "label": "A Sufi's Tomb",
+            "description": "The entrance to this Sufi's mazar ('tomb') is marked by two invocations of the Islamic name for god - 'Allah' - and the auspicious number 786.",
             "images": [
               {
                 "src": "VV3 Images - Copy/D to E Sufi tomb/D to E Sufi tomb enter",
@@ -3494,8 +3489,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See decorated chadars",
-                "description": "Devotees often cover Sufi mazars with decorated chadars (“coverings”). The chadar on the larger tomb has images of the Prophet's Mosque in Madina and the smaller one has images of the Kaba in Makkah, both in Saudi Arabia.",
+                "label": "Decorated Chadars",
+                "description": "Devotees often cover Sufi mazars with decorated chadars ('coverings'). The chadar on the larger tomb has images of the Prophet's Mosque in Madina and the smaller one has images of the Kaba in Makkah, both in Saudi Arabia.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/D to E Sufi tomb/D to E Sufi tomb detail",
@@ -3521,7 +3516,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "The Harsu Brahm Dham (“abode”) dominates the top of the qila (“fort”), demonstrating the victory of a Brahman's vengeful ghost over a raja (“ruler”) he once served as vizier (“advisor”). The building in front is for the havan (“fire sacrifice place”).",
+        "description": "The Harsu Brahm Dham ('abode') dominates the top of the qila ('fort'), demonstrating the victory of a Brahman's vengeful ghost over a raja ('ruler') he once served as vizier ('advisor'). The building in front is for the havan ('fire sacrifice place').",
         "images": [
           {
             "src": "VV3 Images - Copy/E Harsu Brahm mandir over havan area",
@@ -3538,7 +3533,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit the Harsu Brahm Dham [“Abode”]",
+            "label": "T Harsu Brahm Dham ['Abode']",
             "description": "As some devotees exit carrying the platter with which they brought their offerings, others enter Harsu Brahm Dham by touching the threshold with their right hand before touching their head as a sign of respect.",
             "images": [
               {
@@ -3556,8 +3551,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See devotees sitting",
-                "description": "As some devotees make their way to receive darshan (“being seen”) from Harsu Brahm, others spend more time in his presence, sitting in the courtyard facing his murti (“material form”).",
+                "label": "Devotees Sitting",
+                "description": "As some devotees make their way to receive darshan ('being seen') from Harsu Brahm, others spend more time in his presence, sitting in the courtyard facing his murti ('material form').",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/E Harsu Brahm Dham 2026/E Harsu Brahm Dham devotees sit",
@@ -3575,8 +3570,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See a devotee's anjali",
-                "description": "Bowing his head, a devotee makes the reverential motion of an anjali mudra (“anjali hand position”) toward the brahm's murti (“material form”), pressing his hands together.",
+                "label": "A Devotee's Anjali",
+                "description": "Bowing his head, a devotee makes the reverential motion of an anjali mudra ('anjali hand position') toward the brahm's murti ('material form'), pressing his hands together.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/E Harsu Brahm Dham 2026/E Harsu Brahm Dham devotee anjali",
@@ -3594,8 +3589,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See Harsu Brahm's murti",
-                "description": "Harsu Brahm's murti (“material form”) is a stone. He took this form after his unjust death when he returned to Chainpur's qila as an angry Brahman ghost, or brahm.",
+                "label": "Harsu Brahm's murti",
+                "description": "Harsu Brahm's murti ('material form') is a stone. He took this form after his unjust death when he returned to Chainpur's qila as an angry Brahman ghost, or brahm.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/E Harsu Brahm Dham 2026/E Harsu Brahm Dham murti sthan",
@@ -3613,7 +3608,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See ceiling beautification",
+                "label": "Ceiling Beautification",
                 "description": "Over the decades, the dham has been expanded and beautified: even the mounts for the fans that prove so necessary in the summer months.",
                 "images": [
                   {
@@ -3632,7 +3627,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the way to the havan",
+                "label": "Path towards the havan",
                 "description": "These devotees exit toward the havan, a specially designed pit where brahmanic fire sacrifices are made. Vedic fire sacrifice dates to three thousand years ago.",
                 "images": [
                   {
@@ -3651,8 +3646,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the stairs to another temple",
-                "description": "A second and then a third floor were added to the dham (“abode”) since 2000, with a temple to the goddess Durga as well.",
+                "label": "The Stairs to Another Temple",
+                "description": "A second and then a third floor were added to the dham ('abode') since 2000, with a temple to the goddess Durga as well.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/E Harsu Brahm Dham 2026/E Harsu Brahm Dham stairs up",
@@ -3672,7 +3667,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See the southern edge of Chainpur",
+            "label": "The Southern Edge of Chainpur",
             "description": "Chainpur's southern habitations effectively end at the fort with mostly its fields stretching beyond. In the dim distance is the start of the Kaimur Hills, which are part of the northern edge of India's central Deccan Plateau.",
             "images": [
               {
@@ -3690,7 +3685,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Water tank government scheme",
+                "label": "Water Tank Government Scheme",
                 "description": "The state government created a scheme to increase access to fresh water that led to the construction of water towers here and elsewhere around the area.",
                 "images": [
                   {
@@ -3737,7 +3732,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See farm tractor with grain",
+            "label": "Farm Tractor with Grain",
             "description": "Tractors and their trailors are ubiquitous around Chainpur as farmers bring their harvests to mills and grain buyers located in and around this important area economic center.",
             "images": [
               {
@@ -3756,7 +3751,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Buy fish",
+            "label": "Buying fish",
             "description": "A fishmonger uses scales to weigh recently caught fish in preparation for selling them.",
             "images": [
               {
@@ -3775,7 +3770,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Buy vegetables",
+            "label": "Buying vegetables",
             "description": "Various vegetables and melons are for sale.",
             "images": [
               {
@@ -3794,7 +3789,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a food cart",
+            "label": "A Food Cart",
             "description": "Top in Town offers various foods such as parathas, egg rolls, chicken rolls, and chicken egg rolls.",
             "images": [
               {
@@ -3813,8 +3808,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Read garment shop sign",
-            "description": "The sign for this ready-made garment shop advertises “Our place has saris, shirts, dress material, and ready-made vests at appropriate prices.” Notably, the models pictured all have very fair complexions. Many Chainpur residents - among many other Indians - equate beauty with fairer skin complexions.",
+            "label": "Garment Shop Sign",
+            "description": "The sign for this ready-made garment shop advertises 'Our place has saris, shirts, dress material, and ready-made vests at appropriate prices.' Notably, the models pictured all have very fair complexions. Many Chainpur residents - among many other Indians - equate beauty with fairer skin complexions.",
             "images": [
               {
                 "src": "VV3 Images - Copy/unused main photos/G to D Chaurasiya vastraliya",
@@ -3860,7 +3855,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See farm tractor with grain",
+            "label": "Farm Tractor with Grain",
             "description": "Tractors and their trailors are ubiquitous around Chainpur as farmers bring their harvests to mills and grain buyers located in and around this important area economic center.",
             "images": [
               {
@@ -3879,7 +3874,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Buy fish",
+            "label": "Buying fish",
             "description": "A fishmonger uses scales to weigh recently caught fish in preparation for selling them.",
             "images": [
               {
@@ -3898,7 +3893,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Buy vegetables",
+            "label": "Buying vegetables",
             "description": "Various vegetables and melons are for sale.",
             "images": [
               {
@@ -3917,7 +3912,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a food cart",
+            "label": "A Food Cart",
             "description": "Top in Town offers various foods such as parathas, egg rolls, chicken rolls, and chicken egg rolls.",
             "images": [
               {
@@ -3936,8 +3931,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Read garment shop sign",
-            "description": "The sign for this ready-made garment shop advertises “Our place has saris, shirts, dress material, and ready-made vests at appropriate prices.” Notably, the models pictured all have very fair complexions. Many Chainpur residents - among many other Indians - equate beauty with fairer skin complexions.",
+            "label": "Garment Shop Sign",
+            "description": "The sign for this ready-made garment shop advertises 'Our place has saris, shirts, dress material, and ready-made vests at appropriate prices.' Notably, the models pictured all have very fair complexions. Many Chainpur residents - among many other Indians - equate beauty with fairer skin complexions.",
             "images": [
               {
                 "src": "VV3 Images - Copy/unused main photos/G to D Chaurasiya vastraliya",
@@ -3980,8 +3975,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Chainpur's Friday mosque",
-            "description": "Although a Muslim community may use many mosques, most members will gather for the special Friday noon prayer at the Jama Masjid (“congregational mosque”).",
+            "label": "Chainpur's Friday mosque",
+            "description": "Although a Muslim community may use many mosques, most members will gather for the special Friday noon prayer at the Jama Masjid ('congregational mosque').",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to K and G to M Jama Masjid",
@@ -3998,7 +3993,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See mosque expansion",
+                "label": "Jama Mosque Expansion",
                 "description": "The Muslim community continues to expand the Jama Masjid, adding additional floors above and attachments alongside.",
                 "images": [
                   {
@@ -4019,8 +4014,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Sufi mazar",
-            "description": "Chainpur Muslims have built a Sufi mazar (“tomb”) alongside the Jama Masjid, which they continue to expand.",
+            "label": "Sufi Mazar alongside Jama Masjid",
+            "description": "Chainpur Muslims have built a Sufi mazar ('tomb') alongside the Jama Masjid, which they continue to expand.",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to M Sufi mazar/G to M left detail 2",
@@ -4037,8 +4032,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See a corner view of the mazar",
-                "description": "The onion-dome represents one element of “Islamicate” architecture. Not all buildings built by Muslims with such a dome are religious in design, but this architectural element stems from cultures deeply informed by Islamic influences.",
+                "label": "Corner View of the Mazar",
+                "description": "The onion-dome represents one element of 'Islamicate' architecture. Not all buildings built by Muslims with such a dome are religious in design, but this architectural element stems from cultures deeply informed by Islamic influences.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/G to M Sufi mazar/G to M left enter",
@@ -4056,7 +4051,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the Sufi's tomb inside",
+                "label": "Inside the Sufi's Tomb",
                 "description": "With a gravestone at its head and a money box for donations at its foot, the tomb of the Sufi is covered in chadars and strings of flowers left by devotees.",
                 "images": [
                   {
@@ -4075,7 +4070,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the decorations celebrating the Sufi",
+                "label": "The Decorations Celebrating the Sufi",
                 "description": "From an overhanging sheet, streamers of various sorts hang down in celebration of the Sufi.",
                 "images": [
                   {
@@ -4096,8 +4091,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit the Elephant Well (or is it the Hand Well?)",
-            "description": "Between the Jama Masjid and the road is a centuries-old stepwell. Some residents call it “Hath Kua” and claim it is a “hand well” for Muslims to do wudu (“ceremonial cleansing”) before namaz (“regular prayers”). Others say that because the local raja built this to wash his elephant, its name is “Hathi Kua.”",
+            "label": "The Elephant Well (or is it the Hand Well?)",
+            "description": "Between the Jama Masjid and the road is a centuries-old stepwell. Some residents call it 'Hath Kua' and claim it is a 'hand well' for Muslims to do wudu ('ceremonial cleansing') before namaz ('regular prayers'). Others say that because the local raja built this to wash his elephant, its name is 'Hathi Kua.'",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to K Hath-i Kua",
@@ -4114,7 +4109,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See a carved lotus",
+                "label": "A Carved Lotus",
                 "description": "Although fallen leaves and plastic rubbish cover the stairs of the stepwell, some architectural flourishes, such as this stone-carved lotus - remain evident.",
                 "images": [
                   {
@@ -4135,7 +4130,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Get medicine",
+            "label": "Homeopathic Medicine",
             "description": "Although Nandlal's business - Sri Mahadev Medical Hall, as written above his head - focuses on homeopathic medicine, he also sells allopathic and ayurvedic medicines. Three generations of his family have run this shop.",
             "images": [
               {
@@ -4154,8 +4149,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit Pappu's chai dukhan",
-            "description": "Pappu and his brother Dhamendra have managed this chai dukhan (“tea shop”) for decades. Some consider theirs the best tea and namkeen (“fried salty snacks”) in Chainpur, while they also sell sweets like jalebis.",
+            "label": "Pappu's Chai Dukhan",
+            "description": "Pappu and his brother Dhamendra have managed this chai dukhan ('tea shop') for decades. Some consider theirs the best tea and namkeen ('fried salty snacks') in Chainpur, while they also sell sweets like jalebis.",
             "images": [
               {
                 "src": "VV3 Images - Copy/K to G Pappu and Dhamendra_s chai shop",
@@ -4172,7 +4167,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Watch Dharmendra work",
+                "label": "Dharmendra Working",
                 "description": "Dharmendra drops string beans into the fryer above an open flame.",
                 "images": [
                   {
@@ -4191,7 +4186,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Try some namkeen",
+                "label": "Namkeen",
                 "description": "Namkeen come in various sorts but are all fried salty snacks.",
                 "images": [
                   {
@@ -4210,7 +4205,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Have some pakora",
+                "label": "Pakora",
                 "description": "Pakoras are fried vegetables while triangular samosas may be stuffed with peas or potato, then fried.",
                 "images": [
                   {
@@ -4258,8 +4253,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Chainpur's Friday mosque",
-            "description": "Although a Muslim community may use many mosques, most members will gather for the special Friday noon prayer at the Jama Masjid (“congregational mosque”).",
+            "label": "Chainpur's Friday mosque",
+            "description": "Although a Muslim community may use many mosques, most members will gather for the special Friday noon prayer at the Jama Masjid ('congregational mosque').",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to K and G to M Jama Masjid",
@@ -4276,7 +4271,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See mosque expansion",
+                "label": "Jama Mosque Expansion",
                 "description": "The Muslim community continues to expand the Jama Masjid, adding additional floors above and attachments alongside.",
                 "images": [
                   {
@@ -4297,8 +4292,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Sufi mazar",
-            "description": "Chainpur Muslims have built a Sufi mazar (“tomb”) alongside the Jama Masjid, which they continue to expand.",
+            "label": "Sufi Mazar alongside Jama Masjid",
+            "description": "Chainpur Muslims have built a Sufi mazar ('tomb') alongside the Jama Masjid, which they continue to expand.",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to M Sufi mazar/G to M left detail 2",
@@ -4315,8 +4310,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See a corner view of the mazar",
-                "description": "The onion-dome represents one element of “Islamicate” architecture. Not all buildings built by Muslims with such a dome are religious in design, but this architectural element stems from cultures deeply informed by Islamic influences.",
+                "label": "Corner View of the Mazar",
+                "description": "The onion-dome represents one element of 'Islamicate' architecture. Not all buildings built by Muslims with such a dome are religious in design, but this architectural element stems from cultures deeply informed by Islamic influences.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/G to M Sufi mazar/G to M left enter",
@@ -4334,7 +4329,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the Sufi's tomb inside",
+                "label": "Inside the Sufi's Tomb",
                 "description": "With a gravestone at its head and a money box for donations at its foot, the tomb of the Sufi is covered in chadars and strings of flowers left by devotees.",
                 "images": [
                   {
@@ -4353,7 +4348,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the decorations celebrating the Sufi",
+                "label": "The Decorations Celebrating the Sufi",
                 "description": "From an overhanging sheet, streamers of various sorts hang down in celebration of the Sufi.",
                 "images": [
                   {
@@ -4374,8 +4369,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit the Elephant Well (or is it the Hand Well?)",
-            "description": "Between the Jama Masjid and the road is a centuries-old stepwell. Some residents call it “Hath Kua” and claim it is a “hand well” for Muslims to do wudu (“ceremonial cleansing”) before namaz (“regular prayers”). Others say that because the local raja built this to wash his elephant, its name is “Hathi Kua.”",
+            "label": "The Elephant Well (or is it the Hand Well?)",
+            "description": "Between the Jama Masjid and the road is a centuries-old stepwell. Some residents call it 'Hath Kua' and claim it is a 'hand well' for Muslims to do wudu ('ceremonial cleansing') before namaz ('regular prayers'). Others say that because the local raja built this to wash his elephant, its name is 'Hathi Kua.'",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to K Hath-i Kua",
@@ -4392,7 +4387,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See a carved lotus",
+                "label": "A Carved Lotus",
                 "description": "Although fallen leaves and plastic rubbish cover the stairs of the stepwell, some architectural flourishes, such as this stone-carved lotus - remain evident.",
                 "images": [
                   {
@@ -4413,7 +4408,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Get medicine",
+            "label": "Homeopathic Medicine",
             "description": "Although Nandlal's business - Sri Mahadev Medical Hall, as written above his head - focuses on homeopathic medicine, he also sells allopathic and ayurvedic medicines. Three generations of his family have run this shop.",
             "images": [
               {
@@ -4432,8 +4427,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Visit Pappu's chai dukhan",
-            "description": "Pappu and his brother Dhamendra have managed this chai dukhan (“tea shop”) for decades. Some consider theirs the best tea and namkeen (“fried salty snacks”) in Chainpur, while they also sell sweets like jalebis.",
+            "label": "Pappu's Chai Dukhan",
+            "description": "Pappu and his brother Dhamendra have managed this chai dukhan ('tea shop') for decades. Some consider theirs the best tea and namkeen ('fried salty snacks') in Chainpur, while they also sell sweets like jalebis.",
             "images": [
               {
                 "src": "VV3 Images - Copy/K to G Pappu and Dhamendra_s chai shop",
@@ -4450,7 +4445,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Watch Dharmendra work",
+                "label": "Dharmendra Working",
                 "description": "Dharmendra drops string beans into the fryer above an open flame.",
                 "images": [
                   {
@@ -4469,7 +4464,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Try some namkeen",
+                "label": "Namkeen",
                 "description": "Namkeen come in various sorts but are all fried salty snacks.",
                 "images": [
                   {
@@ -4488,7 +4483,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "Have some pakora",
+                "label": "Pakora",
                 "description": "Pakoras are fried vegetables while triangular samosas may be stuffed with peas or potato, then fried.",
                 "images": [
                   {
@@ -4519,7 +4514,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "A devotee enters a Sufi mazar (“tomb”) from this pathway.",
+        "description": "A devotee enters a Sufi mazar ('tomb') from this pathway.",
         "images": [
           {
             "src": "VV3 Images - Copy/G to M",
@@ -4536,8 +4531,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Chainpur's Friday mosque",
-            "description": "Although a Muslim community may use many mosques, most members will gather for the special Friday noon prayer at the Jama Masjid (“congregational mosque”).",
+            "label": "Chainpur's Friday mosque",
+            "description": "Although a Muslim community may use many mosques, most members will gather for the special Friday noon prayer at the Jama Masjid ('congregational mosque').",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to K and G to M Jama Masjid",
@@ -4554,7 +4549,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See mosque expansion",
+                "label": "Jama Mosque Expansion",
                 "description": "The Muslim community continues to expand the Jama Masjid, adding additional floors above and attachments alongside.",
                 "images": [
                   {
@@ -4575,8 +4570,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Sufi mazar",
-            "description": "Chainpur Muslims have built a Sufi mazar (“tomb”) alongside the Jama Masjid, which they continue to expand.",
+            "label": "Sufi Mazar alongside Jama Masjid",
+            "description": "Chainpur Muslims have built a Sufi mazar ('tomb') alongside the Jama Masjid, which they continue to expand.",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to M Sufi mazar/G to M left detail 2",
@@ -4593,8 +4588,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See a corner view of the mazar",
-                "description": "The onion-dome represents one element of “Islamicate” architecture. Not all buildings built by Muslims with such a dome are religious in design, but this architectural element stems from cultures deeply informed by Islamic influences.",
+                "label": "Corner View of the Mazar",
+                "description": "The onion-dome represents one element of 'Islamicate' architecture. Not all buildings built by Muslims with such a dome are religious in design, but this architectural element stems from cultures deeply informed by Islamic influences.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/G to M Sufi mazar/G to M left enter",
@@ -4612,7 +4607,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the Sufi's tomb inside",
+                "label": "Inside the Sufi's Tomb",
                 "description": "With a gravestone at its head and a money box for donations at its foot, the tomb of the Sufi is covered in chadars and strings of flowers left by devotees.",
                 "images": [
                   {
@@ -4631,7 +4626,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the decorations celebrating the Sufi",
+                "label": "The Decorations Celebrating the Sufi",
                 "description": "From an overhanging sheet, streamers of various sorts hang down in celebration of the Sufi.",
                 "images": [
                   {
@@ -4679,8 +4674,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Chainpur's Friday mosque",
-            "description": "Although a Muslim community may use many mosques, most members will gather for the special Friday noon prayer at the Jama Masjid (“congregational mosque”).",
+            "label": "Chainpur's Friday mosque",
+            "description": "Although a Muslim community may use many mosques, most members will gather for the special Friday noon prayer at the Jama Masjid ('congregational mosque').",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to K and G to M Jama Masjid",
@@ -4697,7 +4692,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See mosque expansion",
+                "label": "Jama Mosque Expansion",
                 "description": "The Muslim community continues to expand the Jama Masjid, adding additional floors above and attachments alongside.",
                 "images": [
                   {
@@ -4718,8 +4713,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See Sufi mazar",
-            "description": "Chainpur Muslims have built a Sufi mazar (“tomb”) alongside the Jama Masjid, which they continue to expand.",
+            "label": "Sufi Mazar alongside Jama Masjid",
+            "description": "Chainpur Muslims have built a Sufi mazar ('tomb') alongside the Jama Masjid, which they continue to expand.",
             "images": [
               {
                 "src": "VV3 Images - Copy/G to M Sufi mazar/G to M left detail 2",
@@ -4736,8 +4731,8 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See a corner view of the mazar",
-                "description": "The onion-dome represents one element of “Islamicate” architecture. Not all buildings built by Muslims with such a dome are religious in design, but this architectural element stems from cultures deeply informed by Islamic influences.",
+                "label": "Corner View of the Mazar",
+                "description": "The onion-dome represents one element of 'Islamicate' architecture. Not all buildings built by Muslims with such a dome are religious in design, but this architectural element stems from cultures deeply informed by Islamic influences.",
                 "images": [
                   {
                     "src": "VV3 Images - Copy/G to M Sufi mazar/G to M left enter",
@@ -4755,7 +4750,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the Sufi's tomb inside",
+                "label": "Inside the Sufi's Tomb",
                 "description": "With a gravestone at its head and a money box for donations at its foot, the tomb of the Sufi is covered in chadars and strings of flowers left by devotees.",
                 "images": [
                   {
@@ -4774,7 +4769,7 @@ export const ROAM_DATA = {
             "hotspotPosition": null,
             "eras": {
               "2020s": {
-                "label": "See the decorations celebrating the Sufi",
+                "label": "The Decorations Celebrating the Sufi",
                 "description": "From an overhanging sheet, streamers of various sorts hang down in celebration of the Sufi.",
                 "images": [
                   {
@@ -4802,7 +4797,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "This gali (“alley”) leads to a neighborhood with three homes once owned by three brothers.",
+        "description": "This gali ('alley') leads to a neighborhood with three homes once owned by three brothers.",
         "images": [
           {
             "src": "VV3 Images - Copy/M to N",
@@ -4866,7 +4861,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a butcher's shop (note: graphic image)",
+            "label": "A Butcher's Shop (note: graphic image)",
             "description": "Empty cages stand near a basket of beheaded chickens. Chainpur consumers of meat often see their meals at the first stage of their preparation.",
             "images": [
               {
@@ -4912,7 +4907,7 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "See a butcher's shop (note: graphic image)",
+            "label": "A Butcher's Shop (note: graphic image)",
             "description": "Empty cages stand near a basket of beheaded chickens. Chainpur consumers of meat often see their meals at the first stage of their preparation.",
             "images": [
               {
@@ -4941,7 +4936,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "This road leads towards the muhalla (“neighborhood”) of Marai in which a number of Muslim families live.",
+        "description": "This road leads towards the muhalla ('neighborhood') of Marai in which a number of Muslim families live.",
         "images": [
           {
             "src": "VV3 Images - Copy/M to Marai",
@@ -4966,7 +4961,7 @@ export const ROAM_DATA = {
     },
     "eras": {
       "2020s": {
-        "description": "The road leads from muhallas (“neighborhoods”) of Marai and Jama Masjid to Chowk Bazaar.",
+        "description": "The road leads from muhallas ('neighborhoods') of Marai and Jama Masjid to Chowk Bazaar.",
         "images": [
           {
             "src": "VV3 Images - Copy/M to BB",
