@@ -37,7 +37,7 @@ function Section({ section }) {
         <div className={header.length > 1 ? styles.headerPair : undefined}>
           {header.map((img) => (
             <figure key={img.file} className={styles.headerFigure}>
-              <ContextImage image={img} className={styles.headerImage} sizes="(max-width: 900px) 100vw, 900px" />
+              <ContextImage image={img} className={styles.headerImage} sizes="(max-width: 768px) 100vw, 80vw" />
               {img.caption && <figcaption className={styles.caption}>{img.caption}</figcaption>}
             </figure>
           ))}

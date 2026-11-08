@@ -1,6 +1,7 @@
 // Contexts page content — from Peter's "VV3 Contexts texts and images.docx" (Sep 15, 2026).
-// Images: `drive` = Google Drive file ID in "A Virtual Village materials".
-// They display once the folder is shared "Anyone with the link"; add `iiif`
+// Images: `drive` = Google Drive file ID of the copy in your "VV3 site images" folder
+// (copied from Peter's "A Virtual Village materials").
+// They display once that folder is shared "Anyone with the link"; add `iiif`
 // (AM Quartex ID) when Charlie uploads them. `file` is kept for reference.
 // Items with no `drive` were not found in the shared Drive folder.
 
@@ -11,7 +12,7 @@ export const CONTEXT_SECTIONS = [
     header: [
       {
         file: "Chainpur sign and road CROP.jpeg",
-        drive: "1RTdwsWnhb5Zl0-CpUVMYvWXg66RQHl1t",
+        drive: "1fQtJijqX2mTAPRW5aba4HZ7PjwON6LLf",
         caption: "Sign marking the roadway entrance to Chainpur",
       },
     ],
@@ -36,7 +37,7 @@ export const CONTEXT_SECTIONS = [
     header: [
       {
         file: "cell tower, Chainpur, and outcrop CROP.jpeg",
-        drive: "10bsJMqmAZS87t7eUVE_I3ySk-PaCoSu9",
+        drive: "1J4f_46x8-g5Qnomu5pETqgpzuJdHgoEE",
         caption: "To Chainpur's south, its neighborhoods fade into fields that extend to those of other villages before ending at the escarpment of the Kaimur Hills.",
       },
     ],
@@ -51,21 +52,21 @@ export const CONTEXT_SECTIONS = [
     explore: [
       {
         file: "Kaimur Plateau outcrop.JPG",
-        drive: "14d_HzQFsTM6anA4h1ndvz0_U85ncL5k3",
+        drive: "1ughqEIUGFi9XKa5t4t4cXg9wOjcLFnwo",
         era: "2020s",
         callout: "See an outcrop of the Kaimur Plateau",
         description: "This outcrop, which towers above a nearby village, represents a separated portion of the Kaimur Plateau, which is part of the northern escarpment of the Deccan Plateau.",
       },
       {
         file: "Spotted Owl.JPG",
-        drive: "1fE6DZIONtslBwkLi868QLtUzO9gb_abK",
+        drive: "1Viyd4z21p-Dk6PYcZ2SyWDPLE_RXfWws",
         era: "2010s",
         callout: "See a spotted owl",
         description: "For all of their negative impacts on natural environments, some human constructions offer useful perches and nesting places for animals, especially birds such as this spotted owl.",
       },
       {
         file: "egret complains.JPG",
-        drive: "1LFPivvDCGXNSmP2Wl1_Z8rSGub0q1uNL",
+        drive: "1vsNO-FFamW2GG67PMeJZxLNT7QH16lRi",
         era: "2020s",
         callout: "See an egret complain",
         description: "Egrets, like many other regional birds, fly in and out of Chainpur in their search for food, especially the fish of ponds.",
@@ -78,7 +79,7 @@ export const CONTEXT_SECTIONS = [
     header: [
       {
         file: "Chainpur nexus map.jpg",
-        drive: "1hXq6oKJHWq1pBxTqxFShNIVxQbaXxGXK",
+        drive: "12J_FmcaTPYdvrUPKFlH8ehu8SQbicNn-",
         caption: "",
       },
     ],
@@ -92,21 +93,21 @@ export const CONTEXT_SECTIONS = [
     explore: [
       {
         file: "Chainpur nexus map.jpg",
-        drive: "1hXq6oKJHWq1pBxTqxFShNIVxQbaXxGXK",
+        drive: "12J_FmcaTPYdvrUPKFlH8ehu8SQbicNn-",
         era: null,
         callout: "See a larger map of the Chainpur village nexus",
         description: "",
       },
       {
         file: "Usman Koti Bakhtiyar Khan Roza & Rani Sagar n Chainpur BEST.jpg",
-        drive: "1yG0einym7apNo9iZQaQwd9IpMftkxDFF",
+        drive: "14Z-zFTRuyJf213PszHsj4qgIulIveYnh",
         era: "2010s",
         callout: "See a view of various 16th century buildings",
         description: "This collection of tombs to the west of Chainpur probably date to the 16th century and suggest connections to the court of sultan Sher Shah Suri who ruled northern South Asia. See more under “History.”",
       },
       {
         file: "tomb complex complete.JPG",
-        drive: "1qh-i7yWBocU6gdjZXNdPjeAjvq4C11Fw",
+        drive: "1Qhpgo4jCXB_kk7ZrN0wZSX5Q9q2rg47h",
         era: "2010s",
         callout: "See the mausoleum of Bakhtiyar Khan (16th century)",
         description: "Although no inscription on this mausoleum can confirm it, local oral history associates it with Bakhtiyar Khan, who was connected to the court of sultan Sher Shah Suri in the 16th century. See more under “History.”",
@@ -119,7 +120,7 @@ export const CONTEXT_SECTIONS = [
     header: [
       {
         file: "A to Chand traffic panoply.JPG",
-        drive: "17QIg-ZMyDyxyQfQM255e8S1OqjraN8of",
+        drive: "1JLFJACHApbdcPTxwDUbymGPcAGHHg67L",
         caption: "Chainpur's bus stand",
       },
     ],
@@ -141,7 +142,7 @@ export const CONTEXT_SECTIONS = [
     explore: [
       {
         file: "Hindu, Muslim, Sikh - we're all Bihari brothers, Patna 2007 a CROP.jpg",
-        drive: "1x07IW4846o5YdQnHOY6Jxdu6qlXTrD0R",
+        drive: "1AEupPjT6P8_XI9HHzhPvDKfBCSJTizeL",
         era: "2000s",
         callout: "See a Patna message extolling Bihari unity",
         description: "This message painted on a wall in Patna, Bihar's capital, reads “Hindu, Muslim, Sikh - we're all Bihari brothers | Dr. Vijay “Bihari Brother.”",
@@ -162,7 +163,7 @@ export const CONTEXT_SECTIONS = [
     explore: [
       {
         file: "Assi Ghat kucha and Banaras behind DETAIL.JPG",
-        drive: "12vMJ-cAEXqx61Eqew1AKizlLP6-zxzKT",
+        drive: "1wlRNHfo64K9RrV6jHdsISSSTrRKn18FM",
         era: "2010s",
         callout: "See the Ganga, Banaras, and its ghats",
         description: "Much of Banaras's significance arises from its position along the River Ganga, one of the most important rivers in India, for a variety of religious and economic reasons. Among other reasons, it is famous for the ghats that run the long length of its river front, giving its residents and visitors (who include myriad pilgrims) access to the Ganga.",
@@ -176,7 +177,7 @@ export const CONTEXT_SECTIONS = [
       },
       {
         file: "ritual specialist guides man at Ganga in Banaras.JPG",
-        drive: "1OygSrVLjWyS6vsKKX7X8_jO95gOlMbEG",
+        drive: "1muuPMmDGWSQwfYusGCVaaGcRIN4uqByB",
         era: "2010s",
         callout: "See a Hindu ritual specialist working",
         description: "A Hindu ritual specialist guides his client through various religious practices on the banks of the River Ganga, whose waters most Hindus consider particularly pure and auspicious. The client's shaved head suggests that a family member has died and the ritual is for them.",
@@ -197,21 +198,21 @@ export const CONTEXT_SECTIONS = [
       },
       {
         file: "Bhojpuri film shot on Assi Ghat 2017 BEST.JPG",
-        drive: "1qa5ccIqte3sGxm3kLwftbl-G-kZcUynF",
+        drive: "1gFnULiKGT1DVyE4ng_RYBjtK9sYcjS7y",
         era: "2010s",
         callout: "See a Bhojpuri film being shot",
         description: "As the heart of the Bhojpuri-speaking region, Banaras sometimes serves as a setting for Bhojpuri-language films, like this one being shot on the city's Assi Ghat.",
       },
       {
         file: "BHU main gate 2017 BEST TWEAK.JPG",
-        drive: "1mDzuvDS576YAmRkkrGlFYitSgiYLlkyi",
+        drive: "1lJIviiHhFPtrcWKSpzbxL0mLZpQmri2M",
         era: "2010s",
         callout: "See Banaras Hindu University",
         description: "Many of Chainpur's elites send their children to Banaras Hindu University, founded in 1916 and the second oldest Indian university founded on the European model. Pandit Madan Mohan Malaviya, whose statue stands in the middle of the traffic circle, sought to blend Hindu and Western learning.",
       },
       {
         file: "Mukti Bhavan TWEAK.jpg",
-        drive: "126gXekzWV9m0qbT4TOKCQy8RDaddD2nb",
+        drive: "1LxNUBG-yZf6w-l8KUTKgxvdjSq7lG2fr",
         era: "1990s",
         callout: "See a home for the dying",
         description: "Mukti Bhavan represents many such homes within Banaras's city limits where Hindu families bring their dying loved ones for their final days in order to obtain their moksha (“liberation”) from the cycle of rebirth.",
@@ -224,7 +225,7 @@ export const CONTEXT_SECTIONS = [
     header: [
       {
         file: "Indian national heroes, Chainpur HS CROP.jpg",
-        drive: "1hXfojJIcYdPyUlGmdzPwyiE8DQ3drqn_",
+        drive: "15MYeOvnQ2m4gkbRKrSeuhmTPv08kVgvE",
         caption: "Images of national heroes decorate the teachers' room in Chainpur's high school with portraits of Bhagat Singh, B.R. Ambedkar, Jawaharlal Nehru, Swami Vivekananda bookended between pictures of Mohandas (“Mahatma”) Gandhi. 1990s.",
       },
     ],
@@ -255,7 +256,7 @@ export const CONTEXT_SECTIONS = [
       },
       {
         file: "Welcome to Uttar Pradesh highway sign TWEAK.JPG",
-        drive: "1VgRK-PnguTNFWCmqc9SUY-JPh7LnXwXw",
+        drive: "1V6F4aXR1sn24nIsKRzBBq0jxDhkhFlL-",
         era: "2020s",
         callout: "See the highway to Uttar Pradesh",
         description: "India's highway infrastructure has undergone vast improvements in the 21st century, helping to speed commercial and personal travel. Eased travel means increased commerce and more frequent visits with family and friends for many.",
@@ -270,12 +271,12 @@ export const CONTEXT_SECTIONS = [
     header: [
       {
         file: "dl_gp_vv_0483.jpg",
-        drive: "18BpaLfPsbfQclIGog5nJShcJwNeZFhuv",
+        drive: "1I0UUptFQMZ_9sfirXp1FqN-OK8PW1AYY",
         caption: "Carpet weavers work their looms producing for national and international markets in 1995.",
       },
       {
         file: "modern Indian dash CROP BEST.tif",
-        drive: "1ydqxG7gsUEOCe0BSURNe0tUNPtdqUWIU",
+        drive: "1rzdawBY4Xf4QKZFfTg99TqAKqDZNO1BB",
         caption: "Global connections are evident even on a vehicle's dashboard in 1995.",
       },
     ],

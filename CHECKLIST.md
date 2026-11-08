@@ -37,7 +37,8 @@ Decisions locked in (Nov 8):
 - [x] Migrated all hard-coded Roam content → `data/roam-content.csv` (240 rows, 32 paths); waypoint network → `src/pages/Roam/roamNetwork.js`. Round trip verified identical
 - [x] Matched Charlie's 42 AM Quartex images by filename → 61 rows now load from AM Quartex (local file kept as fallback)
 - [x] Build script `npm run roam:content`: CSV (or `ROAM_SHEET_CSV_URL`) → validate → `roamContent.generated.json`; build fails on errors. Runs automatically in `npm run dev` / `npm run build`
-- [ ] Upload `data/roam-content.csv` to Google Sheets; give Peter edit access; "Publish to web" as CSV → set `ROAM_SHEET_CSV_URL` in Vercel
+- [x] Roam content Google Sheet published; link saved in `data/roam-source.json` — every build downloads it (falls back to the CSV if offline; `ROAM_OFFLINE=1` skips the download)
+- [ ] Share the Roam Sheet with Peter as Editor (when you're ready)
 - [ ] Sentence-case pass on "Things to do" labels (e.g. "Mitai Wala" → "Mitai wala") — do in the sheet
 - [ ] Note: `npm run build` still runs the interactive `optimize-images` prompt (pre-existing) — make it non-interactive or drop once images are on AM Quartex
 - [x] `ResponsiveImage`: build IIIF URL straight from ID (no manifest fetch); accepts `{ iiif, drive, local }` and falls back in that order
@@ -79,7 +80,9 @@ Source: `Roam labels 2000s VV3 29Oct26.docx` (images in Drive: "Labelled VV3 new
 
 ## 6. New pages
 - [x] **Contexts** page (`/contexts`): all 7 sections, sources and "Things to explore" from `VV3 Contexts texts and images.docx` — data in `src/pages/Contexts/contextsData.js`
-- [ ] **(Peter)** Share "A Virtual Village materials" as *Anyone with the link → Viewer* — Contexts images (Drive links) show placeholders until then
+- [x] Copied the 20 Contexts images into your Drive folder "VV3 site images" (Peter's folder untouched); `contextsData.js` points at the copies
+- [ ] **(You)** Share "VV3 site images" as *Anyone with the link → Viewer* — Contexts images show placeholders until then
+- [x] Contexts page widened to 80% of the window (full width with 16px gutters on phones)
 - [ ] **(Peter)** 4 Contexts images not in the Drive folder: "Shiv & Ganga Ma images on towers", "umrah ad context, Benares", "umrah ad, Benares EDIT", "Chainpur and cell towers close"
 - [ ] Banaras connections has no header image in Peter's doc — ask if he wants one
 - [ ] **Resources** landing page + "Resources for teaching A Virtual Village" + "Primary and secondary sources about Chainpur" — ideally editable by Peter (sheet or Markdown)
