@@ -80,6 +80,21 @@ export default function Roam() {
   // the breadcrumb check below trims to the deepest view that exists in that era.
   const otherEra = activeEra === '2020s' ? '2000s' : '2020s';
   const canTimeWarp = Boolean(currentNode?.eras?.[otherEra]);
+  const breadcrumbKey = breadcrumbIds.join('/');
+  // Peek into the other era: the photo of the deepest view along the current breadcrumb
+  // that exists there (the same place time warp will land on).
+  const timeWarpPreview = useMemo(() => {
+    if (!canTimeWarp) return null;
+    let entity = currentNode;
+    let pick = currentNode.eras?.[otherEra];
+    for (const id of breadcrumbIds) {
+      entity = entity?.activities?.[id];
+      if (!entity?.eras?.[otherEra]) break;
+      pick = entity.eras[otherEra];
+    }
+    return { src: pick?.images?.[0]?.src || null, label: pick?.label || currentNode?.label || currentNodeId };
+  }, [canTimeWarp, currentNode, currentNodeId, otherEra, breadcrumbKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const handleTimeWarp = () => {
     if (!canTimeWarp) return;
     navigateToPath(currentNodeId, breadcrumbIds, undefined, otherEra);
@@ -279,6 +294,7 @@ export default function Roam() {
           otherEra={otherEra}
           canTimeWarp={canTimeWarp}
           onTimeWarp={handleTimeWarp}
+          timeWarpPreview={timeWarpPreview}
         />
 
         <RoamDetail

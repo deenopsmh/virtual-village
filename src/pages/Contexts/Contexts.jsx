@@ -12,18 +12,24 @@ function ImagePlaceholder({ file }) {
   );
 }
 
+// The whole photo is always shown (contain), whatever its shape. A blurred, enlarged
+// copy of the same photo fills the rest of the frame, so there are no empty bars.
 function ContextImage({ image, className, sizes }) {
   const src = image.iiif || image.drive || image.local
     ? { iiif: image.iiif, drive: image.drive, local: image.local }
     : null;
+  if (!src) return <div className={`${styles.frame} ${className}`}><ImagePlaceholder file={image.file} /></div>;
   return (
-    <ResponsiveImage
-      src={src}
-      alt={image.caption || image.callout || ""}
-      className={className}
-      sizes={sizes}
-      fallback={<ImagePlaceholder file={image.file} />}
-    />
+    <div className={`${styles.frame} ${className}`}>
+      <ResponsiveImage src={src} alt="" aria-hidden="true" className={styles.frameBackdrop} sizes="200px" />
+      <ResponsiveImage
+        src={src}
+        alt={image.caption || image.callout || ""}
+        className={styles.frameImage}
+        sizes={sizes}
+        fallback={<ImagePlaceholder file={image.file} />}
+      />
+    </div>
   );
 }
 
@@ -38,7 +44,7 @@ function Section({ section }) {
         <div className={header.length > 1 ? styles.headerPair : undefined}>
           {header.map((img) => (
             <figure key={img.file} className={styles.headerFigure}>
-              <ContextImage image={img} className={styles.headerImage} sizes="(max-width: 768px) 100vw, 80vw" />
+              <ContextImage image={img} className={header.length > 1 ? styles.headerFramePair : styles.headerFrame} sizes="(max-width: 768px) 100vw, 80vw" />
               {img.caption && <figcaption className={styles.caption}>{img.caption}</figcaption>}
             </figure>
           ))}
@@ -74,7 +80,7 @@ function Section({ section }) {
             {explore.map((item) => (
               <article key={item.file + item.callout} className={styles.card}>
                 <div className={styles.cardImageWrap}>
-                  <ContextImage image={item} className={styles.cardImage} sizes="(max-width: 640px) 100vw, 360px" />
+                  <ContextImage image={item} className={styles.cardFrame} sizes="(max-width: 640px) 100vw, 360px" />
                 </div>
                 <div className={styles.cardBody}>
                   {item.era && <span className={styles.era}>{item.era}</span>}

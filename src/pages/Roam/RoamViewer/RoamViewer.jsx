@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import mapLight from '/src/assets/waypoint-map-light.png';
 import mapDark from '/src/assets/waypoint-map-dark.png';
 import ResponsiveImage from '../../../components/ResponsiveImage';
+import TimeWarp from './TimeWarp';
 import { HOTSPOT_TYPE_ICONS, DEFAULT_HOTSPOT_ICON, ROAM_DATA, POINT_DATA } from '../RoamData';
 import { createNavigator } from '../roamNavigation';
 
@@ -57,6 +58,7 @@ export default function RoamViewer({
   otherEra,
   canTimeWarp,
   onTimeWarp,
+  timeWarpPreview,
 }) {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -700,6 +702,19 @@ const handleContainerMouseUp = (e) => {
         )}
 
         {!isSplitViewOpen && (
+          <TimeWarp
+            era={era}
+            otherEra={otherEra}
+            canWarp={canTimeWarp}
+            preview={timeWarpPreview}
+            onWarp={onTimeWarp}
+            isPhotoLoading={isPhotoLoading}
+            containerRef={containerRef}
+            isMapVisible={isMapVisible}
+          />
+        )}
+
+        {!isSplitViewOpen && (
           <div className={styles.bottomControlHudZone} onMouseDown={(e) => e.stopPropagation()}>
             <nav className={styles.navigationPad} aria-label="Move through Chainpur">
               {NAV_BUTTONS.map(({ move, verb, area }) => {
@@ -722,18 +737,6 @@ const handleContainerMouseUp = (e) => {
               })}
             </nav>
 
-            <button
-              className={`${styles.timeWarpButton} ${era === '2000s' ? styles.timeWarpPast : ''}`}
-              onClick={onTimeWarp}
-              onMouseDown={(e) => e.stopPropagation()}
-              disabled={!canTimeWarp}
-              title={canTimeWarp ? `Time warp to the ${otherEra}` : `No ${otherEra} view of this place yet`}
-              aria-label={canTimeWarp ? `Time warp to the ${otherEra}` : `Time warp unavailable: no ${otherEra} view of this place yet`}
-            >
-              <span className={styles.timeWarpWord}>time</span>
-              <span className={styles.timeWarpWord}>warp</span>
-              <span className={styles.timeWarpEra}>{era} → {otherEra}</span>
-            </button>
 
             <button
               className={`${styles.mapToggleButton} ${isMapVisible ? styles.mapToggleActive : styles.mapToggleMuted}`}
