@@ -304,27 +304,37 @@
   pointer-events: stroke;
 }
 
-.solidArrowPath {
+/* Mini-map lines (Peter, Sep 13): the direction you're looking = moving dashes
+   in red (yellow in dark mode); the other directions you can go = solid blue. */
+.miniMapWrapper {
+  --line-current: #dc2626;
+  --line-available: #2563eb;
+}
+
+:global(html.dark) .miniMapWrapper {
+  --line-current: #facc15;
+  --line-available: #60a5fa;
+}
+
+.currentViewPath {
   fill: none;
-  stroke: var(--path-stroke-solid);
-  stroke-width: 0.55;
+  stroke: var(--line-current);
+  stroke-width: 0.6;
   stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0px 0px 1.5px var(--path-shadow));
-  opacity: 0.65;
+  stroke-dasharray: 1 0.8;
+  animation: marchingAnts 1.2s linear infinite;
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.45));
   pointer-events: none;
 }
 
-.movingArrowPath {
+.availablePath {
   fill: none;
-  stroke: var(--path-stroke-moving);
-  stroke-width: 0.35;
+  stroke: var(--line-available);
+  stroke-width: 0.5;
   stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 0.9 0.9;
-  opacity: 0.7;
-  animation: marchingAnts 1.6s linear infinite;
-  transition: opacity 0.2s ease, stroke-width 0.2s ease, stroke 0.2s ease;
+  opacity: 0.85;
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.35));
+  transition: opacity 0.2s ease, stroke-width 0.2s ease;
   pointer-events: none;
 }
 
@@ -334,27 +344,15 @@
   }
 }
 
-:global(html:not(.dark)) .solidArrowPath {
-  stroke: var(--path-stroke-solid);
-  stroke-width: 0.65;
-  filter: drop-shadow(0px 1px 2px var(--path-shadow));
-  opacity: 0.85;
-}
-
-:global(html:not(.dark)) .movingArrowPath {
-  stroke-width: 0.45;
-  opacity: 0.9;
-}
-
-.interactivePath:hover .movingArrowPath {
+.interactivePath:hover .availablePath {
   opacity: 1;
-  stroke-width: 0.5;
-  stroke: var(--path-stroke-moving);
+  stroke-width: 0.75;
 }
 
-:global(html:not(.dark)) .interactivePath:hover .movingArrowPath {
-  stroke: var(--path-stroke-moving);
-  stroke-width: 0.6;
+@media (prefers-reduced-motion: reduce) {
+  .currentViewPath {
+    animation: none;
+  }
 }
 
 .bottomControlHudZone {
@@ -375,61 +373,63 @@
   }
 }
 
-.navigationDock {
-  display: flex;
-  align-items: center;
+/* Navigation pad — VV2 layout: forward/back/turn arrows around a turn-around button */
+.navigationPad {
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  grid-template-rows: repeat(3, 36px);
+  grid-template-areas:
+    ".    up     ."
+    "left center right"
+    ".    down   .";
+  place-items: center;
+  padding: 6px;
   background-color: var(--hero-overlay, rgba(252, 251, 250, 0.95));
   backdrop-filter: blur(8px);
-  border: 1px solid var(--border-color, #e7e5e0);
-  padding: 4px 12px;
-  border-radius: 30px;
-  gap: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid color-mix(in srgb, var(--border-color, #e7e5e0) 35%, transparent);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-.verticalAxisGroup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.navArrow,
-.navCenterUp,
-.navCenterDown {
-  background: none;
-  border: none;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-main, #1c1917);
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
+.padButton {
+  width: 36px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-main, #1c1917);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
-.navCenterUp,
-.navCenterDown {
-  padding: 2px 12px;
-  font-size: 1rem;
-}
-
-.navArrow:hover,
-.navCenterUp:hover,
-.navCenterDown:hover {
+.padButton:hover:not(:disabled),
+.padButton:focus-visible {
   background-color: var(--bg-surface, #f5f4f0);
   color: var(--accent-secondary, #92400e);
 }
 
-.navArrow:disabled,
-.navCenterUp:disabled,
-.navCenterDown:disabled {
-  color: #d6d3d153;
+.padButton:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.padButton:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 1px;
+}
+
+.padButton:disabled {
+  opacity: 0.25;
   cursor: not-allowed;
-  background: none !important;
+}
+
+.padAround {
+  width: 34px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
 }
 
 .mapToggleButton {

@@ -3,8 +3,31 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import mapLight from '/src/assets/waypoint-map-light.png';
 import mapDark from '/src/assets/waypoint-map-dark.png';
 import ResponsiveImage from '../../../components/ResponsiveImage';
-import { HOTSPOT_TYPE_ICONS, DEFAULT_HOTSPOT_ICON } from '../RoamData';
-import { ROAM_DATA } from '../RoamData';
+import { HOTSPOT_TYPE_ICONS, DEFAULT_HOTSPOT_ICON, ROAM_DATA, POINT_DATA } from '../RoamData';
+import { createNavigator } from '../roamNavigation';
+
+const getMoves = createNavigator(ROAM_DATA, POINT_DATA);
+
+// Icons for the navigation pad (VV2 layout: arrows around a turn-around button)
+const NavIcon = ({ type }) => {
+  const common = { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.4, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
+  switch (type) {
+    case 'forward': return <svg {...common}><path d="M12 20V5M6 11l6-6 6 6" /></svg>;
+    case 'back': return <svg {...common}><path d="M12 4v15M6 13l6 6 6-6" /></svg>;
+    case 'left': return <svg {...common}><path d="M18 20v-7a4 4 0 0 0-4-4H5M9 5L5 9l4 4" /></svg>;
+    case 'right': return <svg {...common}><path d="M6 20v-7a4 4 0 0 1 4-4h9M15 5l4 4-4 4" /></svg>;
+    case 'around': return <svg {...common}><path d="M19 12a7 7 0 1 1-2.05-4.95M19 4v4h-4" /></svg>;
+    default: return null;
+  }
+};
+
+const NAV_BUTTONS = [
+  { move: 'forward', verb: 'Walk forward', area: 'up' },
+  { move: 'left', verb: 'Turn left', area: 'left' },
+  { move: 'around', verb: 'Turn around', area: 'center' },
+  { move: 'right', verb: 'Turn right', area: 'right' },
+  { move: 'back', verb: 'Step back', area: 'down' },
+];
 
 export default function RoamViewer({
   activeNode,
@@ -149,7 +172,7 @@ const handleBack = () => {
         ? era2020Images[0].src
         : (data?.image || currentImage);
 
-      if (imagePath && !imagePath.startsWith('http') && !imagePath.startsWith('/')) {
+      if (typeof imagePath === 'string' && !imagePath.startsWith('http') && !imagePath.startsWith('/')) {
         imagePath = `/${imagePath}`;
       }
 
@@ -165,41 +188,20 @@ const handleBack = () => {
       }));
     }
 
-    const choicePaths = [];
-    const choiceEndpointPairs = new Set();
-
-    if (activeNode?.paths && Object.keys(activeNode.paths).length > 0) {
-      Object.entries(activeNode.paths).forEach(([, id]) => {
-        const nextKey = typeof id === 'string' ? id : id?.id;
-        if (!nextKey || nextKey === activeNodeId) return;
-
-        choicePaths.push({
-          pathKey: nextKey,
-          isCurrentSegment: false,
-        });
-
-        const targetEndpoints = ROAM_DATA[nextKey]?.mapEndpoints;
-        if (targetEndpoints?.from && targetEndpoints?.to) {
-          choiceEndpointPairs.add(`${targetEndpoints.from}-${targetEndpoints.to}`);
-          choiceEndpointPairs.add(`${targetEndpoints.to}-${targetEndpoints.from}`);
-        }
-      });
-    }
+    // Current view = animated line; every view the nav pad can reach = solid line.
+    const reachable = [...new Set(Object.values(getMoves(activeNodeId)).filter(Boolean))]
+      .filter((id) => id !== activeNodeId)
+      .map((pathKey) => ({ pathKey, isCurrentSegment: false }));
 
     const currentEndpoints = activeNode?.mapEndpoints || ROAM_DATA[activeNodeId]?.mapEndpoints;
-    const currentPairKey = currentEndpoints ? `${currentEndpoints.from}-${currentEndpoints.to}` : null;
-    const hasOpposingChoice = currentPairKey && choiceEndpointPairs.has(currentPairKey);
+    const current = currentEndpoints?.from && currentEndpoints?.to
+      ? [{ pathKey: activeNodeId, isCurrentSegment: true }]
+      : [];
 
-    const pathsList = [];
-    if (currentEndpoints?.from && currentEndpoints?.to && !hasOpposingChoice) {
-      pathsList.push({
-        pathKey: activeNodeId,
-        isCurrentSegment: true,
-      });
-    }
-
-    return [...pathsList, ...choicePaths];
+    return [...reachable, ...current]; // current drawn last so it sits on top
   }, [selectedOriginId, activeOriginPaths, activeNode, activeNodeId]);
+
+  const moves = useMemo(() => getMoves(activeNodeId), [activeNodeId]);
 
   useEffect(() => {
     loadedSrcRef.current = null;
@@ -549,7 +551,7 @@ const handleContainerMouseUp = (e) => {
 
                   if (!fromPoint || !toPoint) return null;
 
-                  const isSolid = item.isCurrentSegment;
+                  const isCurrent = item.isCurrentSegment;
                   const toIsViewPoint = isSinglePoint(endpoints.to) && Boolean(ROAM_DATA[endpoints.to]);
                   const targetGap = toIsViewPoint ? 2.1 : 1.3;
 
@@ -574,7 +576,7 @@ const handleContainerMouseUp = (e) => {
                       <path d={path} className={styles.arrowHitArea} />
                       <path
                         d={path}
-                        className={isSolid ? styles.solidArrowPath : styles.movingArrowPath}
+                        className={isCurrent ? styles.currentViewPath : styles.availablePath}
                       />
                     </g>
                   );
@@ -663,48 +665,26 @@ const handleContainerMouseUp = (e) => {
 
         {!isSplitViewOpen && (
           <div className={styles.bottomControlHudZone} onMouseDown={(e) => e.stopPropagation()}>
-            <div className={styles.navigationDock}>
-              <button
-                className={styles.navArrow}
-                disabled={!activeNode?.paths?.left}
-                onClick={() => activeNode?.paths?.left && onNavigate(activeNode.paths.left)}
-                onMouseDown={(e) => e.stopPropagation()}
-                title="Go Left"
-              >
-                ←
-              </button>
-
-              <div className={styles.verticalAxisGroup}>
-                <button
-                  className={styles.navCenterUp}
-                  disabled={!activeNode?.paths?.up}
-                  onClick={() => activeNode?.paths?.up && onNavigate(activeNode.paths.up)}
-                  onMouseDown={(e) => e.stopPropagation()}
-                  title="Go Forward"
-                >
-                  ↑
-                </button>
-                <button
-                  className={styles.navCenterDown}
-                  disabled={!activeNode?.paths?.down}
-                  onClick={() => activeNode?.paths?.down && onNavigate(activeNode.paths.down)}
-                  onMouseDown={(e) => e.stopPropagation()}
-                  title="Go Backward"
-                >
-                  ↓
-                </button>
-              </div>
-
-              <button
-                className={styles.navArrow}
-                disabled={!activeNode?.paths?.right}
-                onClick={() => activeNode?.paths?.right && onNavigate(activeNode.paths.right)}
-                onMouseDown={(e) => e.stopPropagation()}
-                title="Go Right"
-              >
-                →
-              </button>
-            </div>
+            <nav className={styles.navigationPad} aria-label="Move through Chainpur">
+              {NAV_BUTTONS.map(({ move, verb, area }) => {
+                const target = moves[move];
+                const label = target ? `${verb}: ${ROAM_DATA[target]?.label || target}` : `${verb} (not available here)`;
+                return (
+                  <button
+                    key={move}
+                    className={`${styles.padButton} ${move === 'around' ? styles.padAround : ''}`}
+                    style={{ gridArea: area }}
+                    disabled={!target}
+                    onClick={() => target && onNavigate(target)}
+                    onMouseDown={(e) => e.stopPropagation()}
+                    title={label}
+                    aria-label={label}
+                  >
+                    <NavIcon type={move} />
+                  </button>
+                );
+              })}
+            </nav>
 
             <button
               className={`${styles.mapToggleButton} ${isMapVisible ? styles.mapToggleActive : styles.mapToggleMuted}`}

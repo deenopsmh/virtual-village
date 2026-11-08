@@ -59,15 +59,16 @@ Source: `Roam labels 2020s VV3 30Oct26.docx` + `Changes to Roam 2020s labels 30O
 - [ ] Check whether the 9 image questions from your Aug 5 email are answered by the new docs (A tank, D-to-E, D-to-E shop items ×3, G-to-K mosque/Elephant Well/medicine/Pappu's chai)
 
 ## 4. Roam navigation & map rework
-- [ ] Arrows **relative** to current view direction (left = turn 90° left), not fixed compass (Nov 1)
-- [ ] Up = forward, down = back (double-check current behaviour; you saw it right, Peter saw it reversed)
-- [ ] Add turn-around / reverse button into the four-arrow design (see `client-notes/sample Roam page with navigation panel 2004.png`)
-- [ ] Mini-map: current direction = moving dashes in **yellow or red**; other available directions = **solid blue**
+- [x] Arrows **relative** to current view direction (left = turn 90° left), not fixed compass (Nov 1) — computed from map positions in `src/pages/Roam/roamNavigation.js`; hand-set `paths` now only used for single-point views (e.g. E)
+- [x] Up = walk forward, down = step back (still facing the same way)
+- [x] Turn-around button in the centre of the arrow pad, VV2 layout; each button's tooltip names where it goes
+- [x] Mini-map: current direction = moving dashes (red in light mode, yellow in dark); directions the pad can reach = solid blue
 - [ ] Default Roam map = cropped map (cut off above FF); switch to the large map for waypoints A & B
 - [ ] Use Peter's new master maps (Oct 24, unused waypoints removed, names fixed) and re-plot waypoint positions
 - [ ] ~~Bus stand master map~~ — **ignore for now** (decided Nov 8: reference only). FYI the file is a .psd renamed to .jpg if it's ever needed
 - [ ] Fix: E waypoint off the bottom of the map (can't get E → D)
-- [ ] Fix: D → E shows no image
+- [x] D → E now leads forward to the E (Harsu Brahm) view
+- [ ] D-to-E's own photo is the "E to D" image — fix in the Sheet (Image Local column) once Peter confirms the right photo
 
 ## 5. 2000s level
 Source: `Roam labels 2000s VV3 29Oct26.docx` (images in Drive: "Labelled VV3 new images 2000s level")
