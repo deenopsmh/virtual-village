@@ -65,6 +65,39 @@
   flex-direction: column;
 }
 
+.locationRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* which era you're looking at (not a link: plain label with a colour dot) */
+.eraLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text-main);
+  opacity: 0.7;
+}
+
+.eraLabel::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5fc4c9;
+}
+
+.eraLabelPast::before {
+  background: #e0a35a;
+}
+
 .locationLabel {
   font-size: 10px;
   text-transform: uppercase;

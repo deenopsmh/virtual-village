@@ -262,10 +262,6 @@ export default function Roam() {
             );
           })}
         </ol>
-
-        <span className={`${styles.eraTag} ${activeEra === '2000s' ? styles.eraTagPast : ''}`}>
-          {activeEra}
-        </span>
       </nav>
 
       <div className={styles.splitGrid}>
@@ -296,6 +292,7 @@ export default function Roam() {
         {/* Same height as the scene on wide screens; the details scroll inside */}
         <div className={styles.detailCell}>
         <RoamDetail
+          era={activeEra}
           activeNode={currentNode}
           currentContext={currentContext}
           currentActivities={currentActivities}

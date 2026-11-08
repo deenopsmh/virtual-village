@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './RoamDetail.module.css';
 
 export default function RoamDetail({
+  era,
   activeNode,
   currentContext,
   currentActivities = [],
@@ -113,7 +114,14 @@ export default function RoamDetail({
 
       <div className={styles.contentBody}>
         <div className={styles.metaHeadings}>
-          <span className={styles.locationLabel}>You are at</span>
+          <div className={styles.locationRow}>
+            <span className={styles.locationLabel}>You are at</span>
+            {era && (
+              <span className={`${styles.eraLabel} ${era === '2000s' ? styles.eraLabelPast : ''}`}>
+                in the {era}
+              </span>
+            )}
+          </div>
           <h3 className={styles.locationTitle}>{currentLabel}</h3>
         </div>
 

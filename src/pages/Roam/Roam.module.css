@@ -146,32 +146,6 @@
   color: var(--accent-secondary);
 }
 
-/* tiny era label after the trail */
-.eraTag {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  font-variant-numeric: tabular-nums;
-  color: var(--text-main);
-  opacity: 0.6;
-}
-
-.eraTag::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #5fc4c9;
-}
-
-.eraTagPast::before {
-  background: #e0a35a;
-}
-
 @media (max-width: 640px) {
   .breadcrumbBar {
     margin-top: -16px;
