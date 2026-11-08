@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import RoamViewer from './RoamViewer/RoamViewer';
 import RoamDetail from './RoamDetail/RoamDetail';
@@ -61,13 +61,10 @@ export default function Roam() {
   // Era lives in the URL (?era=2000s) so a time-warped view can be shared or reloaded.
   const [searchParams] = useSearchParams();
   const activeEra = searchParams.get('era') === '2000s' ? '2000s' : '2020s';
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [selectedOriginId, setSelectedOriginId] = useState(null);
   const [lastVisitedOriginId, setLastVisitedOriginId] = useState('A');
 
-  // Only list / offer views that exist in the current era (some paths are 2000s-only).
-  const locationKeys = Object.keys(ROAM_DATA).filter((key) => ROAM_DATA[key]?.eras?.[activeEra]);
   const currentNode = ROAM_DATA[currentNodeId];
 
 
@@ -182,7 +179,6 @@ export default function Roam() {
   const handleNodeTransition = (nodeId) => {
     if (ROAM_DATA[nodeId]) {
       navigateToPath(nodeId, []);
-      setIsMenuOpen(false);
     } else {
       console.error(`Route failed: Node ID "${nodeId}" does not exist in ROAM_DATA.`);
     }
@@ -229,60 +225,47 @@ export default function Roam() {
 
   return (
     <main className={styles.pageContainer}>
-      <div 
-        className={`${styles.overlay} ${isMenuOpen ? styles.overlayOpen : ''}`} 
-        onClick={() => setIsMenuOpen(false)} 
-      />
-      
-      <aside className={`${styles.drawer} ${isMenuOpen ? styles.drawerOpen : ''}`}>
-        <div className={styles.drawerHeader}>
-          <h2>Locations</h2>
-          <button className={styles.closeBtn} onClick={() => setIsMenuOpen(false)}>×</button>
-        </div>
-        <ul className={styles.nodeList}>
-          {locationKeys.map((key) => (
-            <li key={key}>
-              <button
-                className={`${styles.nodeBtn} ${key === currentNodeId ? styles.activeNodeBtn : ''}`}
-                onClick={() => handleNodeTransition(key)}
-              >
-                {key}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </aside>
-
       <nav className={styles.breadcrumbBar} aria-label="Breadcrumb">
-        <button 
-          className={styles.menuToggleBtn} 
-          onClick={() => setIsMenuOpen(true)}
-        >
-          ☰ Menu
-        </button>
-
-        <button
-          className={`${styles.breadcrumbItem} ${
-            breadcrumbPath.length === 0 ? styles.breadcrumbActive : ''
-          }`}
-          onClick={() => handleBreadcrumbNavigate(-1)}
-        >
-          {currentNode?.label || currentNodeId}
-        </button>
-
-        {breadcrumbPath.map((crumb, idx) => (
-          <React.Fragment key={crumb.id}>
-            <span className={styles.breadcrumbSeparator}>›</span>
+        <ol className={styles.trail}>
+          <li className={styles.crumbItem}>
             <button
-              className={`${styles.breadcrumbItem} ${
-                idx === breadcrumbPath.length - 1 ? styles.breadcrumbActive : ''
-              }`}
-              onClick={() => handleBreadcrumbNavigate(idx)}
+              className={`${styles.crumb} ${styles.crumbRoot} ${breadcrumbPath.length === 0 ? styles.crumbCurrent : ''}`}
+              onClick={() => handleBreadcrumbNavigate(-1)}
+              aria-current={breadcrumbPath.length === 0 ? 'location' : undefined}
+              title={currentNode?.label || currentNodeId}
             >
-              {crumb.label}
+              <svg className={styles.routeIcon} viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="6" cy="18" r="2.5" />
+                <circle cx="18" cy="6" r="2.5" />
+                <path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" />
+              </svg>
+              <span className={styles.crumbText}>{currentNode?.label || currentNodeId}</span>
             </button>
-          </React.Fragment>
-        ))}
+          </li>
+
+          {breadcrumbPath.map((crumb, idx) => {
+            const isCurrent = idx === breadcrumbPath.length - 1;
+            return (
+              <li key={crumb.id} className={styles.crumbItem}>
+                <svg className={styles.chevron} viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+                <button
+                  className={`${styles.crumb} ${isCurrent ? styles.crumbCurrent : ''}`}
+                  onClick={() => !isCurrent && handleBreadcrumbNavigate(idx)}
+                  aria-current={isCurrent ? 'location' : undefined}
+                  title={crumb.label}
+                >
+                  <span className={styles.crumbText}>{crumb.label}</span>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+
+        <span className={`${styles.eraTag} ${activeEra === '2000s' ? styles.eraTagPast : ''}`}>
+          {activeEra}
+        </span>
       </nav>
 
       <div className={styles.splitGrid}>
