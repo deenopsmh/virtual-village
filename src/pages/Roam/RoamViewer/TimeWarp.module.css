@@ -244,7 +244,7 @@
 
 .overlayOpen {
   clip-path: circle(150% at var(--ox) var(--oy));
-  animation: warpIris 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: warpIris 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 .overlayOpen .overlayImage {
@@ -266,11 +266,24 @@
   letter-spacing: 0.08em;
   color: #fff;
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
   opacity: 0;
 }
 
+/* the scene dims while the year is on screen, then clears for the new era */
+.overlayDim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.7));
+  opacity: 0;
+}
+
+.overlayOpen .overlayDim {
+  animation: warpDim 3s ease-in-out 0.3s forwards;
+}
+
 .overlayOpen .overlayEra {
-  animation: warpEraTitle 1.6s ease-out forwards;
+  animation: warpEraTitle 2.8s ease-out 0.4s forwards;
 }
 
 .overlayLeaving {
@@ -294,10 +307,16 @@
 }
 
 @keyframes warpEraTitle {
-  0% { opacity: 0; letter-spacing: 0.5em; }
-  35% { opacity: 1; }
-  70% { opacity: 1; letter-spacing: 0.08em; }
-  100% { opacity: 0; letter-spacing: 0.06em; }
+  0% { opacity: 0; letter-spacing: 0.5em; transform: translate(-50%, -50%) scale(1.04); }
+  22% { opacity: 1; letter-spacing: 0.1em; }
+  80% { opacity: 1; letter-spacing: 0.08em; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; letter-spacing: 0.06em; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes warpDim {
+  0% { opacity: 0; }
+  20%, 75% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 @keyframes warpLeave {

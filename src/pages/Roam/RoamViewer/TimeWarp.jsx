@@ -35,6 +35,11 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
       const t = setTimeout(() => { onWarp(); finish(); }, OPEN_TIMEOUT_MS);
       return () => clearTimeout(t);
     }
+    if (phase === 'expanding') {
+      // the year finishes at ~3.2s; switch anyway if animation events never arrive
+      const t = setTimeout(() => { onWarp(); setPhase('landing'); }, 4500);
+      return () => clearTimeout(t);
+    }
     if (phase === 'landing') {
       const t = setTimeout(finish, LAND_TIMEOUT_MS);
       return () => clearTimeout(t);
@@ -63,12 +68,14 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
     else { onWarp(); finish(); }
   };
 
+  // The iris opens, the year holds over a dimmed scene, and only once the year
+  // has faded do we switch era. Then the overlay fades when the new photo is in.
   const handleOverlayAnimationEnd = (e) => {
-    if (e.target !== e.currentTarget) return;
-    if (phase === 'expanding') {
+    const name = e.animationName || '';
+    if (phase === 'expanding' && name.includes('warpEraTitle')) {
       onWarp();
       setPhase('landing');
-    } else if (phase === 'landing') {
+    } else if (phase === 'landing' && name.includes('warpLeave') && e.target === e.currentTarget) {
       finish();
     }
   };
@@ -134,6 +141,7 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
             priority
             onSettled={handleOverlaySettled}
           />
+          <span className={styles.overlayDim} />
           <span className={styles.overlayEra}>{warp.to}</span>
         </div>
       )}

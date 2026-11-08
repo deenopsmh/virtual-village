@@ -145,6 +145,122 @@
   text-decoration: underline;
   transform: translateX(2px);
 }
+
+/* Neighbouring views ("More at …"): hop sideways without returning first */
+.siblingSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--border-color) 18%, transparent);
+}
+
+.siblingHeaderRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.siblingCount {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.6;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.siblingStepper {
+  display: flex;
+  gap: 8px;
+}
+
+.stepButton {
+  flex: 1;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 45%, transparent);
+  background: transparent;
+  color: var(--accent-secondary);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.stepNext {
+  background: var(--accent-secondary);
+  color: var(--bg-main);
+}
+
+.stepButton:hover:not(:disabled),
+.stepButton:focus-visible {
+  background: var(--accent-secondary);
+  color: var(--bg-main);
+}
+
+.stepButton:disabled {
+  opacity: 0.35;
+  cursor: default;
+  background: transparent;
+  color: var(--text-main);
+  border-color: color-mix(in srgb, var(--text-main) 25%, transparent);
+}
+
+.siblingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-serif);
+  font-size: small;
+}
+
+.siblingItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 10px;
+  border: 0;
+  border-left: 2px solid transparent;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.siblingItem:hover:not(.siblingCurrent),
+.siblingItem:focus-visible {
+  background: color-mix(in srgb, var(--text-main) 7%, transparent);
+  border-left-color: var(--accent-secondary);
+}
+
+.siblingCurrent {
+  cursor: default;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
+  border-left-color: var(--accent-secondary);
+}
+
+.youAreHere {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+  white-space: nowrap;
+}
+
 /* Interview UI Blocks */
 .interviewProfile {
   display: flex;

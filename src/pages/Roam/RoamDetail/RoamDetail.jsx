@@ -6,6 +6,9 @@ export default function RoamDetail({
   currentContext,
   currentActivities = [],
   breadcrumbPath = [],
+  siblingActivities = [],
+  currentActivityId,
+  onSiblingClick,
   onHotspotClick,
   onBackOneLevel,
   canGoBack,
@@ -76,6 +79,12 @@ export default function RoamDetail({
 
   const { description, interview } = currentContext;
 
+  // Neighbours at the level above, with this view's place among them (for Previous / Next).
+  const siblingIndex = siblingActivities.findIndex((a) => a.id === currentActivityId);
+  const hasSiblings = canGoBack && siblingActivities.length > 1 && siblingIndex !== -1;
+  const prevSibling = hasSiblings ? siblingActivities[siblingIndex - 1] : null;
+  const nextSibling = hasSiblings ? siblingActivities[siblingIndex + 1] : null;
+
   // Filter out activities that do not exist in the currently selected era
   const availableActivities = currentActivities.filter(
     (item) => item.isAvailableInEra !== false
@@ -139,6 +148,54 @@ export default function RoamDetail({
                   )}
                 </ul>
               </div>
+            )}
+
+            {hasSiblings && (
+              <nav className={styles.siblingSection} aria-label={`More at ${previousLabel}`}>
+                <div className={styles.siblingHeaderRow}>
+                  <h4 className={styles.todoHeader}>More at {previousLabel}</h4>
+                  <span className={styles.siblingCount}>
+                    {siblingIndex + 1} of {siblingActivities.length}
+                  </span>
+                </div>
+
+                <div className={styles.siblingStepper}>
+                  <button
+                    className={styles.stepButton}
+                    disabled={!prevSibling}
+                    onClick={() => prevSibling && onSiblingClick(prevSibling)}
+                    title={prevSibling ? prevSibling.label : undefined}
+                  >
+                    ‹ Previous
+                  </button>
+                  <button
+                    className={`${styles.stepButton} ${styles.stepNext}`}
+                    disabled={!nextSibling}
+                    onClick={() => nextSibling && onSiblingClick(nextSibling)}
+                    title={nextSibling ? nextSibling.label : undefined}
+                  >
+                    Next ›
+                  </button>
+                </div>
+
+                <ol className={styles.siblingList}>
+                  {siblingActivities.map((item) => {
+                    const isCurrent = item.id === currentActivityId;
+                    return (
+                      <li key={item.id}>
+                        <button
+                          className={`${styles.siblingItem} ${isCurrent ? styles.siblingCurrent : ''}`}
+                          onClick={() => !isCurrent && onSiblingClick(item)}
+                          aria-current={isCurrent ? 'location' : undefined}
+                        >
+                          {item.label}
+                          {isCurrent && <span className={styles.youAreHere}>You're here</span>}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </nav>
             )}
           </div>
         ) : (

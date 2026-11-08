@@ -151,6 +151,15 @@ export default function Roam() {
     };
   }, [currentNode, breadcrumbPath, activeEra]);
 
+  // Neighbouring views: the other things to do at the parent of the current view,
+  // so you can hop sideways without "Return to…" first (Peter's request).
+  const siblingActivities = useMemo(() => {
+    if (breadcrumbPath.length === 0) return [];
+    let parent = currentNode;
+    for (const crumb of breadcrumbPath.slice(0, -1)) parent = parent?.activities?.[crumb.id];
+    return toActivityArray(parent?.activities, activeEra).filter((a) => a.isAvailableInEra);
+  }, [currentNode, breadcrumbPath, activeEra]);
+
   const currentActivities = useMemo(
     () => toActivityArray(currentContext?.activities, activeEra),
     [currentContext, activeEra]
@@ -192,6 +201,10 @@ export default function Roam() {
 
   const handleHotspotClick = (activity) => {
     navigateToPath(currentNodeId, [...breadcrumbIds, activity.id]);
+  };
+
+  const handleSiblingClick = (activity) => {
+    navigateToPath(currentNodeId, [...breadcrumbIds.slice(0, -1), activity.id]);
   };
 
   const handleBackOneLevel = () => {
@@ -302,6 +315,9 @@ export default function Roam() {
           currentContext={currentContext}
           currentActivities={currentActivities}
           breadcrumbPath={breadcrumbPath}
+          siblingActivities={siblingActivities}
+          currentActivityId={breadcrumbPath[breadcrumbPath.length - 1]?.id}
+          onSiblingClick={handleSiblingClick}
           onHotspotClick={handleHotspotClick}
           onBackOneLevel={handleBackOneLevel}
           canGoBack={breadcrumbPath.length > 0}
