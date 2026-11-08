@@ -293,6 +293,8 @@ export default function Roam() {
           timeWarpPreview={timeWarpPreview}
         />
 
+        {/* Same height as the scene on wide screens; the details scroll inside */}
+        <div className={styles.detailCell}>
         <RoamDetail
           activeNode={currentNode}
           currentContext={currentContext}
@@ -309,6 +311,7 @@ export default function Roam() {
           activeOriginPaths={activeOriginPaths}
           onSelectPathChoice={handleSelectPathChoice}
         />
+        </div>
       </div>
     </main>
   );

@@ -15,6 +15,18 @@
   .splitGrid {
     grid-template-columns: 2.5fr 1fr; 
   }
+
+  /* The scene sets the row height; the details panel fills it exactly and scrolls. */
+  .detailCell {
+    position: relative;
+    min-height: 0;
+  }
+
+  .detailCell > * {
+    position: absolute;
+    inset: 0;
+    height: auto !important;
+  }
 }
 
 /* ---------- Breadcrumb trail ---------- */

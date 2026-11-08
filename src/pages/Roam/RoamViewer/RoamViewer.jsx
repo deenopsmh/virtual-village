@@ -1,5 +1,5 @@
 import styles from './RoamViewer.module.css';
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import mapLight from '/src/assets/waypoint-map-light.png';
 import mapDark from '/src/assets/waypoint-map-dark.png';
 import ResponsiveImage from '../../../components/ResponsiveImage';
@@ -96,6 +96,12 @@ export default function RoamViewer({
   const customMapDrawing = isDarkMode ? mapDark : mapLight;
 
   const containerRef = useRef(null);
+  // The scene element as state too, so the time-warp overlay can render into it.
+  const [canvasEl, setCanvasEl] = useState(null);
+  const setCanvasRef = useCallback((el) => {
+    containerRef.current = el;
+    setCanvasEl(el);
+  }, []);
   const transformLayerRef = useRef(null);
   const miniMapContainerRef = useRef(null);
   const dragStart = useRef({ x: 0, y: 0 });
@@ -455,7 +461,7 @@ const handleContainerMouseUp = (e) => {
     <div className={styles.viewerWrapper}>
       <div
         className={`${styles.canvasContainer} ${isPortrait ? styles.noDrag : isDragging ? styles.grabbing : styles.grab}`}
-        ref={containerRef}
+        ref={setCanvasRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleContainerMouseUp}
@@ -732,18 +738,6 @@ const handleContainerMouseUp = (e) => {
           </div>
         )}
 
-        {!isSplitViewOpen && (
-          <TimeWarp
-            era={era}
-            otherEra={otherEra}
-            canWarp={canTimeWarp}
-            preview={timeWarpPreview}
-            onWarp={handleTimeWarp}
-            isPhotoLoading={isPhotoLoading}
-            containerRef={containerRef}
-            isMapVisible={isMapVisible}
-          />
-        )}
 
         {!isSplitViewOpen && (
           <div className={styles.bottomControlHudZone} onMouseDown={(e) => e.stopPropagation()}>
@@ -768,6 +762,17 @@ const handleContainerMouseUp = (e) => {
               })}
             </nav>
 
+
+            <TimeWarp
+              era={era}
+              otherEra={otherEra}
+              canWarp={canTimeWarp}
+              preview={timeWarpPreview}
+              onWarp={handleTimeWarp}
+              isPhotoLoading={isPhotoLoading}
+              containerRef={containerRef}
+              portalTarget={canvasEl}
+            />
 
             <button
               className={`${styles.mapToggleButton} ${isMapVisible ? styles.mapToggleActive : styles.mapToggleMuted}`}
