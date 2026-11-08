@@ -372,18 +372,18 @@
 
 .bottomControlHudZone {
   position: absolute;
-  bottom: 20px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: flex-end;
+  gap: 8px;
   z-index: 30;
 }
 
 @media (min-width: 768px) {
   .bottomControlHudZone {
-    left: 24px;
+    left: 16px;
     transform: none;
   }
 }
@@ -391,24 +391,24 @@
 /* Navigation pad — VV2 layout: forward/back/turn arrows around a turn-around button */
 .navigationPad {
   display: grid;
-  grid-template-columns: repeat(3, 40px);
-  grid-template-rows: repeat(3, 36px);
+  grid-template-columns: repeat(3, 30px);
+  grid-template-rows: repeat(3, 28px);
   grid-template-areas:
     ".    up     ."
     "left center right"
     ".    down   .";
   place-items: center;
-  padding: 6px;
+  padding: 4px;
   background-color: var(--hero-overlay, rgba(252, 251, 250, 0.95));
   backdrop-filter: blur(8px);
   border: 1px solid color-mix(in srgb, var(--border-color, #e7e5e0) 35%, transparent);
-  border-radius: 16px;
+  border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .padButton {
-  width: 36px;
-  height: 34px;
+  width: 28px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -442,21 +442,10 @@
 }
 
 .padAround {
-  width: 34px;
+  width: 26px;
   border-radius: 50%;
   border: 1.5px solid currentColor;
 }
-
-/* Time warp: switch between the 2000s and 2020s view of the same place */
-
-
-
-
-
-
-
-/* In the 2000s the button is filled, so it's obvious you're in the past */
-
 
 .noPhotoNotice {
   position: absolute;
@@ -525,19 +514,26 @@
 }
 
 .mapToggleButton {
-  padding: 8px 16px;
-  height: auto;
-  border-radius: 20px;
-  border: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: 12pt;
-  font-weight: 500;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px 0 10px;
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
   white-space: nowrap;
+}
+
+.mapToggleButton svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
 }
 
 .mapToggleActive {

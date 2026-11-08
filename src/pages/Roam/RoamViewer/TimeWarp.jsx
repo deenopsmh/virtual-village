@@ -4,8 +4,8 @@ import ResponsiveImage from '../../../components/ResponsiveImage';
 import styles from './TimeWarp.module.css';
 
 /*
- * Time warp: a compact chip in the scene's bottom controls with a small round "portal"
- * showing this same spot in the other era (hover for a bigger peek). Clicking it opens the portal out over the whole
+ * Time warp: a small round "portal" at the bottom centre of the scene showing this same
+ * spot in the other era, with a slow ripple so it reads as alive (hover for a bigger peek). Clicking it opens the portal out over the whole
  * scene (an iris), then switches era. The overlay stays until the new photo has
  * loaded, so there's no blank flash in between.
  *
@@ -20,7 +20,7 @@ const LAND_TIMEOUT_MS = 4000;
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPhotoLoading, containerRef, portalTarget }) {
+export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPhotoLoading, containerRef, portalTarget, isMapVisible }) {
   const [phase, setPhase] = useState('idle');
   const [warp, setWarp] = useState(null); // { to, src, origin: {x, y}, portrait }
   const portalRef = useRef(null);
@@ -91,15 +91,20 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
 
   return (
     <>
-      <div className={styles.chipWrap}>
+      <div
+        className={`${styles.dock} ${isMapVisible ? styles.withMap : ''} ${goingBack ? styles.toPast : styles.toPresent}`}
+        onMouseDown={(e) => e.stopPropagation()}
+      >
         <button
           type="button"
-          className={`${styles.chip} ${goingBack ? styles.toPast : styles.toPresent}`}
+          className={styles.portalButton}
           onClick={startWarp}
           disabled={!canWarp || phase !== 'idle'}
           aria-label={label}
           title={canWarp ? undefined : `No ${otherEra} view of this place yet`}
         >
+          {canWarp && <span className={styles.ripple} aria-hidden="true" />}
+          {canWarp && <span className={`${styles.ripple} ${styles.rippleLate}`} aria-hidden="true" />}
           <span className={styles.portal} ref={portalRef} aria-hidden="true">
             <span className={styles.portalRing} />
             <span className={styles.portalWindow}>
@@ -108,9 +113,8 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
                 : <span className={styles.portalEmpty}>⌛</span>}
             </span>
           </span>
-          <span className={styles.chipText}>
-            <span className={styles.kicker}>Time warp</span>
-            <span className={styles.chipEra}>{canWarp ? `to the ${otherEra}` : `no ${otherEra} yet`}</span>
+          <span className={styles.eraTag} aria-hidden="true">
+            {canWarp ? <>↺ {otherEra}</> : `no ${otherEra}`}
           </span>
         </button>
 
@@ -121,8 +125,8 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
               <ResponsiveImage src={preview.src} alt="" className={styles.peekImage} sizes="240px" />
             </span>
             <span className={styles.peekCaption}>
-              <span className={styles.peekEras}>{era} → {otherEra}</span>
-              Click to see it in the {otherEra}
+              <span className={styles.peekEras}>Time warp · {era} → {otherEra}</span>
+              See this spot in the {otherEra}
             </span>
           </span>
         )}

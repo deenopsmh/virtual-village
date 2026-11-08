@@ -18,7 +18,7 @@ const NAVIGATORS = {
 
 // Icons for the navigation pad (VV2 layout: arrows around a turn-around button)
 const NavIcon = ({ type }) => {
-  const common = { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.4, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
+  const common = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.4, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
   switch (type) {
     case 'forward': return <svg {...common}><path d="M12 20V5M6 11l6-6 6 6" /></svg>;
     case 'back': return <svg {...common}><path d="M12 4v15M6 13l6 6 6-6" /></svg>;
@@ -740,6 +740,20 @@ const handleContainerMouseUp = (e) => {
 
 
         {!isSplitViewOpen && (
+          <TimeWarp
+            era={era}
+            otherEra={otherEra}
+            canWarp={canTimeWarp}
+            preview={timeWarpPreview}
+            onWarp={handleTimeWarp}
+            isPhotoLoading={isPhotoLoading}
+            containerRef={containerRef}
+            portalTarget={canvasEl}
+            isMapVisible={isMapVisible}
+          />
+        )}
+
+        {!isSplitViewOpen && (
           <div className={styles.bottomControlHudZone} onMouseDown={(e) => e.stopPropagation()}>
             <nav className={styles.navigationPad} aria-label="Move through Chainpur">
               {NAV_BUTTONS.map(({ move, verb, area }) => {
@@ -763,23 +777,16 @@ const handleContainerMouseUp = (e) => {
             </nav>
 
 
-            <TimeWarp
-              era={era}
-              otherEra={otherEra}
-              canWarp={canTimeWarp}
-              preview={timeWarpPreview}
-              onWarp={handleTimeWarp}
-              isPhotoLoading={isPhotoLoading}
-              containerRef={containerRef}
-              portalTarget={canvasEl}
-            />
-
             <button
               className={`${styles.mapToggleButton} ${isMapVisible ? styles.mapToggleActive : styles.mapToggleMuted}`}
               onClick={() => setIsMapVisible(!isMapVisible)}
               onMouseDown={(e) => e.stopPropagation()}
             >
-              {isMapVisible ? 'Hide map' : 'Map'}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M9 4L3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4z" />
+                <path d="M9 4v13M15 6.5v13" />
+              </svg>
+              {isMapVisible ? 'Hide map' : 'Show map'}
             </button>
           </div>
         )}
