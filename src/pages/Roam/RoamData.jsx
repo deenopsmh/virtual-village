@@ -3712,8 +3712,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Farm Tractor with Grain",
-            "description": "Tractors and their trailors are ubiquitous around Chainpur as farmers bring their harvests to mills and grain buyers located in and around this important area economic center.",
+            "label": "Watch out! Tractor!",
+            "description": "Tractors and their trailers are ubiquitous around Chainpur as farmers bring their harvests to mills and grain buyers located in and around this important area economic center.",
             "images": [
               {
                 "src": "VV3 Images - Copy/unused main photos/farm tractor with trailer of grain vertical",
@@ -3835,8 +3835,8 @@ export const ROAM_DATA = {
         "hotspotPosition": null,
         "eras": {
           "2020s": {
-            "label": "Farm Tractor with Grain",
-            "description": "Tractors and their trailors are ubiquitous around Chainpur as farmers bring their harvests to mills and grain buyers located in and around this important area economic center.",
+            "label": "Watch out! Tractor!",
+            "description": "Tractors and their trailers are ubiquitous around Chainpur as farmers bring their harvests to mills and grain buyers located in and around this important area economic center.",
             "images": [
               {
                 "src": "VV3 Images - Copy/unused main photos/farm tractor with trailer of grain vertical",

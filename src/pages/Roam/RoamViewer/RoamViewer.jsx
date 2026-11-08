@@ -711,7 +711,7 @@ const handleContainerMouseUp = (e) => {
               onClick={() => setIsMapVisible(!isMapVisible)}
               onMouseDown={(e) => e.stopPropagation()}
             >
-              {isMapVisible ? 'Hide Map' : 'Display Map'}
+              {isMapVisible ? 'Hide map' : 'Map'}
             </button>
           </div>
         )}

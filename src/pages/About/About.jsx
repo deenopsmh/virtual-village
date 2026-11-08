@@ -29,9 +29,9 @@ export default function About() {
             the platform is built upon over thirty years of research in 
             <strong> Chainpur</strong>—a village located in the state of Bihar, India.
           </p>
-          <h3>Transitioning to Version 3.0.</h3>
+          <h3>Transitioning to Version 3.0</h3>
           <p>
-            While the second iteration of this site utilized the pseudonym "Arampur," Version 3.0. restores the actual name of the village, Chainpur. The most compelling feature of this newly updated platform is the ability to seamlessly toggle between the images and descriptions of the 2000s and the current day, allowing researchers to evaluate two decades of environmental, economic, and societal transformations.
+            While the second iteration of this site utilized the pseudonym "Arampur," Version 3.0 restores the actual name of the village, Chainpur. The most compelling feature of this newly updated platform is the ability to seamlessly toggle between the images and descriptions of the 2000s and the current day, allowing researchers to evaluate two decades of environmental, economic, and societal transformations.
           </p>
         </div>
 
