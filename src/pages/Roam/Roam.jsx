@@ -66,7 +66,8 @@ export default function Roam() {
   const [selectedOriginId, setSelectedOriginId] = useState(null);
   const [lastVisitedOriginId, setLastVisitedOriginId] = useState('A');
 
-  const locationKeys = Object.keys(ROAM_DATA);
+  // Only list / offer views that exist in the current era (some paths are 2000s-only).
+  const locationKeys = Object.keys(ROAM_DATA).filter((key) => ROAM_DATA[key]?.eras?.[activeEra]);
   const currentNode = ROAM_DATA[currentNodeId];
 
 
@@ -83,6 +84,13 @@ export default function Roam() {
     if (!canTimeWarp) return;
     navigateToPath(currentNodeId, breadcrumbIds, undefined, otherEra);
   };
+
+  // A view that only exists in the other era (e.g. a 2000s-only path) opens in that era.
+  useEffect(() => {
+    if (currentNode && !currentNode.eras?.[activeEra] && currentNode.eras?.[otherEra]) {
+      navigateToPath(currentNodeId, breadcrumbIds, { replace: true }, otherEra);
+    }
+  }, [currentNodeId, activeEra]);
 
   // Redirect bare "/roam" or an invalid nodeId segment to the default node's URL.
   useEffect(() => {
@@ -137,13 +145,13 @@ export default function Roam() {
     if (!selectedOriginId) return [];
 
     return Object.entries(ROAM_DATA || {})
-      .filter(([, data]) => data?.mapEndpoints?.from === selectedOriginId)
+      .filter(([, data]) => data?.mapEndpoints?.from === selectedOriginId && data?.eras?.[activeEra])
       .map(([key, data]) => ({
         pathKey: key,
         label: data.label || key,
         mapEndpoints: data.mapEndpoints,
       }));
-  }, [selectedOriginId]);
+  }, [selectedOriginId, activeEra]);
 
   const isSplitViewOpen = Boolean(selectedOriginId && activeOriginPaths.length > 0);
 

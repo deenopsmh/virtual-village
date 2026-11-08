@@ -6,7 +6,14 @@ import ResponsiveImage from '../../../components/ResponsiveImage';
 import { HOTSPOT_TYPE_ICONS, DEFAULT_HOTSPOT_ICON, ROAM_DATA, POINT_DATA } from '../RoamData';
 import { createNavigator } from '../roamNavigation';
 
-const getMoves = createNavigator(ROAM_DATA, POINT_DATA);
+// One navigator per era: arrows and map lines only lead to views that exist in that era
+// (e.g. DD-to-N is 2000s-only).
+const dataForEra = (era) =>
+  Object.fromEntries(Object.entries(ROAM_DATA).filter(([, d]) => d?.eras?.[era]));
+const NAVIGATORS = {
+  '2020s': createNavigator(dataForEra('2020s'), POINT_DATA),
+  '2000s': createNavigator(dataForEra('2000s'), POINT_DATA),
+};
 
 // Icons for the navigation pad (VV2 layout: arrows around a turn-around button)
 const NavIcon = ({ type }) => {
@@ -142,6 +149,8 @@ const handleBack = () => {
   }
 };
 
+  const getMoves = NAVIGATORS[era] || NAVIGATORS['2020s'];
+
   const pointLookup = (mapPoints || []).reduce((acc, point) => {
     acc[point.id] = point;
     return acc;
@@ -150,6 +159,7 @@ const handleBack = () => {
   const uniqueFromKeys = Array.from(
     new Set(
       Object.values(ROAM_DATA)
+        .filter((data) => data?.eras?.[era])
         .map((data) => data?.mapEndpoints?.from)
         .filter(Boolean)
     )
@@ -170,9 +180,9 @@ const handleBack = () => {
   const originPathsWithImages = useMemo(() => {
     return (activeOriginPaths || []).map((item) => {
       const data = ROAM_DATA[item.pathKey];
-      const era2020Images = data?.eras?.['2020s']?.images;
-      let imagePath = Array.isArray(era2020Images) && era2020Images.length > 0
-        ? era2020Images[0].src
+      const eraImages = data?.eras?.[era]?.images;
+      let imagePath = Array.isArray(eraImages) && eraImages.length > 0
+        ? eraImages[0].src
         : (data?.image || currentImage);
 
       if (typeof imagePath === 'string' && !imagePath.startsWith('http') && !imagePath.startsWith('/')) {
@@ -181,7 +191,7 @@ const handleBack = () => {
 
       return { ...item, image: imagePath };
     });
-  }, [activeOriginPaths, currentImage]);
+  }, [activeOriginPaths, currentImage, era]);
 
   const activeMinimapPaths = useMemo(() => {
     if (selectedOriginId) {
@@ -202,9 +212,9 @@ const handleBack = () => {
       : [];
 
     return [...reachable, ...current]; // current drawn last so it sits on top
-  }, [selectedOriginId, activeOriginPaths, activeNode, activeNodeId]);
+  }, [selectedOriginId, activeOriginPaths, activeNode, activeNodeId, getMoves]);
 
-  const moves = useMemo(() => getMoves(activeNodeId), [activeNodeId]);
+  const moves = useMemo(() => getMoves(activeNodeId), [activeNodeId, getMoves]);
 
   useEffect(() => {
     loadedSrcRef.current = null;

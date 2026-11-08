@@ -323,5 +323,54 @@ export const ROAM_NETWORK = {
       "left": "BB-to-M",
       "right": "BB-to-AA"
     }
+  },
+  // 2000s-only paths (Peter's 2000s list, Oct 29 2026); arrows come from roamNavigation.js
+  "D-to-Sherpur": {
+    "mapEndpoints": {
+      "from": "D",
+      "to": "Sherpur"
+    }
+  },
+  "K-to-Naughara": {
+    "mapEndpoints": {
+      "from": "K",
+      "to": "Naughara"
+    }
+  },
+  "K-to-L": {
+    "mapEndpoints": {
+      "from": "K",
+      "to": "L"
+    }
+  },
+  "L-to-K": {
+    "mapEndpoints": {
+      "from": "L",
+      "to": "K"
+    }
+  },
+  "L-to-M": {
+    "mapEndpoints": {
+      "from": "L",
+      "to": "M"
+    }
+  },
+  "N-to-M": {
+    "mapEndpoints": {
+      "from": "N",
+      "to": "M"
+    }
+  },
+  "N-to-DD": {
+    "mapEndpoints": {
+      "from": "N",
+      "to": "DD"
+    }
+  },
+  "DD-to-N": {
+    "mapEndpoints": {
+      "from": "DD",
+      "to": "N"
+    }
   }
 };

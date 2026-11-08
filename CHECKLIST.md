@@ -53,7 +53,7 @@ Decisions locked in (Nov 8):
 Source: `Roam labels 2020s VV3 30Oct26.docx` + `Changes to Roam 2020s labels 30Oc26.docx`
 - [ ] ~45 corrected labels/descriptions (spelling "Bhabua" → "Bhabhua", callouts, names) — Peter offered to make text-only edits himself in the sheet
 - [ ] ~30 added items (new images in the 2020s Drive folder) — you do these
-- [ ] New paths: A→Jagariya, E→south, K→Naughara, L→M, N→M, N→DD, DD→N (+ "repeat listings" for reverse paths)
+- [ ] New paths: A→Jagariya, E→south (2000s-only K→Naughara, L→M, N→M, N→DD, DD→N are done)
 - [ ] Delete: BB→AA description, BB→M (use M→Marai instead)
 - [ ] **(Peter)** Images marked "FIND IMAGE IN FILE": Sitaram & Raju Paswan, Shyam Babu's store, D to E Sufi tomb, G to M Sufi mazar
 - [ ] Check whether the 9 image questions from your Aug 5 email are answered by the new docs (A tank, D-to-E, D-to-E shop items ×3, G-to-K mosque/Elephant Well/medicine/Pappu's chai)
@@ -78,7 +78,10 @@ Source: `Roam labels 2000s VV3 29Oct26.docx` (images in Drive: "labelled VV3 new
 - [x] **Time warp** button (time / warp, shows "2020s → 2000s"); era kept in the URL (`?era=2000s`); keeps you on the twin view, else the nearest view that exists in that era
 - [x] Copied the 141 2000s photos into "VV3 site images/Roam 2000s"; rows point at the copies (5 sample views checked in the browser)
 - [x] 2000s rows imported into the Roam Sheet (504 rows build; time warp checked in the browser). Stray header row at Sheet row 242 is skipped by the build — delete it when convenient
-- [ ] 13 rows for paths not on the map yet (`data/roam-2000s-pending.csv`): D→Sherpur, K→Naughara, K→L, L→K, N→M, DD→N, N→DD, L→M — need waypoints DD and Naughara placed, and the new paths added to `roamNetwork.js`
+- [x] 8 new 2000s-only paths live (D→Sherpur, K→Naughara, K→L, L→K, N→M, DD→N, N→DD, L→M); waypoints DD and Naughara placed; arrows, map and Locations list only show views that exist in the current era
+- [ ] Check DD and Naughara positions on the mini-map (DD converted from the old labelled map; Naughara = "to Naugrah" edge)
+- [ ] **(Peter)** Reverse photos for the new paths? (Sherpur→D, Naughara→K, M→N in 2000s); DD only connects to N, so DD→N has no turn-around
+- [ ] **(Peter)** Typo in D→Sherpur text: "sox children" (six?)
 - [ ] **(Peter)** 21 photos named in the doc aren't in his 2000s folder: Malik Sharma ×2, carpenter ×2, Sita Ma's chai shop ×2, D to E arch / midway / Sufi tomb enter / Sufi tomb detail, E to south aerial / oxen / paddy / harvest, Jama Masjid khutba, Pappu's chai dukhan ×4 + "K to G detail detail 2", DD to N cosmetic vendor, D to G Yunani doctor sign
 - [ ] **(Peter)** "+++NEED REPLACEMENT+++" AA to GG photo; TEMP photos (AA to D chai shop, K to L, N to M, M to BB…)
 - [ ] Review nesting in the Sheet: only blue lines were nested; e.g. "Buy some tools" (tool maker CLOSE) may belong under the tool maker

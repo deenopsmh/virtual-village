@@ -55,9 +55,10 @@ export const POINT_DATA = {
   // "X": {
   //   mapPosition: { top: 1315, left: 1491 }
   // },
-  // "DD": {
-  //   mapPosition: { top: 1266, left: 996 }
-  // },
+  // DD: from the labelled waypoint map (old 1712x2002 pixels 996, 1266), same scale as C/K/N
+  "DD": {
+    mapPosition: { top: 63.6, left: 58.0 }
+  },
   // "Y": {
   //   mapPosition: { top: 1327, left: 979 }
   // },
@@ -90,6 +91,10 @@ export const POINT_DATA = {
   },
   "G": {
     mapPosition: { top: 80.9, left: 50.5 }
+  },
+  // Off-map destination: the "to Naugrah" road, lower left
+  "Naughara": {
+    mapPosition: { top: 94.0, left: 3.0 }
   },
   // "UH": {
   //   mapPosition: { top: 1750, left: 876 }
