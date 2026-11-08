@@ -77,7 +77,7 @@ Source: `Roam labels 2000s VV3 29Oct26.docx` (images in Drive: "labelled VV3 new
 - [x] Matched 141 of 145 photos in Peter's 2000s folder (14 by close spelling; checked by hand)
 - [x] **Time warp** button (time / warp, shows "2020s → 2000s"); era kept in the URL (`?era=2000s`); keeps you on the twin view, else the nearest view that exists in that era
 - [x] Copied the 141 2000s photos into "VV3 site images/Roam 2000s"; rows point at the copies (5 sample views checked in the browser)
-- [ ] **(You)** Import `data/roam-2000s-import.csv` into the Roam Sheet: File → Import → Upload → "Append to current sheet"
+- [x] 2000s rows imported into the Roam Sheet (504 rows build; time warp checked in the browser). Stray header row at Sheet row 242 is skipped by the build — delete it when convenient
 - [ ] 13 rows for paths not on the map yet (`data/roam-2000s-pending.csv`): D→Sherpur, K→Naughara, K→L, L→K, N→M, DD→N, N→DD, L→M — need waypoints DD and Naughara placed, and the new paths added to `roamNetwork.js`
 - [ ] **(Peter)** 21 photos named in the doc aren't in his 2000s folder: Malik Sharma ×2, carpenter ×2, Sita Ma's chai shop ×2, D to E arch / midway / Sufi tomb enter / Sufi tomb detail, E to south aerial / oxen / paddy / harvest, Jama Masjid khutba, Pappu's chai dukhan ×4 + "K to G detail detail 2", DD to N cosmetic vendor, D to G Yunani doctor sign
 - [ ] **(Peter)** "+++NEED REPLACEMENT+++" AA to GG photo; TEMP photos (AA to D chai shop, K to L, N to M, M to BB…)

@@ -41,8 +41,13 @@ async function loadCsv() {
   return fs.readFileSync(LOCAL_CSV, "utf8");
 }
 
-const rows = parseCsv(await loadCsv());
+// "File → Import → Append" in Google Sheets also appends the CSV's header row; skip copies of it.
+const allRows = parseCsv(await loadCsv());
+const rows = allRows.filter((r) => !(r.ID === "ID" && r.Era === "Era"));
 const { data, errors, warnings } = assemble(rows, ROAM_NETWORK);
+allRows
+  .filter((r) => !rows.includes(r))
+  .forEach((r) => warnings.unshift(`line ${r.__line} repeats the header row — skipped (safe to delete it in the Sheet)`));
 
 warnings.forEach((w) => console.warn(`  warning: ${w}`));
 if (errors.length) {
