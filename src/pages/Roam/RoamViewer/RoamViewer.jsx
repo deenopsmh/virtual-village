@@ -104,6 +104,10 @@ export default function RoamViewer({
 
   const currentImages = currentContext?.images || [];
   const currentImage = currentImages[activeImageIndex]?.src;
+  // Spinner while the main photo loads (Drive photos can take a few seconds the first time).
+  const imageKey = currentImage ? JSON.stringify(currentImage) : null;
+  const [settledImageKey, setSettledImageKey] = useState(null);
+  const isPhotoLoading = Boolean(imageKey) && settledImageKey !== imageKey;
 
   const isSinglePoint = (id) => Boolean(id && !id.includes('-to-'));
 
@@ -440,6 +444,13 @@ const handleContainerMouseUp = (e) => {
           </div>
         )}
 
+        {isPhotoLoading && !isSplitViewOpen && (
+          <div className={styles.photoLoading} role="status" aria-live="polite">
+            <span className={styles.photoLoadingSpinner} aria-hidden="true" />
+            <span>Loading photo…</span>
+          </div>
+        )}
+
         {isSplitViewOpen ? (
           <div className={styles.splitChoiceContainer} onMouseDown={(e) => e.stopPropagation()}>
             <div className={styles.splitHeaderBar}>
@@ -495,6 +506,7 @@ const handleContainerMouseUp = (e) => {
               priority={activeImageIndex === 0}
               draggable="false"
               onLoad={handleImageLoad}
+              onSettled={() => setSettledImageKey(imageKey)}
               onDoubleClick={handleImageDoubleClick}
               fallback={
                 <div className={styles.noPhotoNotice} role="status">

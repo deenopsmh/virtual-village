@@ -57,3 +57,36 @@ h1, h2, h3, h4, h5, h6 {
               fill 0.35s ease,
               stroke 0.35s ease;
 }
+/* Images (ResponsiveImage): shimmer while loading, fade in when ready */
+.vvImg[data-loaded="false"] {
+  background-color: var(--bg-surface);
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in srgb, var(--text-main) 7%, transparent) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: vvShimmer 1.4s linear infinite;
+}
+
+.vvImg[data-loaded="true"] {
+  animation: vvFadeIn 0.45s ease-out;
+}
+
+@keyframes vvShimmer {
+  from { background-position: 150% 0; }
+  to { background-position: -50% 0; }
+}
+
+@keyframes vvFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vvImg[data-loaded="false"],
+  .vvImg[data-loaded="true"] {
+    animation: none;
+  }
+}

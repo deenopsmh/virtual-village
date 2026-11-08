@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styles from "./Contexts.module.css";
 import ResponsiveImage from "../../components/ResponsiveImage";
 import { CONTEXT_SECTIONS } from "./contextsData";
@@ -89,7 +90,56 @@ function Section({ section }) {
   );
 }
 
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+// Smooth-scroll to a section. Images above the target can finish loading while we
+// scroll and push it down, so re-check where it landed and correct (a couple of times).
+function scrollToSection(id, { smooth = true } = {}) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const behavior = smooth && !prefersReducedMotion() ? "smooth" : "auto";
+  const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+  let corrections = 2;
+
+  const check = () => {
+    const offset = target.getBoundingClientRect().top - margin;
+    if (Math.abs(offset) > 4 && corrections-- > 0) {
+      target.scrollIntoView({ behavior, block: "start" });
+      waitForScrollEnd(check);
+    }
+  };
+
+  target.scrollIntoView({ behavior, block: "start" });
+  waitForScrollEnd(check);
+}
+
+function waitForScrollEnd(callback) {
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    window.removeEventListener("scrollend", finish);
+    callback();
+  };
+  if ("onscrollend" in window) window.addEventListener("scrollend", finish, { once: true });
+  setTimeout(finish, 1200); // browsers without scrollend, or no scroll needed
+}
+
 export default function Contexts() {
+  // Opening /contexts#banaras (shared link, back button) lands on that section.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) scrollToSection(id, { smooth: false });
+  }, []);
+
+  const handleTocClick = (e, id) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // let "open in new tab" work
+    e.preventDefault();
+    window.history.replaceState(window.history.state, "", `#${id}`);
+    scrollToSection(id);
+  };
+
   return (
     <div className={styles.page}>
       <header className={styles.hero}>
@@ -102,7 +152,7 @@ export default function Contexts() {
 
       <nav className={styles.toc} aria-label="Contexts sections">
         {CONTEXT_SECTIONS.map((s) => (
-          <a key={s.id} href={`#${s.id}`}>{s.title}</a>
+          <a key={s.id} href={`#${s.id}`} onClick={(e) => handleTocClick(e, s.id)}>{s.title}</a>
         ))}
       </nav>
 

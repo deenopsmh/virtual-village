@@ -13,6 +13,10 @@ import { useMemo, useState } from "react";
  *
  * If a source fails to load, the next one is tried. If all fail, `fallback`
  * (or nothing) is rendered.
+ *
+ * Loading: while a source loads the <img> carries data-loaded="false" (a shimmer,
+ * see .vvImg in index.css) and fades in once it arrives. `onSettled("loaded" |
+ * "failed")` tells the parent when the image is done, e.g. to hide a spinner.
  */
 
 const SIZES = [400, 800, 1200, 1600, 1920];
@@ -94,6 +98,8 @@ export default function ResponsiveImage({
   style = {},
   fallback = null,
   onError,
+  onLoad,
+  onSettled,
   ...props
 }) {
   const key = typeof src === "string" ? src : JSON.stringify(src || {});
@@ -101,13 +107,22 @@ export default function ResponsiveImage({
   // Which candidate we're on; resets automatically when `src` changes.
   const [attempt, setAttempt] = useState({ key, index: 0 });
   const index = attempt.key === key ? attempt.index : 0;
+  const [loadedSrc, setLoadedSrc] = useState(null);
 
   const current = candidates[index];
   if (!current) return fallback;
+  const isLoaded = loadedSrc === current.src;
 
   const handleError = (e) => {
     setAttempt({ key, index: index + 1 });
     onError?.(e);
+    if (index + 1 >= candidates.length) onSettled?.("failed");
+  };
+
+  const handleLoad = (e) => {
+    setLoadedSrc(current.src);
+    onLoad?.(e);
+    onSettled?.("loaded");
   };
 
   const imgProps = {
@@ -115,7 +130,8 @@ export default function ResponsiveImage({
     srcSet: current.srcSet,
     sizes: current.srcSet ? sizes : undefined,
     alt,
-    className,
+    className: `vvImg ${className}`.trim(),
+    "data-loaded": isLoaded ? "true" : "false",
     width,
     height,
     loading: priority ? "eager" : loading,
@@ -123,6 +139,7 @@ export default function ResponsiveImage({
     decoding: priority ? "sync" : "async",
     referrerPolicy: current.kind === "drive" ? "no-referrer" : undefined,
     onError: handleError,
+    onLoad: handleLoad,
     style: { contentVisibility: priority ? "visible" : "auto", ...style },
     ...props,
   };
