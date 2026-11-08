@@ -33,9 +33,13 @@ Decisions locked in (Nov 8):
 - [ ] Time switch button labelled "time warp" (two lines: time / warp) — agreed Nov 3
 
 ## 2. Spreadsheet → site pipeline (replace hard-coded `RoamData.jsx` content)
-- [ ] Finalise sheet columns: add **Path/waypoint key** (e.g. `A-to-Bhabua`), **Type** (street / side / view-in-side / detail), **Order**, **Callout** (the "Things to do" text), **Link** (2000s↔2020s pair); change **Parent** to use parent's **ID**, not label
-- [ ] Move sheet to Google Sheets; give Peter edit access
-- [ ] Build script: download sheet as CSV → validate (missing IDs, broken parents, duplicate keys) → write JSON; fail the build on errors
+- [x] Sheet columns defined (`scripts/roam/schema.mjs`): ID, Parent ID (by ID), Path, Type, Order, Era, Label, Description, Image IIIF ID / Drive ID / Local, Image Title, Focus Point, Hotspot, Notes. 2000s↔2020s link = same ID, different Era row
+- [x] Migrated all hard-coded Roam content → `data/roam-content.csv` (240 rows, 32 paths); waypoint network → `src/pages/Roam/roamNetwork.js`. Round trip verified identical
+- [x] Matched Charlie's 42 AM Quartex images by filename → 61 rows now load from AM Quartex (local file kept as fallback)
+- [x] Build script `npm run roam:content`: CSV (or `ROAM_SHEET_CSV_URL`) → validate → `roamContent.generated.json`; build fails on errors. Runs automatically in `npm run dev` / `npm run build`
+- [ ] Upload `data/roam-content.csv` to Google Sheets; give Peter edit access; "Publish to web" as CSV → set `ROAM_SHEET_CSV_URL` in Vercel
+- [ ] Sentence-case pass on "Things to do" labels (e.g. "Mitai Wala" → "Mitai wala") — do in the sheet
+- [ ] Note: `npm run build` still runs the interactive `optimize-images` prompt (pre-existing) — make it non-interactive or drop once images are on AM Quartex
 - [x] `ResponsiveImage`: build IIIF URL straight from ID (no manifest fetch); accepts `{ iiif, drive, local }` and falls back in that order
 - [ ] Preload images for neighbouring waypoints while user is at a point
 - [ ] Store image width/height in sheet (prevents layout jump; AM Quartex blocks server-side fetches)
