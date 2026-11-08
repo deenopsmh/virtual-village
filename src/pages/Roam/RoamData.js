@@ -4,9 +4,10 @@ export const POINT_DATA = {
   "Chand": {
     mapPosition: { top: 6.5, left: 50.1 }
   },
-  // "Jagariya": {
-  //   mapPosition: { top: 48, left: 1196 }
-  // },
+  // Off-map destination: the "to Jagariya" road heading north from the main road near A
+  "Jagariya": {
+    mapPosition: { top: 2.0, left: 69.4 }
+  },
   "Bhabua": {
     mapPosition: { top: 6.5, left: 82.0 }
   },

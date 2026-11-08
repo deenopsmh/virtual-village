@@ -51,12 +51,18 @@ Decisions locked in (Nov 8):
 
 ## 3. 2020s content updates (Peter's Nov 1 docs)
 Source: `Roam labels 2020s VV3 30Oct26.docx` + `Changes to Roam 2020s labels 30Oc26.docx`
-- [ ] ~45 corrected labels/descriptions (spelling "Bhabua" → "Bhabhua", callouts, names) — Peter offered to make text-only edits himself in the sheet
-- [ ] ~30 added items (new images in the 2020s Drive folder) — you do these
-- [ ] New paths: A→Jagariya, E→south (2000s-only K→Naughara, L→M, N→M, N→DD, DD→N are done)
-- [ ] Delete: BB→AA description, BB→M (use M→Marai instead)
-- [ ] **(Peter)** Images marked "FIND IMAGE IN FILE": Sitaram & Raju Paswan, Shyam Babu's store, D to E Sufi tomb, G to M Sufi mazar
-- [ ] Check whether the 9 image questions from your Aug 5 email are answered by the new docs (A tank, D-to-E, D-to-E shop items ×3, G-to-K mosque/Elephant Well/medicine/Pappu's chai)
+- [x] Compared Peter's full 2020s list with the Sheet (`scripts/roam/import-peter-doc/diff2020s.py`): matched by photo name, then callout
+- [x] Applied: 26 path descriptions (incl. "Bhabhua"), 197 item callouts ("See …", "Visit …") and 122 descriptions; "Things to do" now in Peter's order
+- [x] 27 new items with photos (kingfisher, shikar, Choudhari Medical Hall, E to south tractor/harvest/egret, satellite dishes, family masjid series, bee eater, Babbler, Marai posters, butcher on M to BB); 5 share an ID with their 2000s twin
+- [x] 2020s rows for D to Sherpur, K to Naughara, N to M, N to DD, DD to N, L to M; new path A to Jagariya + Jagariya waypoint; M to L / M to N use the proper path photos
+- [x] 22 photos copied into "VV3 site images/Roam 2020s" (Peter's folder untouched); IDs in `data/roam-2020s-photos.json`
+- [ ] **(You)** Import `data/roam-content.csv` into the Roam Sheet with **Replace current sheet** — until then a normal build re-downloads the old Sheet
+- [ ] **(Peter)** DD to N has no 2020s photo
+- [ ] **(Peter)** M to L poster had no callout; using "See posters on a home in Marai" — confirm
+- [ ] **(Peter)** "DELETED: BB to AA, BB to M" — his full list still includes both (BB to M already uses the M to Marai photo); left in place until he confirms
+- [ ] **(Peter)** Images marked "FIND IMAGE IN FILE": Sitaram & Raju Paswan, Shyam Babu's store, D to E Sufi tomb, G to M Sufi mazar (rows keep their current photos)
+- [ ] Kept rows his list doesn't mention: Jama Masjid / Sufi mazar sub-views on G to M and M to G, butcher on BB to AA
+- [ ] Check the Jagariya waypoint position on the mini-map
 
 ## 4. Roam navigation & map rework
 - [x] Arrows **relative** to current view direction (left = turn 90° left), not fixed compass (Nov 1) — computed from map positions in `src/pages/Roam/roamNavigation.js`; hand-set `paths` now only used for single-point views (e.g. E)

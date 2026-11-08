@@ -372,5 +372,12 @@ export const ROAM_NETWORK = {
       "from": "DD",
       "to": "N"
     }
+  },
+  // Peter's Nov 1 2020s list: road north from A to the village of Jagariya
+  "A-to-Jagariya": {
+    "mapEndpoints": {
+      "from": "A",
+      "to": "Jagariya"
+    }
   }
 };
