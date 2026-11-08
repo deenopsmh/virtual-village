@@ -102,6 +102,15 @@ export default function RoamViewer({
   const mouseDownPos = useRef({ x: 0, y: 0 });
   const hasDraggedRef = useRef(false);
   const revealTimeoutRef = useRef(null);
+  // After a time warp the overlay already showed the full photo, so the new photo
+  // lands straight at its final framing instead of replaying the intro zoom.
+  const skipRevealRef = useRef(false);
+  const [isInstantFrame, setIsInstantFrame] = useState(false);
+  const handleTimeWarp = () => {
+    skipRevealRef.current = true;
+    setTimeout(() => { skipRevealRef.current = false; }, 6000); // in case no new photo loads
+    onTimeWarp();
+  };
   const loadedSrcRef = useRef(null);
 
   const currentImages = currentContext?.images || [];
@@ -289,6 +298,19 @@ const handleBack = () => {
 
     if (revealTimeoutRef.current) {
       clearTimeout(revealTimeoutRef.current);
+    }
+
+    if (skipRevealRef.current) {
+      skipRevealRef.current = false;
+      // Next tick: a cached photo can load before the "new photo → reset zoom" effect runs,
+      // which would undo this framing.
+      revealTimeoutRef.current = setTimeout(() => {
+        setIsInstantFrame(true);
+        setScale(targetScale);
+        setPan({ x: targetPanX, y: targetPanY });
+        revealTimeoutRef.current = setTimeout(() => setIsInstantFrame(false), 80); // animated zoom again
+      }, 0);
+      return;
     }
 
     revealTimeoutRef.current = setTimeout(() => {
@@ -493,7 +515,7 @@ const handleContainerMouseUp = (e) => {
             className={styles.transformLayer}
             style={{
               transform: `translate(${pan.x}px, ${pan.y}px) scale(${scale})`,
-              transition: isDragging
+              transition: isDragging || isInstantFrame
                 ? 'none'
                 : isRevealing
                 ? 'transform 2s ease-in-out'
@@ -707,7 +729,7 @@ const handleContainerMouseUp = (e) => {
             otherEra={otherEra}
             canWarp={canTimeWarp}
             preview={timeWarpPreview}
-            onWarp={onTimeWarp}
+            onWarp={handleTimeWarp}
             isPhotoLoading={isPhotoLoading}
             containerRef={containerRef}
             isMapVisible={isMapVisible}
