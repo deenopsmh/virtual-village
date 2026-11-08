@@ -8,7 +8,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--line);
   background: transparent;
   border-radius: 20px;
   overflow: hidden;
@@ -73,7 +73,7 @@
   width: 400px;
   aspect-ratio: 1000 / 1150;
   background-color: var(--bg-surface, #fcfbfa);
-  border: 1px solid var(--border-color, #ffffff);
+  border: 1px solid var(--line);
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   z-index: 10;
@@ -128,7 +128,7 @@
   width: 26px;
   height: 26px;
   border-radius: 6px;
-  border: 1px solid var(--border-color, #e7e5e0);
+  border: 1px solid var(--line);
   background-color: var(--bg-surface, rgba(252, 251, 250, 0.95));
   color: var(--text-main, #1c1917);
   font-size: 15px;
@@ -155,7 +155,7 @@
   width: 26px;
   height: 26px;
   border-radius: 6px;
-  border: 1px solid var(--border-color, #e7e5e0);
+  border: 1px solid var(--line);
   background-color: var(--bg-surface, rgba(252, 251, 250, 0.95));
   color: var(--text-main, #1c1917);
   font-size: 12px;
@@ -565,7 +565,7 @@
   padding: 6px 12px;
   border-radius: 20px;
   background-color: var(--bg-surface, rgba(252, 251, 250, 0.95));
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.5));
+  border: 1px solid var(--line);
   color: var(--text-main, #44403c);
   font-size: 11px;
   font-weight: 700;
@@ -620,7 +620,7 @@
   top: 16px;
   left: 16px;
   background-color: var(--bg-surface, rgba(252, 251, 250, 0.95));
-  border: 1px solid var(--border-color, #e7e5e0);
+  border: 1px solid var(--line);
   padding: 8px 14px;
   border-radius: 20px;
   font-size: 12px;
@@ -659,7 +659,7 @@
   align-items: center;
   padding: 1rem 2rem;
   background: var(--hero-overlay);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--line);
   color: var(--text-main);
   z-index: 2;
 }
@@ -676,7 +676,7 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  border-right: 1px solid var(--border-color);
+  border-right: 1px solid var(--line);
   transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 

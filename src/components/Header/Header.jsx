@@ -7,12 +7,14 @@ import ThemeToggle from "../ThemeToggle/ThemeToggle";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [darkMode, setDarkMode] = useState(
-    true
-    //   () => {
-  //   return localStorage.getItem("theme") === "dark";
-  // }
-);
+  // Dark by default; a visitor's own choice is remembered across pages and visits.
+  const [darkMode, setDarkMode] = useState(() => {
+    try {
+      return localStorage.getItem("theme") !== "light";
+    } catch {
+      return true;
+    }
+  });
 
   const location = useLocation();
 
@@ -40,10 +42,10 @@ export default function Header() {
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      try { localStorage.setItem("theme", "dark"); } catch { /* storage blocked */ }
     } else {
       document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      try { localStorage.setItem("theme", "light"); } catch { /* storage blocked */ }
     }
   }, [darkMode]);
 

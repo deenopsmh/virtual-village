@@ -25,7 +25,7 @@ export default function About() {
             broad cultural contexts that cannot be separated from material and environmental realities.
           </p>
           <p>
-            Developed by Peter Gottschalk (Wesleyan University) and Mathew Schmalz (College of the Holy Cross), 
+            Developed by <span className="wesleyanText">Peter Gottschalk (Wesleyan University)</span> and <span className="holyCrossText">Mathew Schmalz (College of the Holy Cross)</span>, 
             the platform is built upon over thirty years of research in 
             <strong> Chainpur</strong>—a village located in the state of Bihar, India.
           </p>
@@ -76,8 +76,8 @@ export default function About() {
       <section className={styles.acknowledgementsSection}>
         <h3>Project Credits & Acknowledgments</h3>
         <div className={styles.creditsMeta}>
-          <p><strong>Dr. Peter Gottschalk</strong> — Project Director & Professor of Religion, Wesleyan University</p>
-          <p><strong>Dr. Mathew Schmalz</strong> — Professor of Religious Studies, College of the Holy Cross </p>
+          <p><strong className="wesleyanText">Dr. Peter Gottschalk</strong> — Project Director & Professor of Religion, <span className="wesleyanText">Wesleyan University</span></p>
+          <p><strong className="holyCrossText">Dr. Mathew Schmalz</strong> — Professor of Religious Studies, <span className="holyCrossText">College of the Holy Cross</span></p>
         </div>
         <p className={styles.acknowledgementsText}>
           This multi-year endeavor was made possible through the generous support of our funding agencies, institutional partners, and the enduring hospitality of the residents of Chainpur. First and foremost, we would like to express our deepest gratitude to the people of the Chainpur nexus who have opened their homes, businesses, and lives to us with generosity and affection. We would like to extend our vast appreciation to Mohammad Hasib, Rachel Schnepper, Charlie Coffey, Francesca Baird, Qura-Tul-Ain Khan, and the entire digital humanities development framework team whose expertise and hard work brought this archive back to the open web. And we also are grateful to the Indian Government for providing permission to engage in the work necessary for this project.

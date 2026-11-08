@@ -24,13 +24,9 @@ export default function PortalCard({
       />
 
 
-      <div
-        className={styles.overlay}
-        style={{
-          backgroundColor:
-            tint || "rgba(0,0,0,0.35)"
-        }}
-      />
+      {/* a light touch of the card's colour, plus a fade at the bottom so the text reads */}
+      <div className={styles.tint} style={{ backgroundColor: tint || "transparent" }} />
+      <div className={styles.overlay} />
 
 
       <div className={styles.cardContent}>

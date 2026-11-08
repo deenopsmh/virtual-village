@@ -5,13 +5,21 @@
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 
-  --bg-main: #fff4e3;
-  --bg-surface: #F3EFEA;
+  /* warm paper, not peach; surface is the same hue a step darker */
+  --bg-main: #FBF6EE;
+  --bg-surface: #F3EADC;
   --text-main: #1C2624;
   --accent-primary: #234E52;
   --accent-secondary: #C8460F;
   --border-color: #2D3B38;
-  --hero-overlay: rgba(250, 248, 245, 0.72);
+  --hero-overlay: rgba(251, 246, 238, 0.82);
+
+  /* soft structural lines (cards, panels, dividers); full --border-color was too heavy */
+  --line: color-mix(in srgb, var(--border-color) 18%, transparent);
+
+  /* the two institutions (home page colours); used wherever Peter/Wesleyan or Mat/Holy Cross appear */
+  --wesleyan: #98002e;
+  --holy-cross: #602d8e;
 
   --waypoint-fill: #c2410c;
   --waypoint-stroke: #ffffff;
@@ -29,6 +37,12 @@ html.dark {
   --accent-secondary: #E59A6E;
   --border-color: #E2DED9;
   --hero-overlay: rgba(15, 22, 21, 0.78);
+
+  --line: color-mix(in srgb, var(--border-color) 16%, transparent);
+
+  /* same red and purple, lifted just enough to read on the dark background */
+  --wesleyan: #d23a5e;
+  --holy-cross: #a57be0;
 
 --waypoint-fill: #fdfcfb;
   --waypoint-stroke: #0f766e;
@@ -90,3 +104,8 @@ h1, h2, h3, h4, h5, h6 {
     animation: none;
   }
 }
+
+/* Institution colours: Peter / Wesleyan in Wesleyan red, Mat / Holy Cross in Holy Cross purple */
+:root .wesleyanText { color: var(--wesleyan); }  /* :root beats section styles like .addressText strong */
+:root .holyCrossText { color: var(--holy-cross); }
+a.wesleyanText:hover, a.holyCrossText:hover { text-decoration: underline; text-underline-offset: 3px; }

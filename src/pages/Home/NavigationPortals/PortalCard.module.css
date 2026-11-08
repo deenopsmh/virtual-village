@@ -3,7 +3,7 @@
   overflow: hidden;
   height: 270px;
 
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--line);
   background: var(--bg-surface);
 
   cursor: pointer;
@@ -46,10 +46,16 @@
   transform: scale(1.05);
 }
 
+.tint {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+}
+
 .overlay {
   position: absolute;
   inset: 0;
-
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.05) 100%);
 }
 
 .cardContent {

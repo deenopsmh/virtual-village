@@ -9,11 +9,11 @@ export default function ContactInfo() {
 
         <div className={styles.contactMethods}>
           <div className={styles.methodGroup}>
-            <a href="mailto:pgottschalk@wesleyan.edu" className={styles.methodLink}>
+            <a href="mailto:pgottschalk@wesleyan.edu" className={`${styles.methodLink} wesleyanText`}>
               pgottschalk@wesleyan.edu
             </a>
 
-            <a href="mailto:mschmalz@holycross.edu" className={styles.methodLink}>
+            <a href="mailto:mschmalz@holycross.edu" className={`${styles.methodLink} holyCrossText`}>
               mschmalz@holycross.edu
             </a>
           </div>
@@ -25,13 +25,13 @@ export default function ContactInfo() {
 
         <div className={styles.detailsGrid}>
           <address className={`${styles.addressText} ${styles.topSpacing}`}>
-            <strong>Wesleyan University</strong><br />
+            <strong className="wesleyanText">Wesleyan University</strong><br />
             Department of Religion<br />
             Global South Asian Studies Program  <br/>
             Middletown, CT 06459
           </address>
           <address className={styles.addressText}>
-            <strong>College of the Holy Cross</strong><br />
+            <strong className="holyCrossText">College of the Holy Cross</strong><br />
             Department of Religious Studies<br />
             Worcester, MA 01610
           </address>
