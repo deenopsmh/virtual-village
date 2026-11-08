@@ -1,43 +1,85 @@
-import React, { useState, useEffect } from "react";
+import { useMemo, useState } from "react";
+
+/*
+ * ResponsiveImage — renders an image from whichever source is available.
+ *
+ * `src` may be:
+ *   - a string (legacy):  local path ("VV3 Images - Copy/A to B"), a IIIF
+ *     manifest/image URL, or any other absolute URL
+ *   - an object:          { iiif, drive, local }  — tried in that order
+ *       iiif:  AM Quartex item ID (UUID) or manifest URL
+ *       drive: Google Drive file ID (file must be shared "Anyone with the link")
+ *       local: path under src/assets/VV3 Images - Copy (temporary fallback)
+ *
+ * If a source fails to load, the next one is tried. If all fail, `fallback`
+ * (or nothing) is rendered.
+ */
 
 const SIZES = [400, 800, 1200, 1600, 1920];
+const IIIF_ROOT = "https://iiif.quartexcollections.com/wesleyan/iiif";
 
-// Helper to check if a URL is absolute (remote)
-function isRemoteUrl(src) {
-  return /^https?:\/\//i.test(src);
+const isRemoteUrl = (s) => /^https?:\/\//i.test(s);
+
+// AM Quartex manifest IDs match the image-service IDs, so a manifest URL can be
+// turned straight into an Image API base without fetching the manifest first.
+function iiifBase(value) {
+  if (!value) return null;
+  if (!isRemoteUrl(value)) return `${IIIF_ROOT}/${value}`;
+  return value.replace(/\/manifest\/?$/, "").replace(/\/full\/.*$/, "");
 }
 
-// Helper to check if a URL matches IIIF patterns or a Manifest
-function isIiifUrl(src) {
-  return isRemoteUrl(src) && (src.includes("/iiif/") || src.includes("/full/") || src.includes("/manifest"));
-}
-
-// Extracts the IIIF base endpoint from full image URLs or raw manifests
-function getIiifBase(src) {
-  if (src.includes("/manifest")) {
-    // If it's a manifest link like: .../iiif/{id}/manifest
-    // We transform it into the IIIF Image API base: .../iiif/{id}
-    return src.replace(/\/manifest\/?$/, "");
-  }
-  // Strips trailing syntax like /full/full/0/default.jpg
-  return src.replace(/\/full\/.*$/, "");
-}
-
-function getOptimizedBase(src) {
-  if (!src) return "";
-
-  let cleanSrc = src
+function localBase(src) {
+  const clean = src
     .replace(/\\/g, "/")
     .replace(/^\/+/, "")
     .replace(/^(src\/assets\/|assets\/|VV3 Images - Copy\/)/, "")
     .replace(/\.[^/.]+$/, "");
+  return `/images/optimized/${clean.split("/").map(encodeURIComponent).join("/")}`;
+}
 
-  const encodedPath = cleanSrc
-    .split("/")
-    .map((segment) => encodeURIComponent(segment))
-    .join("/");
+// Each candidate: { src, srcSet, sources? } ready to hand to <img>/<picture>.
+function buildCandidates(src) {
+  if (!src) return [];
+  const spec =
+    typeof src === "string"
+      ? isRemoteUrl(src)
+        ? /\/iiif\/|\/manifest/.test(src) ? { iiif: src } : { url: src }
+        : { local: src }
+      : src;
 
-  return `/images/optimized/${encodedPath}`;
+  const out = [];
+
+  if (spec.iiif) {
+    const base = iiifBase(spec.iiif);
+    out.push({
+      kind: "iiif",
+      src: `${base}/full/800,/0/default.jpg`,
+      srcSet: SIZES.map((w) => `${base}/full/${w},/0/default.jpg ${w}w`).join(", "),
+    });
+  }
+
+  if (spec.drive) {
+    const u = (w) => `https://drive.google.com/thumbnail?id=${encodeURIComponent(spec.drive)}&sz=w${w}`;
+    out.push({
+      kind: "drive",
+      src: u(1200),
+      srcSet: SIZES.map((w) => `${u(w)} ${w}w`).join(", "),
+    });
+  }
+
+  if (spec.url) out.push({ kind: "url", src: spec.url });
+
+  if (spec.local) {
+    const base = localBase(spec.local);
+    out.push({
+      kind: "local",
+      src: `${base}/800.webp`,
+      srcSet: SIZES.map((w) => `${base}/${w}.webp ${w}w`).join(", "),
+      avif: SIZES.map((w) => `${base}/${w}.avif ${w}w`).join(", "),
+    });
+  }
+
+  return out;
 }
 
 export default function ResponsiveImage({
@@ -50,159 +92,50 @@ export default function ResponsiveImage({
   loading = "lazy",
   priority = false,
   style = {},
+  fallback = null,
+  onError,
   ...props
 }) {
-  const [resolvedSrc, setResolvedSrc] = useState(null);
-  const [loadingManifest, setLoadingManifest] = useState(false);
+  const key = typeof src === "string" ? src : JSON.stringify(src || {});
+  const candidates = useMemo(() => buildCandidates(src), [key]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Which candidate we're on; resets automatically when `src` changes.
+  const [attempt, setAttempt] = useState({ key, index: 0 });
+  const index = attempt.key === key ? attempt.index : 0;
 
-  useEffect(() => {
-    let isMounted = true;
+  const current = candidates[index];
+  if (!current) return fallback;
 
-    async function resolveSource() {
-      if (!src) return;
+  const handleError = (e) => {
+    setAttempt({ key, index: index + 1 });
+    onError?.(e);
+  };
 
-      // If it's a Manifest URL, we need to fetch it to check for an image service, 
-      // or construct the image endpoint directly from the manifest ID pattern.
-      if (isRemoteUrl(src) && src.includes("/manifest")) {
-        setLoadingManifest(true);
-        try {
-          const response = await fetch(src);
-          const data = await response.json();
-          
-          let imageUrl = null;
+  const imgProps = {
+    src: current.src,
+    srcSet: current.srcSet,
+    sizes: current.srcSet ? sizes : undefined,
+    alt,
+    className,
+    width,
+    height,
+    loading: priority ? "eager" : loading,
+    fetchPriority: priority ? "high" : "auto",
+    decoding: priority ? "sync" : "async",
+    referrerPolicy: current.kind === "drive" ? "no-referrer" : undefined,
+    onError: handleError,
+    style: { contentVisibility: priority ? "visible" : "auto", ...style },
+    ...props,
+  };
 
-          // Standard IIIF Presentation API parsing (v2 or v3)
-          // Look for images inside canvases -> images/items -> resource/body
-          const canvases = data.sequences?.[0]?.canvases || data.items;
-          if (canvases && canvases.length > 0) {
-            const firstCanvas = canvases[0];
-            const imageService = 
-              firstCanvas.images?.[0]?.resource?.service?.["@id"] ||
-              firstCanvas.items?.[0]?.body?.service?.[0]?.["@id"] ||
-              firstCanvas.items?.[0]?.body?.id;
-
-            if (imageService) {
-              imageUrl = imageService;
-            }
-          }
-
-          // Fallback: If JSON parsing doesn't yield a direct image service, 
-          // convert the manifest URL pattern directly to its image base endpoint
-          if (!imageUrl) {
-            imageUrl = getIiifBase(src);
-          }
-
-          if (isMounted) {
-            setResolvedSrc(imageUrl);
-          }
-        } catch (error) {
-          console.error("Failed to fetch IIIF manifest, falling back to URL conversion:", error);
-          if (isMounted) {
-            setResolvedSrc(getIiifBase(src));
-          }
-        } finally {
-          if (isMounted) setLoadingManifest(false);
-        }
-      } else {
-        if (isMounted) setResolvedSrc(src);
-      }
-    }
-
-    resolveSource();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [src]);
-
-    if (!src || !resolvedSrc) {
-        return loadingManifest ? <div className={`animate-pulse bg-gray-200 ${className}`} style={{ width, height, ...style }} /> : null;
-    }
-
-  const isRemote = isRemoteUrl(resolvedSrc);
-  const isIiif = isIiifUrl(resolvedSrc);
-
-  const imageLoading = priority ? "eager" : loading;
-  const fetchPriority = priority ? "high" : "auto";
-  const decodingMode = priority ? "sync" : "async";
-
-  if (isIiif) {
-    const iiifBase = getIiifBase(resolvedSrc);
-
-    const iiifSrcSet = SIZES.map(
-      (size) => `${iiifBase}/full/${size},/0/default.jpg ${size}w`
-    ).join(", ");
-
-    const defaultSrc = `${iiifBase}/full/800,/0/default.jpg`;
-
+  if (current.kind === "local") {
     return (
-      <img
-        src={defaultSrc}
-        srcSet={iiifSrcSet}
-        sizes={sizes}
-        alt={alt}
-        className={className}
-        width={width}
-        height={height}
-        loading={imageLoading}
-        fetchPriority={fetchPriority}
-        decoding={decodingMode}
-        style={{
-          contentVisibility: priority ? "visible" : "auto",
-          ...style,
-        }}
-        {...props}
-      />
+      <picture key={current.src}>
+        <source type="image/avif" srcSet={current.avif} sizes={sizes} />
+        <source type="image/webp" srcSet={current.srcSet} sizes={sizes} />
+        <img {...imgProps} />
+      </picture>
     );
   }
 
-  if (isRemote) {
-    return (
-      <img
-        src={resolvedSrc}
-        alt={alt}
-        className={className}
-        width={width}
-        height={height}
-        loading={imageLoading}
-        fetchPriority={fetchPriority}
-        decoding={decodingMode}
-        style={{
-          contentVisibility: priority ? "visible" : "auto",
-          ...style,
-        }}
-        {...props}
-      />
-    );
-  }
-
-  const base = getOptimizedBase(resolvedSrc);
-  if (!base) return null;
-
-  const avifSrcSet = SIZES.map((size) => `${base}/${size}.avif ${size}w`).join(", ");
-  const webpSrcSet = SIZES.map((size) => `${base}/${size}.webp ${size}w`).join(", ");
-
-  return (
-    <picture>
-      <source type="image/avif" srcSet={avifSrcSet} sizes={sizes} />
-      <source type="image/webp" srcSet={webpSrcSet} sizes={sizes} />
-      <img
-        src={`${base}/800.webp`}
-        srcSet={webpSrcSet}
-        sizes={sizes}
-        alt={alt}
-        className={className}
-        width={width}
-        height={height}
-        loading={imageLoading}
-        fetchPriority={fetchPriority}
-        decoding={decodingMode}
-        style={{
-          contentVisibility: priority ? "visible" : "auto",
-          ...style,
-        }}
-        {...props}
-      />
-    </picture>
-  );
+  return <img key={current.src} {...imgProps} />;
 }

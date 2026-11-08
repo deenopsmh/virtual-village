@@ -6,6 +6,7 @@ import HomeNew from './pages/Home/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Roam from './pages/Roam/Roam';
 import About from './pages/About/About';
+import Contexts from './pages/Contexts/Contexts';
 
 export default function App() {
   return (
@@ -40,6 +41,8 @@ export default function App() {
           } 
           
         />
+
+        <Route path="/contexts" element={<Contexts />} />
 
                 {/* <Route path="/about" element={<Home/>}/> */}
         {/* <Route path="/roam" element={<Roam/>}/>

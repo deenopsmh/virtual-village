@@ -16,7 +16,7 @@ Decisions locked in (Nov 8):
 - [x] Commit uncommitted local work (branch `vv3-client-updates`)
 - [ ] Push branch / deploy so Peter can see the Sep 13 fixes (told him Oct 12 it'd go up "1–2 days before we meet")
 - [ ] Reply to Peter — his Nov 1 & Nov 3 emails; book the meeting he asked for (you offered 3–4:30 pm EST)
-- [ ] Remove dead header links until pages exist (Contexts, Topics, Maps, History, Resources all 404 today)
+- [x] ~~Remove dead header links~~ — **keep them** (decided Nov 8): they show Peter the planned structure; pages are in progress
 
 ## 1. Quick fixes (Sep 13 feedback + later)
 - [x] Home hero: "…living history of **rural** Bihar"
@@ -36,7 +36,7 @@ Decisions locked in (Nov 8):
 - [ ] Finalise sheet columns: add **Path/waypoint key** (e.g. `A-to-Bhabua`), **Type** (street / side / view-in-side / detail), **Order**, **Callout** (the "Things to do" text), **Link** (2000s↔2020s pair); change **Parent** to use parent's **ID**, not label
 - [ ] Move sheet to Google Sheets; give Peter edit access
 - [ ] Build script: download sheet as CSV → validate (missing IDs, broken parents, duplicate keys) → write JSON; fail the build on errors
-- [ ] `ResponsiveImage`: build IIIF URL straight from ID (skip the manifest fetch — saves a round trip + grey flash)
+- [x] `ResponsiveImage`: build IIIF URL straight from ID (no manifest fetch); accepts `{ iiif, drive, local }` and falls back in that order
 - [ ] Preload images for neighbouring waypoints while user is at a point
 - [ ] Store image width/height in sheet (prevents layout jump; AM Quartex blocks server-side fetches)
 - [ ] Local-file fallback for rows with no IIIF ID yet
@@ -60,7 +60,7 @@ Source: `Roam labels 2020s VV3 30Oct26.docx` + `Changes to Roam 2020s labels 30O
 - [ ] Mini-map: current direction = moving dashes in **yellow or red**; other available directions = **solid blue**
 - [ ] Default Roam map = cropped map (cut off above FF); switch to the large map for waypoints A & B
 - [ ] Use Peter's new master maps (Oct 24, unused waypoints removed, names fixed) and re-plot waypoint positions
-- [ ] **(Peter)** "to bus stand master map 24Oc26.jpg" is actually a Photoshop .psd renamed to .jpg — ask him to re-export as JPG
+- [ ] ~~Bus stand master map~~ — **ignore for now** (decided Nov 8: reference only). FYI the file is a .psd renamed to .jpg if it's ever needed
 - [ ] Fix: E waypoint off the bottom of the map (can't get E → D)
 - [ ] Fix: D → E shows no image
 
@@ -74,7 +74,10 @@ Source: `Roam labels 2000s VV3 29Oct26.docx` (images in Drive: "Labelled VV3 new
 - [ ] **(Charlie)** Upload 2000s images to AM Quartex
 
 ## 6. New pages
-- [ ] **Contexts** page: Introduction, natural context, village nexus, bus stand, national, global sections — text + header images from `VV3 Contexts texts and images.docx`
+- [x] **Contexts** page (`/contexts`): all 7 sections, sources and "Things to explore" from `VV3 Contexts texts and images.docx` — data in `src/pages/Contexts/contextsData.js`
+- [ ] **(Peter)** Share "A Virtual Village materials" as *Anyone with the link → Viewer* — Contexts images (Drive links) show placeholders until then
+- [ ] **(Peter)** 4 Contexts images not in the Drive folder: "Shiv & Ganga Ma images on towers", "umrah ad context, Benares", "umrah ad, Benares EDIT", "Chainpur and cell towers close"
+- [ ] Banaras connections has no header image in Peter's doc — ask if he wants one
 - [ ] **Resources** landing page + "Resources for teaching A Virtual Village" + "Primary and secondary sources about Chainpur" — ideally editable by Peter (sheet or Markdown)
 - [ ] Topics / Maps / History pages — not specified yet; ask Peter
 
@@ -85,7 +88,6 @@ Source: `Roam labels 2000s VV3 29Oct26.docx` (images in Drive: "Labelled VV3 new
 - [ ] Interviews / oral histories (data has `interview` field, unused)
 
 ## Open questions for Peter
-1. Re-export the bus stand master map as JPG (it's a PSD).
-2. Missing images listed in §3 and §5.
-3. What should Topics, Maps, History contain — or hide them for now?
-4. Is the 4th nesting level (details within views within side views) essential?
+1. Missing images listed in §3 and §5.
+2. What should Topics, Maps, History contain?
+3. Is the 4th nesting level (details within views within side views) essential?
