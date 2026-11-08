@@ -81,7 +81,7 @@ Source: `Roam labels 2000s VV3 29Oct26.docx` (images in Drive: "Labelled VV3 new
 ## 6. New pages
 - [x] **Contexts** page (`/contexts`): all 7 sections, sources and "Things to explore" from `VV3 Contexts texts and images.docx` — data in `src/pages/Contexts/contextsData.js`
 - [x] Copied the 20 Contexts images into your Drive folder "VV3 site images" (Peter's folder untouched); `contextsData.js` points at the copies
-- [ ] **(You)** Share "VV3 site images" as *Anyone with the link → Viewer* — Contexts images show placeholders until then
+- [x] "VV3 site images" shared by link — all 20 Contexts images load (checked Nov 8)
 - [x] Contexts page widened to 80% of the window (full width with 16px gutters on phones)
 - [ ] **(Peter)** 4 Contexts images not in the Drive folder: "Shiv & Ganga Ma images on towers", "umrah ad context, Benares", "umrah ad, Benares EDIT", "Chainpur and cell towers close"
 - [ ] Banaras connections has no header image in Peter's doc — ask if he wants one
