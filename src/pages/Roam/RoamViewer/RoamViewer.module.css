@@ -433,22 +433,25 @@
 }
 
 .mapToggleButton {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  padding: 8px 16px;
+  height: auto;
+  border-radius: 20px;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 12pt;
+  font-weight: 500;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .mapToggleActive {
   background-color: var(--hero-overlay, rgba(252, 251, 250, 0.95));
   backdrop-filter: blur(8px);
+  color: var(--text-main, #1c1917);
   opacity: 1;
 }
 

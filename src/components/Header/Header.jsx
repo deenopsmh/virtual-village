@@ -18,6 +18,7 @@ export default function Header() {
 
   const navLinks = [
     { to: "/about", label: "About" },
+    { to: "/contexts", label: "Contexts" },
     { to: "/roam", label: "Roam" },
     { to: "/topics", label: "Topics" },
     { to: "/maps", label: "Maps" },

@@ -19,7 +19,7 @@ export default function Hero() {
             
             <div className={styles.contentContainer}>
                 <span className={styles.smallHeader}>
-                    An immersion into the living history of Bihar
+                    An immersion into the living history of Rural Bihar
                 </span>
 
                 <h1 className={styles.mainHeader}>

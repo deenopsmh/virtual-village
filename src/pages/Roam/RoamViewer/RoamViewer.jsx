@@ -710,9 +710,8 @@ const handleContainerMouseUp = (e) => {
               className={`${styles.mapToggleButton} ${isMapVisible ? styles.mapToggleActive : styles.mapToggleMuted}`}
               onClick={() => setIsMapVisible(!isMapVisible)}
               onMouseDown={(e) => e.stopPropagation()}
-              title={isMapVisible ? 'Hide Map Overlay' : 'Show Map Overlay'}
             >
-              🗺️
+              {isMapVisible ? 'Hide Map' : 'Display Map'}
             </button>
           </div>
         )}

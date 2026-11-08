@@ -125,19 +125,9 @@ export const ROAM_DATA = {
         "description": "The road from Chand village continues on to the town of Bhabua, which Bhabua (or Kaimur) district headquarters. The road is an important area traffic artery. The crossroads with the main road from Chainpur serves as an essential bus stand.",
         "images": [
           {
-            "src": "VV3 Images - Copy/A to Bhabua",
+            "src": "https://iiif.quartexcollections.com/wesleyan/iiif/5c90b035-db9d-4ea3-a0aa-a012cc49a9d3/manifest",
             "title": "",
             "focus_point": ""
-          }
-        ],
-        "interview": null
-      },
-      "2000s": {
-        "description": "In 2000s, bottled water was not yet available in the shops around Chainpur.",
-        "images": [
-          {
-            "src": "VV3 Images - Copy/A to Bhabua",
-            "title": "Thana Road, 2004"
           }
         ],
         "interview": null
@@ -234,17 +224,7 @@ export const ROAM_DATA = {
                 "src": "VV3 Images - Copy/A to B tank/A to B tank ghat detail",
                 "title": "",
                 "focus_point": ""
-              },
-              // {
-              //   "src": "VV3 Images - Copy/A to B tank/A to B tank ghat distant",
-              //   "title": "",
-              //   "focus_point": ""
-              // },
-              // {
-              //   "src": "VV3 Images - Copy/A to B tank/A to B tank oblong",
-              //   "title": "",
-              //   "focus_point": ""
-              // }
+              }
             ],
             "interview": null
           }
@@ -1325,7 +1305,7 @@ export const ROAM_DATA = {
               {
                 "src": "VV3 Images - Copy/A to B saddhu on bike vertical",
                 "title": "",
-                "focus_point": ""
+                "focus_point": { top: 18.7, left: 46.7 }
               }
             ],
             "interview": null
@@ -3122,7 +3102,7 @@ export const ROAM_DATA = {
         "description": "The entrance to the qila ('fort') from which a raja ('ruler') is said to have reigned over the area until an injustice he committed against his Brahman vizier ('senior advisor') led the man to commit suicide. Harsu Pandey thus became Harsu Brahm, a vengeful ghost who destroyed the raja and most of his family.",
         "images": [
           {
-            "src": "",
+            "src": "VV3 Images - Copy/E to D",
             "title": "",
             "focus_point": ""
           }
@@ -3323,7 +3303,7 @@ export const ROAM_DATA = {
         "description": "These merchants make maximal use of their space, packing their wares densely on either side of the exit from the qila ('fort').",
         "images": [
           {
-            "src": "",
+            "src": "VV3 Images - Copy/E to D",
             "title": "",
             "focus_point": ""
           }

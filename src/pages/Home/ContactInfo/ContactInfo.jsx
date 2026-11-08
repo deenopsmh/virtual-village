@@ -24,17 +24,16 @@ export default function ContactInfo() {
         <h3 className={styles.mainTitle}>Institutional Anchors</h3>
 
         <div className={styles.detailsGrid}>
-          <address className={styles.addressText}>
-            <strong>College of the Holy Cross</strong><br />
-            Global South Asian Studies Program  <br/>
-            Department of Religious Studies<br />
-            Worcester, MA 01610
-          </address>
-
           <address className={`${styles.addressText} ${styles.topSpacing}`}>
             <strong>Wesleyan University</strong><br />
             Department of Religion<br />
+            Global South Asian Studies Program  <br/>
             Middletown, CT 06459
+          </address>
+          <address className={styles.addressText}>
+            <strong>College of the Holy Cross</strong><br />
+            Department of Religious Studies<br />
+            Worcester, MA 01610
           </address>
         </div>
       </div>

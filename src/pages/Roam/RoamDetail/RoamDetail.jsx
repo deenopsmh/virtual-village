@@ -164,7 +164,7 @@ export default function RoamDetail({
                 className={styles.playButton}
                 onClick={() => alert('Audio Playback Engine Triggered')}
               >
-                ▶
+                Play
               </button>
               <div className={styles.waveformTrack}>
                 <div className={styles.progressBar} style={{ width: '35%' }} />
