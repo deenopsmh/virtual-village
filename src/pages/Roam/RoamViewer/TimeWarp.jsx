@@ -21,7 +21,7 @@ const prefersReducedMotion = () =>
 
 export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPhotoLoading, containerRef, isMapVisible }) {
   const [phase, setPhase] = useState('idle');
-  const [warp, setWarp] = useState(null); // { to, src, origin: {x, y} }
+  const [warp, setWarp] = useState(null); // { to, src, origin: {x, y}, portrait }
   const portalRef = useRef(null);
 
   const finish = () => {
@@ -133,12 +133,20 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
           onAnimationEnd={handleOverlayAnimationEnd}
           aria-hidden="true"
         >
+          {/* framed like the viewer: portrait photos whole over a blurred copy, landscape fills */}
+          {warp.portrait && (
+            <ResponsiveImage src={warp.src} alt="" className={styles.overlayBackdrop} sizes="200px" />
+          )}
           <ResponsiveImage
             src={warp.src}
             alt=""
-            className={styles.overlayImage}
+            className={`${styles.overlayImage} ${warp.portrait ? styles.overlayImagePortrait : ''}`}
             sizes="100vw"
             priority
+            onLoad={(e) => {
+              const { naturalWidth: w, naturalHeight: h } = e.currentTarget;
+              if (w && h && h > w) setWarp((cur) => (cur ? { ...cur, portrait: true } : cur));
+            }}
             onSettled={handleOverlaySettled}
           />
           <span className={styles.overlayDim} />

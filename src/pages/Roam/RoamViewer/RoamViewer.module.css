@@ -34,6 +34,17 @@
 .grab { cursor: grab; }
 .grabbing { cursor: grabbing; }
 
+/* Portrait photo: shown whole, so the backdrop does more work — blur it right down */
+.backgroundPortrait .backgroundImg {
+  filter: blur(28px) saturate(1.2) brightness(0.75);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.noDrag {
+  cursor: default;
+}
+
 .transformLayer {
   position: absolute;
   width: 100%;
@@ -49,6 +60,10 @@
   height: 100%;
   object-fit: contain;
   pointer-events: none;
+}
+
+.backgroundPortrait ~ .transformLayer .panImage {
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45));
 }
 
 .miniMapWrapper {

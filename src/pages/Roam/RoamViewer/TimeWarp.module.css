@@ -242,6 +242,21 @@
   display: block;
 }
 
+.overlayImagePortrait {
+  position: relative;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45));
+}
+
+.overlayBackdrop {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  filter: blur(28px) saturate(1.2) brightness(0.75);
+}
+
 .overlayOpen {
   clip-path: circle(150% at var(--ox) var(--oy));
   animation: warpIris 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;

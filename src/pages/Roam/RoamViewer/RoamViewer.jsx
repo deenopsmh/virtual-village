@@ -67,6 +67,7 @@ export default function RoamViewer({
 
   const [scale, setScale] = useState(1);
   const [maxPan, setMaxPan] = useState({ x: 0, y: 0 });
+  const [isPortrait, setIsPortrait] = useState(false);
   const [isRevealing, setIsRevealing] = useState(false);
 
   const [mapZoom, setMapZoom] = useState(1);
@@ -266,13 +267,19 @@ const handleBack = () => {
       renderedH = containerW / imageRatio;
     }
 
+    // Portrait photos are shown whole (contain) over a blurred backdrop: zooming them to
+    // fill a wide frame would crop most of the picture. Landscape photos fill the frame
+    // (cover) and can be dragged.
+    const isPortraitPhoto = imageRatio < 1;
+    setIsPortrait(isPortraitPhoto);
+
     const ZOOM_PAD = 1.03;
     const scaleX = (renderedW / containerW) * ZOOM_PAD;
     const scaleY = (renderedH / containerH) * ZOOM_PAD;
-    const targetScale = Math.max(scaleX, scaleY);
+    const targetScale = isPortraitPhoto ? 1 : Math.max(scaleX, scaleY);
 
-    const limitX = Math.max(0, (renderedW * ZOOM_PAD - containerW) / 2);
-    const limitY = Math.max(0, (renderedH * ZOOM_PAD - containerH) / 2);
+    const limitX = isPortraitPhoto ? 0 : Math.max(0, (renderedW * ZOOM_PAD - containerW) / 2);
+    const limitY = isPortraitPhoto ? 0 : Math.max(0, (renderedH * ZOOM_PAD - containerH) / 2);
 
     setMaxPan({ x: limitX, y: limitY });
     setPan({ x: 0, y: 0 });
@@ -284,7 +291,7 @@ const handleBack = () => {
     let targetPanX = 0;
     let targetPanY = 0;
 
-    if (focusPoint) {
+    if (focusPoint && !isPortraitPhoto) {
       const focusPxX = (focusPoint.left / 100) * containerW;
       const focusPxY = (focusPoint.top / 100) * containerH;
 
@@ -299,6 +306,8 @@ const handleBack = () => {
     if (revealTimeoutRef.current) {
       clearTimeout(revealTimeoutRef.current);
     }
+
+    if (isPortraitPhoto) return; // already framed: whole photo, nothing to zoom or drag
 
     if (skipRevealRef.current) {
       skipRevealRef.current = false;
@@ -445,14 +454,14 @@ const handleContainerMouseUp = (e) => {
   return (
     <div className={styles.viewerWrapper}>
       <div
-        className={`${styles.canvasContainer} ${isDragging ? styles.grabbing : styles.grab}`}
+        className={`${styles.canvasContainer} ${isPortrait ? styles.noDrag : isDragging ? styles.grabbing : styles.grab}`}
         ref={containerRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleContainerMouseUp}
         onMouseLeave={() => setIsDragging(false)}
       >
-        <div className={styles.backgroundImage}>
+        <div className={`${styles.backgroundImage} ${isPortrait ? styles.backgroundPortrait : ''}`}>
           <ResponsiveImage
             src={currentImage}
             alt=""
