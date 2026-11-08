@@ -47,6 +47,9 @@ export default function RoamViewer({
   activeOriginPaths = [],
   isSplitViewOpen,
   onSelectPathChoice,
+  otherEra,
+  canTimeWarp,
+  onTimeWarp,
 }) {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -421,6 +424,12 @@ const handleContainerMouseUp = (e) => {
           />
         </div>
 
+        {!currentImage && !isSplitViewOpen && (
+          <div className={styles.noPhotoNotice} role="status">
+            No {era} photo for this view yet
+          </div>
+        )}
+
         {isSplitViewOpen ? (
           <div className={styles.splitChoiceContainer} onMouseDown={(e) => e.stopPropagation()}>
             <div className={styles.splitHeaderBar}>
@@ -477,6 +486,11 @@ const handleContainerMouseUp = (e) => {
               draggable="false"
               onLoad={handleImageLoad}
               onDoubleClick={handleImageDoubleClick}
+              fallback={
+                <div className={styles.noPhotoNotice} role="status">
+                  This {era} photo can't be shown yet
+                </div>
+              }
             />
 
             {availableActivities.map((item) => {
@@ -685,6 +699,19 @@ const handleContainerMouseUp = (e) => {
                 );
               })}
             </nav>
+
+            <button
+              className={`${styles.timeWarpButton} ${era === '2000s' ? styles.timeWarpPast : ''}`}
+              onClick={onTimeWarp}
+              onMouseDown={(e) => e.stopPropagation()}
+              disabled={!canTimeWarp}
+              title={canTimeWarp ? `Time warp to the ${otherEra}` : `No ${otherEra} view of this place yet`}
+              aria-label={canTimeWarp ? `Time warp to the ${otherEra}` : `Time warp unavailable: no ${otherEra} view of this place yet`}
+            >
+              <span className={styles.timeWarpWord}>time</span>
+              <span className={styles.timeWarpWord}>warp</span>
+              <span className={styles.timeWarpEra}>{era} → {otherEra}</span>
+            </button>
 
             <button
               className={`${styles.mapToggleButton} ${isMapVisible ? styles.mapToggleActive : styles.mapToggleMuted}`}

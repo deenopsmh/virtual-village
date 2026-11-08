@@ -30,7 +30,7 @@ Decisions locked in (Nov 8):
 - [x] Roam: map button text → "Map" / "Hide map"
 - [ ] "Things to do" labels in sentence case, per Peter's label list (Aug 8) — e.g. "Hindu deities on the facade" — *will come for free from the sheet migration (§2)*
 - [x] "Farm tractor with grain" — superseded by Nov 1 callout "Watch out! Tractor!"; also fixed "trailors" → "trailers"
-- [ ] Time switch button labelled "time warp" (two lines: time / warp) — agreed Nov 3
+- [x] Time switch button labelled "time warp" (two lines: time / warp) — agreed Nov 3
 
 ## 2. Spreadsheet → site pipeline (replace hard-coded `RoamData.jsx` content)
 - [x] Sheet columns defined (`scripts/roam/schema.mjs`): ID, Parent ID (by ID), Path, Type, Order, Era, Label, Description, Image IIIF ID / Drive ID / Local, Image Title, Focus Point, Hotspot, Notes. 2000s↔2020s link = same ID, different Era row
@@ -71,12 +71,18 @@ Source: `Roam labels 2020s VV3 30Oct26.docx` + `Changes to Roam 2020s labels 30O
 - [ ] D-to-E's own photo is the "E to D" image — fix in the Sheet (Image Local column) once Peter confirms the right photo
 
 ## 5. 2000s level
-Source: `Roam labels 2000s VV3 29Oct26.docx` (images in Drive: "Labelled VV3 new images 2000s level")
-- [ ] Load 2000s images + text for ~38 paths (none in the site yet)
-- [ ] Support 4 nesting levels (street view → side view → view within side view → detail); Peter will flatten the 4th if too complex
-- [ ] "LINK" items: connect each 2000s page to its 2020s twin so "time warp" jumps between them
-- [ ] Build the time warp / compare-era feature (era is hard-coded to 2020s today, no switch in UI)
-- [ ] **(Peter)** "+++NEED REPLACEMENT+++" images (e.g. AA to GG) and ones awaiting scans of original slides
+Source: `Roam labels 2000s VV3 29Oct26.docx` (images in Drive: "labelled VV3 new images 2000s level")
+- [x] Parsed Peter's doc into Sheet rows (`scripts/roam/import-peter-doc/`): 264 rows on 30 mapped paths; "Repeat all listings" copied to reverse paths; blue = view within a side view
+- [x] 36 items share an ID with their 2020s twin (matched by photo name), so time warp lands on the same spot
+- [x] Matched 141 of 145 photos in Peter's 2000s folder (14 by close spelling; checked by hand)
+- [x] **Time warp** button (time / warp, shows "2020s → 2000s"); era kept in the URL (`?era=2000s`); keeps you on the twin view, else the nearest view that exists in that era
+- [ ] Copy the 141 2000s photos into "VV3 site images" (Peter's folder is private)
+- [ ] Import the 2000s rows into the Roam Sheet (File → Import → Append)
+- [ ] 13 rows for paths not on the map yet (`data/roam-2000s-pending.csv`): D→Sherpur, K→Naughara, K→L, L→K, N→M, DD→N, N→DD, L→M — need waypoints DD and Naughara placed, and the new paths added to `roamNetwork.js`
+- [ ] **(Peter)** 21 photos named in the doc aren't in his 2000s folder: Malik Sharma ×2, carpenter ×2, Sita Ma's chai shop ×2, D to E arch / midway / Sufi tomb enter / Sufi tomb detail, E to south aerial / oxen / paddy / harvest, Jama Masjid khutba, Pappu's chai dukhan ×4 + "K to G detail detail 2", DD to N cosmetic vendor, D to G Yunani doctor sign
+- [ ] **(Peter)** "+++NEED REPLACEMENT+++" AA to GG photo; TEMP photos (AA to D chai shop, K to L, N to M, M to BB…)
+- [ ] Review nesting in the Sheet: only blue lines were nested; e.g. "Buy some tools" (tool maker CLOSE) may belong under the tool maker
+- [ ] Photos older than the 2000s (1990s/1995) are noted in the Notes column — decide whether to label them on the page
 - [ ] **(Charlie)** Upload 2000s images to AM Quartex
 
 ## 6. New pages

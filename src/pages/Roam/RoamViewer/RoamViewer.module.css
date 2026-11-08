@@ -432,6 +432,92 @@
   border: 1.5px solid currentColor;
 }
 
+/* Time warp: switch between the 2000s and 2020s view of the same place */
+.timeWarpButton {
+  display: grid;
+  grid-template-columns: auto;
+  justify-items: center;
+  line-height: 1;
+  gap: 2px;
+  padding: 8px 14px;
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 60%, transparent);
+  border-radius: 14px;
+  background-color: var(--hero-overlay, rgba(252, 251, 250, 0.95));
+  backdrop-filter: blur(8px);
+  color: var(--accent-secondary);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.timeWarpButton:hover:not(:disabled),
+.timeWarpButton:focus-visible {
+  background-color: var(--accent-secondary);
+  color: var(--bg-main);
+}
+
+.timeWarpButton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.timeWarpButton:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 2px;
+}
+
+.timeWarpButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.timeWarpWord {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.timeWarpEra {
+  margin-top: 3px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+/* In the 2000s the button is filled, so it's obvious you're in the past */
+.timeWarpPast {
+  background-color: var(--accent-secondary);
+  color: var(--bg-main);
+}
+
+.timeWarpPast:hover:not(:disabled) {
+  background-color: var(--hero-overlay);
+  color: var(--accent-secondary);
+}
+
+.noPhotoNotice {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: repeating-linear-gradient(
+    135deg,
+    var(--bg-surface),
+    var(--bg-surface) 12px,
+    color-mix(in srgb, var(--border-color) 6%, var(--bg-surface)) 12px,
+    color-mix(in srgb, var(--border-color) 6%, var(--bg-surface)) 24px
+  );
+  pointer-events: none;
+}
+
 .mapToggleButton {
   padding: 8px 16px;
   height: auto;

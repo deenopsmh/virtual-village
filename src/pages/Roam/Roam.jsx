@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import RoamViewer from './RoamViewer/RoamViewer';
 import RoamDetail from './RoamDetail/RoamDetail';
 import { ROAM_DATA, POINT_DATA } from './RoamData';
@@ -33,7 +33,8 @@ function computeBreadcrumbPath(currentNode, breadcrumbIds, activeEra) {
 
   for (const id of breadcrumbIds) {
     const nextEntity = currentEntity?.activities?.[id];
-    if (!nextEntity) break;
+    // stop at the deepest view that exists in this era (time warp keeps you as close as possible)
+    if (!nextEntity || !nextEntity.eras?.[activeEra]) break;
 
     const eraDetails = nextEntity.eras?.[activeEra] || {};
     path.push({ id, label: eraDetails.label || id });
@@ -57,7 +58,9 @@ export default function Roam() {
 
   const currentNodeId = ROAM_DATA[nodeIdFromUrl] ? nodeIdFromUrl : DEFAULT_NODE_ID;
 
-  const [activeEra, setActiveEra] = useState("2020s");
+  // Era lives in the URL (?era=2000s) so a time-warped view can be shared or reloaded.
+  const [searchParams] = useSearchParams();
+  const activeEra = searchParams.get('era') === '2000s' ? '2000s' : '2020s';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [selectedOriginId, setSelectedOriginId] = useState(null);
@@ -67,9 +70,18 @@ export default function Roam() {
   const currentNode = ROAM_DATA[currentNodeId];
 
 
-  const navigateToPath = (nodeId, ids = [], options) => {
+  const navigateToPath = (nodeId, ids = [], options, era = activeEra) => {
     const path = ids.length ? `/roam/${nodeId}/${ids.join('/')}` : `/roam/${nodeId}`;
-    navigate(path, options);
+    navigate(era === '2000s' ? `${path}?era=2000s` : path, options);
+  };
+
+  // Time warp: same place, other era. Stays on the twin view if there is one;
+  // the breadcrumb check below trims to the deepest view that exists in that era.
+  const otherEra = activeEra === '2020s' ? '2000s' : '2020s';
+  const canTimeWarp = Boolean(currentNode?.eras?.[otherEra]);
+  const handleTimeWarp = () => {
+    if (!canTimeWarp) return;
+    navigateToPath(currentNodeId, breadcrumbIds, undefined, otherEra);
   };
 
   // Redirect bare "/roam" or an invalid nodeId segment to the default node's URL.
@@ -80,13 +92,6 @@ export default function Roam() {
   }, [nodeIdFromUrl]);
 
 
-  const prevEraRef = useRef(activeEra);
-  useEffect(() => {
-    if (prevEraRef.current !== activeEra) {
-      navigateToPath(currentNodeId, []);
-    }
-    prevEraRef.current = activeEra;
-  }, [activeEra]);
 
 
   const breadcrumbPath = useMemo(
@@ -263,6 +268,9 @@ export default function Roam() {
           activeOriginPaths={activeOriginPaths}
           isSplitViewOpen={isSplitViewOpen}
           onSelectPathChoice={handleSelectPathChoice}
+          otherEra={otherEra}
+          canTimeWarp={canTimeWarp}
+          onTimeWarp={handleTimeWarp}
         />
 
         <RoamDetail
