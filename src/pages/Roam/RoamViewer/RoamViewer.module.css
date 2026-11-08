@@ -385,6 +385,9 @@
   .bottomControlHudZone {
     left: 16px;
     transform: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 }
 

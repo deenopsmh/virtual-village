@@ -740,21 +740,18 @@ const handleContainerMouseUp = (e) => {
 
 
         {!isSplitViewOpen && (
-          <TimeWarp
-            era={era}
-            otherEra={otherEra}
-            canWarp={canTimeWarp}
-            preview={timeWarpPreview}
-            onWarp={handleTimeWarp}
-            isPhotoLoading={isPhotoLoading}
-            containerRef={containerRef}
-            portalTarget={canvasEl}
-            isMapVisible={isMapVisible}
-          />
-        )}
-
-        {!isSplitViewOpen && (
           <div className={styles.bottomControlHudZone} onMouseDown={(e) => e.stopPropagation()}>
+            <TimeWarp
+              era={era}
+              otherEra={otherEra}
+              canWarp={canTimeWarp}
+              preview={timeWarpPreview}
+              onWarp={handleTimeWarp}
+              isPhotoLoading={isPhotoLoading}
+              containerRef={containerRef}
+              portalTarget={canvasEl}
+            />
+
             <nav className={styles.navigationPad} aria-label="Move through Chainpur">
               {NAV_BUTTONS.map(({ move, verb, area }) => {
                 const target = moves[move];

@@ -4,8 +4,8 @@ import ResponsiveImage from '../../../components/ResponsiveImage';
 import styles from './TimeWarp.module.css';
 
 /*
- * Time warp: a small round "portal" at the bottom centre of the scene showing this same
- * spot in the other era, with a slow ripple so it reads as alive (hover for a bigger peek). Clicking it opens the portal out over the whole
+ * Time warp: a small round "portal" above the arrow pad showing this same spot in the
+ * other era, with a slow ripple so it reads as alive (hover for a bigger peek). Clicking it opens the portal out over the whole
  * scene (an iris), then switches era. The overlay stays until the new photo has
  * loaded, so there's no blank flash in between.
  *
@@ -17,13 +17,29 @@ const ERA_ORDER = ['2000s', '2020s']; // oldest first
 const OPEN_TIMEOUT_MS = 2500; // give up on the animation if the photo is slow
 const LAND_TIMEOUT_MS = 4000;
 
+const HINT_KEY = 'vv.timeWarpHintSeen';
+const readHintSeen = () => {
+  try { return window.localStorage.getItem(HINT_KEY) === '1'; } catch { return false; }
+};
+const writeHintSeen = () => {
+  try { window.localStorage.setItem(HINT_KEY, '1'); } catch { /* storage blocked: fine */ }
+};
+
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPhotoLoading, containerRef, portalTarget, isMapVisible }) {
+export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPhotoLoading, containerRef, portalTarget }) {
   const [phase, setPhase] = useState('idle');
   const [warp, setWarp] = useState(null); // { to, src, origin: {x, y}, portrait }
   const portalRef = useRef(null);
+  const [showHint, setShowHint] = useState(() => !readHintSeen());
+
+  // The hint shows for a few seconds on someone's first visit, then never again.
+  useEffect(() => {
+    if (!showHint || !canWarp) return undefined;
+    const t = setTimeout(() => { writeHintSeen(); setShowHint(false); }, 7000);
+    return () => clearTimeout(t);
+  }, [showHint, canWarp]);
 
   const finish = () => {
     setPhase('idle');
@@ -50,6 +66,8 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
 
   const startWarp = () => {
     if (!canWarp || phase !== 'idle') return;
+    writeHintSeen();
+    setShowHint(false);
     if (!preview?.src || prefersReducedMotion()) {
       onWarp();
       return;
@@ -92,7 +110,7 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
   return (
     <>
       <div
-        className={`${styles.dock} ${isMapVisible ? styles.withMap : ''} ${goingBack ? styles.toPast : styles.toPresent}`}
+        className={`${styles.dock} ${goingBack ? styles.toPast : styles.toPresent}`}
         onMouseDown={(e) => e.stopPropagation()}
       >
         <button
@@ -114,9 +132,17 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
             </span>
           </span>
           <span className={styles.eraTag} aria-hidden="true">
-            {canWarp ? <>↺ {otherEra}</> : `no ${otherEra}`}
+            <span className={styles.tagKicker}>Time warp</span>
+            {canWarp ? `to the ${otherEra}` : `no ${otherEra} yet`}
           </span>
         </button>
+
+        {/* First time someone meets the portal, say what it does (then stays out of the way) */}
+        {showHint && canWarp && (
+          <span className={styles.hint} role="note">
+            Click the portal to see this place in the <strong>{otherEra}</strong>
+          </span>
+        )}
 
         {/* Peek: a larger look at this spot in the other era, only while hovering */}
         {canWarp && preview?.src && (

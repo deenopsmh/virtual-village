@@ -29,24 +29,20 @@
   }
 }
 
-/* ---------- Breadcrumb trail ---------- */
+/* ---------- Breadcrumb trail: a slim line of text, only as wide as it needs ---------- */
 .breadcrumbBar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin: -24px 0 18px;
-  padding: 6px 6px 6px 8px;
-  border: 1px solid color-mix(in srgb, var(--border-color) 18%, transparent);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--bg-surface) 70%, transparent);
-  backdrop-filter: blur(8px);
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  margin: -28px 0 12px;
 }
 
 .trail {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0;
   min-width: 0;
   margin: 0;
   padding: 0;
@@ -72,40 +68,41 @@
 }
 
 .chevron {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   flex: none;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.2;
+  stroke-width: 2.4;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.35;
-  margin: 0 2px;
+  opacity: 0.3;
+  margin: 0 1px;
 }
 
 .crumb {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   min-width: 0;
-  padding: 6px 12px;
+  padding: 3px 6px;
   border: 0;
-  border-radius: 999px;
+  border-radius: 6px;
   background: none;
   color: var(--text-main);
   font: inherit;
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  opacity: 0.72;
+  opacity: 0.6;
   cursor: pointer;
-  transition: background-color 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .crumb:hover:not(.crumbCurrent),
 .crumb:focus-visible {
   opacity: 1;
-  background: color-mix(in srgb, var(--text-main) 8%, transparent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .crumb:focus-visible {
@@ -114,25 +111,25 @@
 }
 
 .crumbText {
-  max-width: 28ch;
+  max-width: 30ch;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .crumbRoot {
-  font-family: var(--font-serif);
+  padding-left: 0;
   font-weight: 700;
-  opacity: 0.9;
+  opacity: 0.75;
 }
 
 .routeIcon {
-  width: 16px;
-  height: 16px;
+  width: 13px;
+  height: 13px;
   flex: none;
   fill: none;
   stroke: var(--accent-secondary);
-  stroke-width: 2;
+  stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -145,42 +142,41 @@
 .crumbCurrent {
   opacity: 1;
   cursor: default;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent-secondary);
-  background: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
 }
 
+/* tiny era label after the trail */
 .eraTag {
   flex: none;
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   font-variant-numeric: tabular-nums;
-  color: #0e5e62;
-  background: color-mix(in srgb, #5fc4c9 30%, transparent);
+  color: var(--text-main);
+  opacity: 0.6;
 }
 
-:global(html.dark) .eraTag {
-  color: #8fe0e3;
+.eraTag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5fc4c9;
 }
 
-.eraTagPast {
-  color: #8a4b12;
-  background: color-mix(in srgb, #e0a35a 32%, transparent);
-}
-
-:global(html.dark) .eraTagPast {
-  color: #f0c48c;
+.eraTagPast::before {
+  background: #e0a35a;
 }
 
 @media (max-width: 640px) {
   .breadcrumbBar {
     margin-top: -16px;
-    border-radius: 16px;
   }
   .crumbText {
-    max-width: 18ch;
+    max-width: 16ch;
   }
 }
