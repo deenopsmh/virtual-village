@@ -1,5 +1,6 @@
 .page {
   width: 80%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 60px 0 80px;
   background: var(--bg-main);
@@ -73,6 +74,8 @@
 }
 
 .toc a {
+  display: inline-block;
+  padding: 8px 4px; /* comfortable tap target */
   font-size: 0.9rem;
   color: var(--text-main);
   text-decoration: none;
@@ -136,6 +139,7 @@
 }
 
 .prose p {
+  max-width: var(--measure);
   font-size: 1.05rem;
   line-height: 1.8;
   margin: 0 0 20px;

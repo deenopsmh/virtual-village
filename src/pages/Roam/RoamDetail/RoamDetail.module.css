@@ -205,7 +205,7 @@
 .todoItemButton {
   background: none;
   border: none;
-  padding: 0;
+  padding: 5px 0; /* comfortable tap target */
   font: inherit;
   cursor: pointer;
   text-align: left;
@@ -300,7 +300,8 @@
   justify-content: space-between;
   gap: 8px;
   width: 100%;
-  padding: 6px 10px;
+  min-height: 34px;
+  padding: 7px 10px;
   border: 0;
   border-left: 2px solid transparent;
   border-radius: 6px;

@@ -1,6 +1,8 @@
 .sectionContainer {
   /* margin: 50px auto; */
-  padding: 50px 80px !important; 
+  padding: 50px var(--gutter) !important;
+  max-width: var(--page-max);
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   box-sizing: border-box;
@@ -160,6 +162,7 @@
 
 .textGroup p {
   margin: 0;
+  max-width: var(--measure);
 }
 
 .linkWrapper {

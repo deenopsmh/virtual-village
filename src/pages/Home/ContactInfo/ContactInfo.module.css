@@ -1,6 +1,7 @@
 .sectionContainer {
   margin: 50px auto;
-  padding: 50px 80px;
+  padding: 50px var(--gutter);
+  max-width: var(--page-max);
 
   display: grid;
   grid-template-columns: 1fr;

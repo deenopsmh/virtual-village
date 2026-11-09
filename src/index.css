@@ -2,6 +2,11 @@
 @import "tailwindcss";
 
 :root {
+  /* layout: content never stretches past these on wide screens; gutters shrink on phones */
+  --page-max: 1280px;
+  --gutter: clamp(16px, 5vw, 80px);
+  --measure: 72ch; /* comfortable reading line length */
+
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 
