@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "roam:content": "node scripts/roam/build-roam-content.mjs",
     "quartex:export": "node scripts/roam/quartex/export-upload-list.mjs",
-    "quartex:import": "node scripts/roam/quartex/import-iiif-ids.mjs"
+    "quartex:import": "node scripts/roam/quartex/import-iiif-ids.mjs",
+    "quartex:xlsx": "python scripts/roam/quartex/make-xlsx.py"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.16",

@@ -1,5 +1,5 @@
 {
- "_about": "Your Drive copy ID -> Peter's original file (ID + name). Used to tell Charlie which originals to upload to AM Quartex. 'local': older 2020s photos the site loads from local files -> Peter's original in his labelled 2020s folder (null = not found in his Drive).",
+ "_about": "Your Drive copy ID -> Peter's original file (ID + name). Used to tell Charlie which originals to upload to AM Quartex. 'local': older 2020s photos the site loads from local files -> Peter's original in his labelled 2020s folder (null = not found in his Drive). 'iiif': AM Quartex photos whose row stores no Drive or local file -> Peter's original.",
  "copies": {
   "1Z-mhxyjiVs56_romeM5ZJhB8KSCqDv4X": {
    "original": "1-ouRm4pWbeDeacuzPXavN8K2iM2yFI6D",
@@ -1091,5 +1091,11 @@
    "folder": "labelled VV3 new images 2020s level"
   },
   "M to Marai": null
+ },
+ "iiif": {
+  "5c90b035-db9d-4ea3-a0aa-a012cc49a9d3": {
+   "original": "1PhDz6uqSshI_CednPHQ3_lDuk1No_gN7",
+   "title": "A to Bhabua.JPG"
+  }
  }
 }
