@@ -55,7 +55,7 @@
 
 .methodLink {
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 1rem;
+  font-size: 0.875rem; /* same as the other footer text */
   color: var(--text-main);
   text-decoration: none;
   font-weight: 500;
