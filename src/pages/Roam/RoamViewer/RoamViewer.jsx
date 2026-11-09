@@ -33,7 +33,8 @@ const NavIcon = ({ type }) => {
 const MAP_OPEN_KEY = 'vv.mapOpen';
 // first-visit hints, shown one after another, each once per visitor
 const HINT_KEYS = { warp: 'vv.timeWarpHintSeen', pad: 'vv.padHintSeen', map: 'vv.mapHintSeen' };
-const HINT_MS = 4000;
+// how long each hint stays (the arrow pad has more to read)
+const HINT_MS = { warp: 5000, pad: 7000, map: 5000 };
 const readStore = (key) => {
   try { return window.localStorage.getItem(key); } catch { return null; }
 };
@@ -79,7 +80,7 @@ export default function RoamViewer({
   // open last time gets it open again.
   const [isMapVisible, setIsMapVisible] = useState(() => readStore(MAP_OPEN_KEY) === '1');
 
-  // First visit: three short hints in turn (time warp, arrow pad, map), 4 s each, each once.
+  // First visit: three short hints in turn (time warp 5 s, arrow pad 7 s, map 5 s), each once.
   // Using a control dismisses its hint early; the map hint is skipped if the map is already open.
   const [hintQueue, setHintQueue] = useState(() =>
     ['warp', 'pad', 'map'].filter((h) => readStore(HINT_KEYS[h]) !== '1' && !(h === 'map' && readStore(MAP_OPEN_KEY) === '1'))
@@ -92,7 +93,7 @@ export default function RoamViewer({
   };
   useEffect(() => {
     if (!activeHint) return undefined;
-    const t = setTimeout(() => dismissHint(activeHint), HINT_MS);
+    const t = setTimeout(() => dismissHint(activeHint), HINT_MS[activeHint]);
     return () => clearTimeout(t);
   }, [activeHint]);
 
@@ -799,6 +800,7 @@ const handleContainerMouseUp = (e) => {
               containerRef={containerRef}
               portalTarget={canvasEl}
               showHint={activeHint === 'warp'}
+              hintMs={HINT_MS.warp}
               onHintDismiss={() => dismissHint('warp')}
             />
 
@@ -824,8 +826,12 @@ const handleContainerMouseUp = (e) => {
               })}
             </nav>
             {activeHint === 'pad' && (
-              <span className={`${styles.hudHint} ${styles.padHint}`} role="note">
-                Walk with the arrows: <strong>up</strong> to go forward, the <strong>middle</strong> to turn around.
+              <span className={`${styles.hudHint} ${styles.padHint}`} role="note" style={{ '--hint-ms': `${HINT_MS.pad}ms` }}>
+                <span className={styles.hintTitle}>Walk around with the arrows</span>
+                <span className={styles.hintRow}><strong>↑</strong> walk forward</span>
+                <span className={styles.hintRow}><strong>↓</strong> step back</span>
+                <span className={styles.hintRow}><strong>← →</strong> turn left or right</span>
+                <span className={styles.hintRow}><strong>⟳</strong> turn around (middle)</span>
               </span>
             )}
             </span>
@@ -844,7 +850,7 @@ const handleContainerMouseUp = (e) => {
               {isMapVisible ? 'Hide map' : 'Show map'}
             </button>
             {activeHint === 'map' && !isMapVisible && (
-              <span className={styles.hudHint} role="note">
+              <span className={styles.hudHint} role="note" style={{ '--hint-ms': `${HINT_MS.map}ms` }}>
                 See where you are: click <strong>Show map</strong> for the full village map.
               </span>
             )}

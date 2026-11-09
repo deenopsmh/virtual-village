@@ -849,7 +849,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   pointer-events: none;
   transform: translateY(-50%);
-  animation: hudHintInOut 4s ease forwards;
+  animation: hudHintInOut var(--hint-ms, 5s) ease forwards;
 }
 
 .hudHint::before {
@@ -893,7 +893,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hudHint { animation: none; } /* shown still; it is removed after 4 s */
+  .hudHint { animation: none; } /* shown still; removed when its time is up */
 }
 
 /* phones: the arrow pad sits in the middle of the row, so its hint is centred above it */
@@ -904,4 +904,22 @@
     transform: translateX(-50%);
     animation-name: hudHintInOutUp;
   }
+}
+
+/* arrow-pad hint: a short title and one line per direction */
+.padHint {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-width: 240px;
+}
+
+.hintTitle {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.hintRow strong {
+  display: inline-block;
+  min-width: 30px;
 }

@@ -21,7 +21,7 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
 // showHint / onHintDismiss: the first-visit hint is timed by RoamViewer's hint sequence
-export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPhotoLoading, containerRef, portalTarget, showHint = false, onHintDismiss }) {
+export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPhotoLoading, containerRef, portalTarget, showHint = false, hintMs = 5000, onHintDismiss }) {
   const [phase, setPhase] = useState('idle');
   const [warp, setWarp] = useState(null); // { to, src, origin: {x, y}, portrait }
   const portalRef = useRef(null);
@@ -122,7 +122,7 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
 
         {/* First time someone meets the portal, say what it does (then stays out of the way) */}
         {showHint && canWarp && (
-          <span className={styles.hint} role="note">
+          <span className={styles.hint} role="note" style={{ '--hint-ms': `${hintMs}ms` }}>
             Click the portal to see this place in the <strong>{otherEra}</strong>
           </span>
         )}
