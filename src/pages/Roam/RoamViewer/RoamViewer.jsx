@@ -105,7 +105,7 @@ export default function RoamViewer({
   const introOutro = introDim && !activeHint;
   useEffect(() => {
     if (!introOutro) return undefined;
-    const t = setTimeout(() => setIntroDone(true), 2600); // safety net if animation events don't arrive
+    const t = setTimeout(() => setIntroDone(true), 3800); // safety net if animation events don't arrive
     return () => clearTimeout(t);
   }, [introOutro]);
   const skipIntro = () => {
