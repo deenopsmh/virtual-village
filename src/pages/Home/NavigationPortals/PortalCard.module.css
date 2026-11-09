@@ -65,29 +65,29 @@
 .cardContent {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 8px;
+  /* fixed slots (title, description, cue) so titles line up across a row,
+     however long a title or description is */
+  display: grid;
+  grid-template-rows: 1fr auto auto auto;
+  row-gap: 8px;
   padding: clamp(20px, 3vw, 32px);
 }
 
 .cardTitle {
+  grid-row: 2;
+  align-self: end;
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  font-size: clamp(1.5rem, 2.2vw, 1.9rem); /* same size on every card */
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
   color: #fff;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
 }
 
-/* the big Roam card gets the biggest title */
-.span2 .cardTitle {
-  font-size: clamp(2rem, 3.4vw, 2.9rem);
-}
-
 .cardDescription {
+  grid-row: 3;
+  min-height: 4.5em; /* room for three lines, so shorter descriptions don't lift the title */
   margin: 0;
   max-width: 46ch;
   font-size: 0.98rem;
@@ -96,6 +96,8 @@
 }
 
 .cta {
+  grid-row: 4;
+  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 6px;
