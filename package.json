@@ -9,7 +9,9 @@
     "build": "npm run roam:content && npm run optimize-images && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "roam:content": "node scripts/roam/build-roam-content.mjs"
+    "roam:content": "node scripts/roam/build-roam-content.mjs",
+    "quartex:export": "node scripts/roam/quartex/export-upload-list.mjs",
+    "quartex:import": "node scripts/roam/quartex/import-iiif-ids.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.16",
