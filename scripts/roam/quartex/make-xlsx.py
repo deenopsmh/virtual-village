@@ -62,7 +62,8 @@ for d in done.values():
     d['Roam row IDs'] = ' ; '.join(d['Roam row IDs'])
 
 rows = [dict(d, _done=True) for d in done.values()] + [dict(t, _done=False) for t in todo]
-rows.sort(key=lambda d: (d['Era'], d['Source Object'].lower()))
+# already-uploaded (green) rows first, then the photos to upload; each group by era and file name
+rows.sort(key=lambda d: (not d['_done'], d['Era'], d['Source Object'].lower()))
 
 # ---- workbook ----
 FONT = 'Arial'
