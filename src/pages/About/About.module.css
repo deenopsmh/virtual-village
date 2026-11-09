@@ -69,7 +69,8 @@
   font-size: 1.05rem;
   line-height: 1.75;
   margin-bottom: 20px;
-  opacity: 0.9;
+  /* muted via colour, not opacity, so the Wesleyan / Holy Cross names stay full strength */
+  color: color-mix(in srgb, var(--text-main) 90%, transparent);
 }
 
 /* IMAGE WORKPLACE */

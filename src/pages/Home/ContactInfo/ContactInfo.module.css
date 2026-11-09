@@ -86,8 +86,8 @@
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--text-main);
-  opacity: 0.85;
+  /* muted via colour, not opacity, so the Wesleyan / Holy Cross names inside stay full strength */
+  color: color-mix(in srgb, var(--text-main) 82%, transparent);
 }
 
 .topSpacing {
