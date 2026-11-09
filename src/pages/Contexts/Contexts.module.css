@@ -139,7 +139,6 @@
 }
 
 .prose p {
-  max-width: var(--measure);
   font-size: 1.05rem;
   line-height: 1.8;
   margin: 0 0 20px;
