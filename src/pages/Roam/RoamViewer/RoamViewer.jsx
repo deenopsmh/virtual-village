@@ -29,6 +29,17 @@ const NavIcon = ({ type }) => {
   }
 };
 
+// Remembered per visitor (try/catch: storage can be blocked, the page must still work)
+const MAP_OPEN_KEY = 'vv.mapOpen';
+const MAP_HINT_KEY = 'vv.mapHintSeen';
+const TIME_WARP_HINT_KEY = 'vv.timeWarpHintSeen';
+const readStore = (key) => {
+  try { return window.localStorage.getItem(key); } catch { return null; }
+};
+const writeStore = (key, value) => {
+  try { window.localStorage.setItem(key, value); } catch { /* storage blocked: fine */ }
+};
+
 const NAV_BUTTONS = [
   { move: 'forward', verb: 'Walk forward', area: 'up' },
   { move: 'left', verb: 'Turn left', area: 'left' },
@@ -63,10 +74,33 @@ export default function RoamViewer({
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  // On phones the map would cover the whole photo, so it starts hidden there.
-  const [isMapVisible, setIsMapVisible] = useState(
-    () => typeof window === 'undefined' || !window.matchMedia || window.matchMedia('(min-width: 768px)').matches
+  // The map starts hidden so the photo is the first thing people see; someone who left it
+  // open last time gets it open again.
+  const [isMapVisible, setIsMapVisible] = useState(() => readStore(MAP_OPEN_KEY) === '1');
+
+  // First visit: a short hint beside the map button, after the time-warp hint (so they never overlap).
+  const [mapHint, setMapHint] = useState(() =>
+    readStore(MAP_HINT_KEY) === '1' || readStore(MAP_OPEN_KEY) === '1' ? 'done' : 'waiting'
   );
+  useEffect(() => {
+    if (mapHint === 'waiting') {
+      const delay = readStore(TIME_WARP_HINT_KEY) === '1' ? 800 : 7600;
+      const t = setTimeout(() => setMapHint('showing'), delay);
+      return () => clearTimeout(t);
+    }
+    if (mapHint === 'showing') {
+      const t = setTimeout(() => { writeStore(MAP_HINT_KEY, '1'); setMapHint('done'); }, 7000);
+      return () => clearTimeout(t);
+    }
+    return undefined;
+  }, [mapHint]);
+
+  const toggleMap = () => {
+    const next = !isMapVisible;
+    setIsMapVisible(next);
+    writeStore(MAP_OPEN_KEY, next ? '1' : '0');
+    if (next) { writeStore(MAP_HINT_KEY, '1'); setMapHint('done'); }
+  };
 
   const [scale, setScale] = useState(1);
   const [maxPan, setMaxPan] = useState({ x: 0, y: 0 });
@@ -787,9 +821,10 @@ const handleContainerMouseUp = (e) => {
             </nav>
 
 
+            <span className={styles.mapToggleWrap}>
             <button
               className={`${styles.mapToggleButton} ${isMapVisible ? styles.mapToggleActive : styles.mapToggleMuted}`}
-              onClick={() => setIsMapVisible(!isMapVisible)}
+              onClick={toggleMap}
               onMouseDown={(e) => e.stopPropagation()}
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -798,6 +833,12 @@ const handleContainerMouseUp = (e) => {
               </svg>
               {isMapVisible ? 'Hide map' : 'Show map'}
             </button>
+            {mapHint === 'showing' && !isMapVisible && (
+              <span className={styles.mapHint} role="note">
+                See where you are: click <strong>Show map</strong> for the full village map.
+              </span>
+            )}
+            </span>
           </div>
         )}
       </div>

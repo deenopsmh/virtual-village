@@ -820,3 +820,73 @@
     font-size: 0.72rem;
   }
 }
+
+
+/* First-visit hint beside the map button (styled like the time-warp hint) */
+.mapToggleWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.mapHint {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  width: max-content;
+  max-width: 220px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--text-main);
+  background: color-mix(in srgb, var(--bg-main) 92%, transparent);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  transform: translateY(-50%);
+  animation: mapHintInOut 7s ease forwards;
+}
+
+.mapHint::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  margin-top: -6px;
+  border: 6px solid transparent;
+  border-left: 0;
+  border-right-color: color-mix(in srgb, var(--bg-main) 92%, transparent);
+}
+
+.mapHint strong {
+  color: var(--accent-secondary);
+}
+
+@keyframes mapHintInOut {
+  0% { opacity: 0; transform: translate(-6px, -50%); }
+  8%, 88% { opacity: 1; transform: translate(0, -50%); }
+  100% { opacity: 0; transform: translate(0, -50%); }
+}
+
+/* phones: the controls are a row in the middle, so the hint sits above the button */
+@media (max-width: 767px) {
+  .mapHint {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: calc(100% + 12px);
+    transform: none;
+    animation-name: mapHintInOutUp;
+  }
+  .mapHint::before { display: none; }
+}
+
+@keyframes mapHintInOutUp {
+  0% { opacity: 0; }
+  8%, 88% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mapHint { animation: none; } /* shown still; it is removed after 7 s */
+}
