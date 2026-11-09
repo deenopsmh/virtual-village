@@ -32,6 +32,9 @@ const labelOf = (id, era) => (id ? byId.get(`${id}|${era}`)?.Label || id : "Root
 const driveLink = (id) => `https://drive.google.com/file/d/${id}/view`;
 // local copies replaced apostrophes with underscores ("Shyam Babu_s store"); Peter's files have them
 const peterName = (s) => s.replace(/_s\b/g, "'s");
+// is there an original on this computer (src/assets/VV3 Images - Copy)?
+const LOCAL_DIR = path.join(root, "src/assets/VV3 Images - Copy");
+const hasLocal = (p) => !!p && [".JPG", ".jpg", ".jpeg", ".png"].some((ext) => fs.existsSync(path.join(LOCAL_DIR, p + ext)));
 
 const photos = new Map(); // photo key -> entry
 for (const r of rows) {
@@ -54,7 +57,9 @@ for (const r of rows) {
       "Source URL": orig ? driveLink(orig.original) : "",
       Language: "English",
       "IIIF manifest": "",
-      Note: orig ? "" : "Not in Peter's Drive under this name; Hasib will share the file",
+      Note: orig ? ""
+        : hasLocal(local) ? "Not in Peter's Drive; Hasib will share the file"
+        : "Photo missing; skip for now (asking Peter)",
       "Roam row IDs": [],
     });
   }
