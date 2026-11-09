@@ -9,7 +9,15 @@
   height: 500px;
 
   scrollbar-width: thin;
-  scrollbar-color: var(--text-main) transparent;
+  scrollbar-color: color-mix(in srgb, var(--text-main) 25%, transparent) transparent;
+}
+
+/* Stacked under the scene (tablets and phones): no box-in-a-box scrolling, the page scrolls */
+@media (max-width: 1023px) {
+  .detailsContainer {
+    height: auto;
+    overflow: visible;
+  }
 }
 
 .detailsContainer::-webkit-scrollbar-button {

@@ -769,3 +769,54 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* ---------- Phones ---------- */
+@media (max-width: 767px) {
+  /* a taller scene so the photo has room next to the controls */
+  .canvasContainer {
+    aspect-ratio: 1 / 1;
+    touch-action: pan-y;
+  }
+
+  /* map: centred over the scene, above the controls, sized to the scene */
+  .miniMapWrapper {
+    top: 12px;
+    bottom: auto;
+    right: 50%;
+    transform: translateX(50%);
+    width: auto;
+    height: calc(100% - 124px); /* clear of the controls below */
+  }
+
+  .miniMapHidden {
+    transform: translateX(50%) translateY(10px) scale(0.95);
+  }
+
+  /* thumb-sized arrow buttons */
+  .navigationPad {
+    grid-template-columns: repeat(3, 34px);
+    grid-template-rows: repeat(3, 30px);
+    padding: 3px;
+  }
+
+  .padButton {
+    width: 32px;
+    height: 28px;
+  }
+
+  .padAround {
+    width: 28px;
+  }
+
+  .bottomControlHudZone {
+    bottom: 10px;
+    gap: 8px;
+    max-width: calc(100% - 16px);
+  }
+
+  .mapToggleButton {
+    height: 30px;
+    padding: 0 10px 0 8px;
+    font-size: 0.72rem;
+  }
+}

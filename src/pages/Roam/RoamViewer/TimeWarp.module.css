@@ -371,6 +371,10 @@
 
 /* ---------- Small screens: controls are a row in the middle; open things upward ---------- */
 @media (max-width: 767px) {
+  .portal { width: 44px; height: 44px; }
+  .ripple { top: 22px; width: 44px; height: 44px; margin: -22px 0 0 -22px; }
+  .eraTag { font-size: 0.6rem; padding: 2px 7px 3px; margin-top: -7px; }
+  .tagKicker { font-size: 0.58rem; }
   .peek { left: 50%; bottom: calc(100% + 12px); transform: translate(-50%, 8px) scale(0.96); transform-origin: bottom center; }
   .portalButton:hover:not(:disabled) ~ .peek { transform: translate(-50%, 0); }
   .peekWindow { width: 150px; }

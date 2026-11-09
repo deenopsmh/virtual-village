@@ -63,7 +63,10 @@ export default function RoamViewer({
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const [isMapVisible, setIsMapVisible] = useState(true);
+  // On phones the map would cover the whole photo, so it starts hidden there.
+  const [isMapVisible, setIsMapVisible] = useState(
+    () => typeof window === 'undefined' || !window.matchMedia || window.matchMedia('(min-width: 768px)').matches
+  );
 
   const [scale, setScale] = useState(1);
   const [maxPan, setMaxPan] = useState({ x: 0, y: 0 });
@@ -466,6 +469,16 @@ const handleContainerMouseUp = (e) => {
         onMouseMove={handleMouseMove}
         onMouseUp={handleContainerMouseUp}
         onMouseLeave={() => setIsDragging(false)}
+        // touch: drag sideways to look around a photo (vertical swipes still scroll the page)
+        onTouchStart={(e) => {
+          const t = e.touches[0];
+          if (t) handleMouseDown({ target: e.target, clientX: t.clientX, clientY: t.clientY });
+        }}
+        onTouchMove={(e) => {
+          const t = e.touches[0];
+          if (t) handleMouseMove({ clientX: t.clientX, clientY: t.clientY });
+        }}
+        onTouchEnd={() => setIsDragging(false)}
       >
         <div className={`${styles.backgroundImage} ${isPortrait ? styles.backgroundPortrait : ''}`}>
           <ResponsiveImage
