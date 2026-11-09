@@ -16,41 +16,75 @@
   display: none !important;
 }
 
+/* Panel tabs: a standard tab bar pinned to the top of the panel while the text scrolls */
 .tabHeader {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  gap: 4px;
+  padding: 0 16px;
   background: var(--bg-surface);
+  border-bottom: 1px solid var(--line);
 }
 
 .singleTabHeader {
-  grid-template-columns: 1fr;
+  /* one tab only: still reads as the panel's title bar */
 }
 
 .tabButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 6px 12px;
+  margin-right: 10px;
+  border: 0;
   background: none;
-  border: none;
-  padding: 10px 16px;
-  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--text-main) 60%, transparent);
   cursor: pointer;
-  border-radius: 3px;
-  transition: all 0.2s ease;
-  color: #78716c;
-
-}
-.tabButton:hover {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.274);
-    color: var(--text-main);
-    border-radius: 0;
-
+  transition: color 0.2s ease;
 }
 
-.tabActive {
+.tabButton svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.tabButton:hover,
+.tabButton:focus-visible {
   color: var(--text-main);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.274);
-  border: 1px solid color-mix(in srgb, var(--border-color) 70%, transparent);
-  background: var(--bg-main);
+}
+
+.tabButton:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+/* active tab: accent text + underline sitting on the bar's bottom line */
+.tabActive {
+  color: var(--accent-secondary);
+}
+
+.tabActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent-secondary);
+}
+
+.tabActive:hover {
+  color: var(--accent-secondary);
 }
 
 .contentBody {
