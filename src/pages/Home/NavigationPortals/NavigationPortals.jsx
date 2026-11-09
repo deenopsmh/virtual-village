@@ -50,7 +50,7 @@ export default function NavigationPortals() {
           image="VV3 Images - Copy\Sayyid family masjid structure from courtyard.JPG"
           tint="rgba(36, 90, 15, 0.5)"
 
-          title="Scholarly Histories & Archive"
+          title="Histories & Archive"
           to="/history"
           description="Historical materials from more than two centuries of village life and a professional historian's account."
         />
