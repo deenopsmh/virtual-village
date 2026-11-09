@@ -56,7 +56,7 @@ Source: `Roam labels 2020s VV3 30Oct26.docx` + `Changes to Roam 2020s labels 30O
 - [x] 27 new items with photos (kingfisher, shikar, Choudhari Medical Hall, E to south tractor/harvest/egret, satellite dishes, family masjid series, bee eater, Babbler, Marai posters, butcher on M to BB); 5 share an ID with their 2000s twin
 - [x] 2020s rows for D to Sherpur, K to Naughara, N to M, N to DD, DD to N, L to M; new path A to Jagariya + Jagariya waypoint; M to L / M to N use the proper path photos
 - [x] 22 photos copied into "VV3 site images/Roam 2020s" (Peter's folder untouched); IDs in `data/roam-2020s-photos.json`
-- [ ] **(You)** Import `data/roam-content.csv` into the Roam Sheet with **Replace current sheet** — until then a normal build re-downloads the old Sheet
+- [x] Roam Sheet replaced with the updated content (551 rows build from the Sheet; matches the local file)
 - [ ] **(Peter)** DD to N has no 2020s photo
 - [ ] **(Peter)** M to L poster had no callout; using "See posters on a home in Marai" — confirm
 - [ ] **(Peter)** "DELETED: BB to AA, BB to M" — his full list still includes both (BB to M already uses the M to Marai photo); left in place until he confirms
