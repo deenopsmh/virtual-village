@@ -46,7 +46,7 @@ Decisions locked in (Nov 8):
 - [ ] Store image width/height in sheet (prevents layout jump; AM Quartex blocks server-side fetches)
 - [ ] Local-file fallback for rows with no IIIF ID yet
 - [ ] Vercel deploy hook so Peter (or you) can publish sheet edits with one click
-- [ ] **(Charlie)** Upload remaining images to AM Quartex — list in `data/am-quartex-batch2.csv` (257 photos; `npm run quartex:export` rebuilds it, `npm run quartex:import <his csv>` brings the IDs back)
+- [ ] **(Charlie)** Upload batch 02 to AM Quartex: `data/am-quartex/vv-am-quartex-batch-02.csv` (257 photos, 249 linked to Peter's originals; 8 not in his Drive, see the Note column). `npm run quartex:export` makes the next batch; `npm run quartex:import -- <his csv>` brings the IDs back
 - [ ] Once everything is on AM Quartex: delete `src/assets/VV3 Images - Copy` (6.1 GB) and `public/images/optimized` (202 MB) + the optimize step in `npm run build`
 
 ## 3. 2020s content updates (Peter's Nov 1 docs)

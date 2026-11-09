@@ -1,5 +1,5 @@
 {
- "_about": "Your Drive copy ID -> Peter's original file (ID + name). Used to tell Charlie which originals to upload to AM Quartex.",
+ "_about": "Your Drive copy ID -> Peter's original file (ID + name). Used to tell Charlie which originals to upload to AM Quartex. 'local': older 2020s photos the site loads from local files -> Peter's original in his labelled 2020s folder (null = not found in his Drive).",
  "copies": {
   "1Z-mhxyjiVs56_romeM5ZJhB8KSCqDv4X": {
    "original": "1-ouRm4pWbeDeacuzPXavN8K2iM2yFI6D",
@@ -661,5 +661,435 @@
    "original": "1JQY3aGDaQTZdFopSt06Ww1wP7-dA7AqP",
    "title": "M to N.JPG"
   }
+ },
+ "local": {
+  "AA to BB butchers/AA to BB butchers enter": {
+   "original": "1yFLb2wt_m0sSqQX-AazdK8TPx9pIuOW-",
+   "title": "AA to BB butchers enter.JPG",
+   "folder": "AA to BB butchers"
+  },
+  "AA to BB": {
+   "original": "1zmpxc_YVHchNyDM3Jou3nmQl2Nw2OL28",
+   "title": "AA to BB.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "AA to D Shyam Babu_s store/AA to D Shyam Babu_s store Chainpur Debate Society": {
+   "original": "10qt6vnCmF7UnOkc2lWD_Um4zN8sNrX-j",
+   "title": "AA to D Shyam Babu's store Chainpur Debate Society.JPG",
+   "folder": "AA to D Shyam Babu's store"
+  },
+  "AA to D Shyam Babu_s store/AA to D Shyam Babu_s store enter": {
+   "original": "1vcPLg3p3-2qltOZ8xkFmnKeRG1V6Itob",
+   "title": "AA to D Shyam Babu's store enter.JPG",
+   "folder": "AA to D Shyam Babu's store"
+  },
+  "AA to D Shyam Babu_s store/AA to D Shyam Babu_s store gesticulations": {
+   "original": "1H9sJkyk-WkRS1eBZCHbnzUKyhWWbkeHK",
+   "title": "AA to D Shyam Babu's store gesticulations.JPG",
+   "folder": "AA to D Shyam Babu's store"
+  },
+  "AA to D Shyam Babu_s store/AA to D Shyam Babu_s store Ramzan gear": {
+   "original": "1-wkkRYTbuZ4D224JYKtvMSg_S6ZhaAba",
+   "title": "AA to D Shyam Babu's store Ramzan gear.JPG",
+   "folder": "AA to D Shyam Babu's store"
+  },
+  "AA TO D": {
+   "original": "1C9uJ1PBwUupZLz9Zo7AUAH6jEWyYtboO",
+   "title": "AA TO D.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "B to FF (r) Taj on door": {
+   "original": "1q59OlpmaAfjr-CbDUibHiuq9pNHj03gc",
+   "title": "B to FF (r) Taj on door.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "B to FF 2": {
+   "original": "1TaP5WT28z-Aef69gXViiidd4WuP6qic_",
+   "title": "B to FF 2.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "B to FF candidate posters inside": {
+   "original": "12a-8_IWD51zCth-rdRMdEmF2xsePdrAF",
+   "title": "B to FF candidate posters inside.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "B to FF candidate posters": {
+   "original": "1uL_A-vTlZkyDGY6pzJRysGLilhZl90Yf",
+   "title": "B to FF candidate posters.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "BB to AA": {
+   "original": "1Cb-mVVddOeDhK6ebh0pxuxTDug5CqN11",
+   "title": "BB to AA.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "C to GG Tripathi home/C to GG east Ramesh Tripathi basket with prasad": {
+   "original": "1cOjV3bZadfYXGTL-0uqbj5pfPGw2ZrXv",
+   "title": "C to GG east Ramesh Tripathi basket with prasad.JPG",
+   "folder": "C to GG Tripathi home"
+  },
+  "C to GG Tripathi home/C to GG east Ramesh Tripathi": {
+   "original": "1aYgL49If1GhUhzfo-i-aOSxRhaClkfZd",
+   "title": "C to GG east Ramesh Tripathi.JPG",
+   "folder": "C to GG Tripathi home"
+  },
+  "C to GG Tripathi home/C to GG left detail detail": {
+   "original": "1K6BvYKwGg-XCSLtMTi4mnduAN2D44j_q",
+   "title": "C to GG left detail detail.JPG",
+   "folder": "C to GG Tripathi home"
+  },
+  "C to GG Tripathi home/C to GG left enter": {
+   "original": "1YkTDhk1N0tsWfo4ESDvtI80dFlDIV2fJ",
+   "title": "C to GG left enter.JPG",
+   "folder": "C to GG Tripathi home"
+  },
+  "C to GG": {
+   "original": "11ncUn86YTOshjVs9YLiQ9gJItjELkN4p",
+   "title": "C to GG.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "C to V north detail best": {
+   "original": "1PJmZhG9vKszELoycHvsEzWTbAye9Usow",
+   "title": "C to V north detail best.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "C to V north enter": {
+   "original": "1_p8rlhYsdPoHjWODL5EMgHrOuyBMxl7U",
+   "title": "C to V north enter.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "C to V": {
+   "original": "1UWch994fSnGtZGLR8RGP2ZlOFt-NnBv8",
+   "title": "C to V.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "D to AA Benarsi Bari chai dukhan/D to AA Benarsi Bari chai dukhan detail": {
+   "original": "1zfMQbs0d2x2mIs-_iFTtFLA2ZDNWOzid",
+   "title": "D to AA Benarsi Bari chai dukhan detail.JPG",
+   "folder": "D to AA Benarsi Bari chai dukhan"
+  },
+  "D to AA Benarsi Bari chai dukhan/D to AA Benarsi Bari chai dukhan enter": {
+   "original": "14dRPk1BtxSduvJaMXP1iX3spfTEP3lOX",
+   "title": "D to AA Benarsi Bari chai dukhan enter.JPG",
+   "folder": "D to AA Benarsi Bari chai dukhan"
+  },
+  "D to AA Benarsi Bari chai dukhan/D to AA Benarsi Bari chai dukhan sign": {
+   "original": "11ZnU9NkKmgUmvu1rtxs2O1LWgNA8Bvox",
+   "title": "D to AA Benarsi Bari chai dukhan sign.JPG",
+   "folder": "D to AA Benarsi Bari chai dukhan"
+  },
+  "D to AA east Asif cycle and motorcycle CROP": {
+   "original": "12DnZ2sc3V67irCwYrPkF-xvzHpmGslZQ",
+   "title": "D to AA east Asif cycle and motorcycle CROP.jpeg",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "D to AA traffic jam": {
+   "original": "1M4dRIzNq4s4b6wN54p6RqrWdlpwpEaC6",
+   "title": "D to AA traffic jam.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "D to E actual": {
+   "original": "1fLHApZsoBxlmVjdyLRLx910iXEVpbY6k",
+   "title": "D to E actual.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "D to E arch": {
+   "original": "1a7GvTvs6Ias2trAbDAmS1UMMh1F7013o",
+   "title": "D to E arch.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "D to E bangles shop": null,
+  "D to E midway": {
+   "original": "1To0NUdbAEZOEoFhtbZ2DjK0gFWDgutTk",
+   "title": "D to E midway.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "D to E shop detail with murti images": null,
+  "D to E shop with chappal and coconut offerings": null,
+  "D to E Sufi tomb/D to E Sufi tomb detail": {
+   "original": "1wdy4yOcwqeoniMPe1eSmn6uW3zBqccNc",
+   "title": "D to E Sufi tomb detail.JPG",
+   "folder": "D to E Sufi tomb"
+  },
+  "D to E Sufi tomb/D to E Sufi tomb enter": {
+   "original": "1gFljDF4Ts1FgLdAN7FRp1rWyvdpoGJGe",
+   "title": "D to E Sufi tomb enter.JPG",
+   "folder": "D to E Sufi tomb"
+  },
+  "D to G": {
+   "original": "1pEoToVcbtxoxBpmSUfhvpyBJB-8ml7DT",
+   "title": "D to G.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "E detail pilgrims from UP EDIT": {
+   "original": "1vWmsSgTg7Hw1CMgoizO8uDlNHsrQimPH",
+   "title": "E detail pilgrims from UP EDIT.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "E Harsu Brahm Dham 2026/E Harsu Brahm Dham BEST": {
+   "original": "1Mh_8Qdm1qssDu4g4c5Y7NHtzBFlaxBcT",
+   "title": "E Harsu Brahm Dham BEST.JPG",
+   "folder": "E Harsu Brahm Dham 2026"
+  },
+  "E Harsu Brahm Dham 2026/E Harsu Brahm Dham ceiling design": {
+   "original": "1f-m08AiG1kHM9tF-pvX6iZzSYEFxQ4jr",
+   "title": "E Harsu Brahm Dham ceiling design.JPG",
+   "folder": "E Harsu Brahm Dham 2026"
+  },
+  "E Harsu Brahm Dham 2026/E Harsu Brahm Dham devotee anjali": {
+   "original": "1XofCRLmNMBFAV1i0W0G4j8KhZGZF8zJe",
+   "title": "E Harsu Brahm Dham devotee anjali.JPG",
+   "folder": "E Harsu Brahm Dham 2026"
+  },
+  "E Harsu Brahm Dham 2026/E Harsu Brahm Dham devotees sit": {
+   "original": "14LUSoomy_OghelPaJSCXZsrIxHRwDFGl",
+   "title": "E Harsu Brahm Dham devotees sit.JPG",
+   "folder": "E Harsu Brahm Dham 2026"
+  },
+  "E Harsu Brahm Dham 2026/E Harsu Brahm Dham havan path BEST": {
+   "original": "1Gw7-NtY4XilrokWLc06UDPTXjKLv52FJ",
+   "title": "E Harsu Brahm Dham havan path BEST.JPG",
+   "folder": "E Harsu Brahm Dham 2026"
+  },
+  "E Harsu Brahm Dham 2026/E Harsu Brahm Dham murti sthan": {
+   "original": "19XHNRy9sW3DHwMTuuQQnaoFvhar4Jzv6",
+   "title": "E Harsu Brahm Dham murti sthan.JPG",
+   "folder": "E Harsu Brahm Dham 2026"
+  },
+  "E Harsu Brahm Dham 2026/E Harsu Brahm Dham stairs up": {
+   "original": "1kfqJ4fneSnZL4XCD_JScNMAtB1o7PO3Y",
+   "title": "E Harsu Brahm Dham stairs up.JPG",
+   "folder": "E Harsu Brahm Dham 2026"
+  },
+  "E Harsu Brahm mandir over havan area": {
+   "original": "1ZoZ9bvD5QUmRZA6vpPSkfooVHmfWFpX4",
+   "title": "E Harsu Brahm mandir over havan area.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "E to D": {
+   "original": "1c8bB23hYP5nJmMlupVu0NyL5h4bWnZne",
+   "title": "E to D.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "E to south water tank government scheme": {
+   "original": "1ToSVqA_LYiXIzD6t69AC3k-keGrq8-Vk",
+   "title": "E to south water tank government scheme.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "E to south": {
+   "original": "1YGEUcEsHFsLyhyg90a4XUhFazbR7CHhY",
+   "title": "E to south.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "EE masjid/EE east 1": {
+   "original": "1Q_GItstmZ0WioKMe0nje8RAaIHvs6ZxI",
+   "title": "EE east 1.JPG",
+   "folder": "EE masjid"
+  },
+  "EE masjid/EE east 2": {
+   "original": "1xEv3Uu2iE2AfnCRtWwhugbsrwOuFZdfy",
+   "title": "EE east 2.JPG",
+   "folder": "EE masjid"
+  },
+  "EE masjid/EE east detail 1 EDIT": {
+   "original": "1cNZtMWZ_vy2I8-boG_Z9_dBSNvEGfBP2",
+   "title": "EE east detail 1 EDIT.jpg",
+   "folder": "EE masjid"
+  },
+  "EE masjid/EE east detail 2 CLOSE": {
+   "original": "1eeFps0pJTPiGckUXXpWDbBl341InL2I0",
+   "title": "EE east detail 2 CLOSE.JPG",
+   "folder": "EE masjid"
+  },
+  "EE masjid/EE east enter": {
+   "original": "1kbtUYaZUx3Jt2cmXGYYyWcLzBu3KG_XA",
+   "title": "EE east enter.JPG",
+   "folder": "EE masjid"
+  },
+  "EE mandir/EE mandir oblique": {
+   "original": "1c5KjMvpqWJwGUWp2NcwKB47D50eHqicU",
+   "title": "EE mandir oblique.JPG",
+   "folder": "EE mandir"
+  },
+  "EE mandir/EE mandir Salutation to you Sri Shiva": {
+   "original": "1uYM937ciaj2_8uZtI_gojE5tz8OfmX2S",
+   "title": "EE mandir Salutation to you Sri Shiva.JPG",
+   "folder": "EE mandir"
+  },
+  "EE mandir/EE temple entrance into garbagriha": {
+   "original": "1Q26NSQE3b0D2PD7vk4yXJ5oD23eG-pY5",
+   "title": "EE temple entrance into garbagriha.JPG",
+   "folder": "EE mandir"
+  },
+  "EE mandir/EE temple garbagriha detail": {
+   "original": "1qBcSy2SLVERUOHdi-tof8COhgDvFzPkC",
+   "title": "EE temple garbagriha detail.JPG",
+   "folder": "EE mandir"
+  },
+  "EE to FF Agrawal Studio": {
+   "original": "1t-W9okPb97fGSYQ4B7X0FoL3tPzRJiMZ",
+   "title": "EE to FF Agrawal Studio.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "EE to FF Oppo shop": {
+   "original": "1uUIA187USaRxJnpNPxjufvXy06WlyPSh",
+   "title": "EE to FF Oppo shop.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "EE mandir/EE to FF Shiv mandir enter": {
+   "original": "1cUUJVtSlfNVoopzSo3DrAEyFmTf0SO7_",
+   "title": "EE to FF Shiv mandir enter.JPG",
+   "folder": "EE mandir"
+  },
+  "EE to FF west dried gobar": {
+   "original": "1xPub_RU8Wr34vWjROsBx4Oo--PtAUOq-",
+   "title": "EE to FF west dried gobar.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "EE to FF west sign EDIT": {
+   "original": "1e5wOnSyy9w7sXZKmDn4cI4a41LqBGNus",
+   "title": "EE to FF west sign EDIT.jpg",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "unused main photos/farm tractor with trailer of grain vertical": {
+   "original": "1vjyGKKqtIlhfE9aB7cxzGGdYW5zKuL1B",
+   "title": "farm tractor with trailer of grain vertical.JPG",
+   "folder": "unused main photos"
+  },
+  "FF to B east Heritage Global School bus partial": {
+   "original": "1_zyJVU69yuaepJCEAuy8DmFk8f9sBgw3",
+   "title": "FF to B east Heritage Global School bus partial.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "FF to B east Heritage Global School bus": {
+   "original": "1DCtwcF4BMR27ANgUe9legQfKnlgER-H2",
+   "title": "FF to B east Heritage Global School bus.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "FF to B west buffalo best": {
+   "original": "1qQzDfgFHlqZZ3_VIcoNmvWlma41gDfXp",
+   "title": "FF to B west buffalo best.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "FF to EE": {
+   "original": "1Req2Q-ejeCefcrnIz7kbnUuftBXQ3_uJ",
+   "title": "FF to EE.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "unused main photos/G to D Chaurasiya vastraliya": {
+   "original": "1sHIlSdKDT_tRwZA8NFCM0gDiVYbEMk6x",
+   "title": "G to D Chaurasiya vastraliya.JPG",
+   "folder": "unused main photos"
+  },
+  "G to D right detail detail": {
+   "original": "1einahx0sOqRzEjCZv6pacVMawWYFIVjW",
+   "title": "G to D right detail detail.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "G to D Top in Town": {
+   "original": "1by5tV1aJ9odwPkPg1M1KHptCgMRti-hE",
+   "title": "G to D Top in Town.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "G to D vegetables": {
+   "original": "1ZAKSJ_xHTkVmImLOsLGgfZW2wTTNdgAG",
+   "title": "G to D vegetables.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "G to K and G to M Jama Masjid": null,
+  "G to K EDIT": {
+   "original": "1hRFrtokkTrg580ZdO-Wy1-asDEN7pi49",
+   "title": "G to K EDIT.jpg",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "G to K Hath-i Kua": null,
+  "G to K Hath(i) Kua arch lotus": {
+   "original": "1acailwCVl5nvE91MKI0AP_MaBP1x2zUD",
+   "title": "G to K Hath(i) Kua arch lotus.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "G to K Nandlal's store": null,
+  "G to M Sufi mazar/G to M left detail 2": {
+   "original": "1UHgQ2S0XvctD-EMUSJqLXgfU8XRFxXdz",
+   "title": "G to M left detail 2.JPG",
+   "folder": "G to M Sufi mazar"
+  },
+  "G to M left detail 3": {
+   "original": "1VI8d18D9tWhSRajSx9D_cZR-4Rn6GGP3",
+   "title": "G to M left detail 3.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "G to M Sufi mazar/G to M left detail horizontal": {
+   "original": "1CgBL-Q-IB-6bMEQDUM4nddgUFBTAfIBM",
+   "title": "G to M left detail horizontal.JPG",
+   "folder": "G to M Sufi mazar"
+  },
+  "G to M Sufi mazar/G to M left detail vertical": {
+   "original": "16mHz9Ip93rXzjc6HBB1zFh9KzmX_Jpr3",
+   "title": "G to M left detail vertical.JPG",
+   "folder": "G to M Sufi mazar"
+  },
+  "G to M Sufi mazar/G to M left enter": {
+   "original": "1rPVvNNm-aQe--fABRPVe8J6alEpqjHLX",
+   "title": "G to M left enter.JPG",
+   "folder": "G to M Sufi mazar"
+  },
+  "G to M": {
+   "original": "14RMOL72xJf-1CHOpCQGS2eFFFR6lldkt",
+   "title": "G to M.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "GG to AA east Sitaram and Raju Paswan bicycle repairmen/GG to AA east Sitaram and Raju Paswan bicycle repairmen smile": {
+   "original": "1vV4IFcp40R1bPhdL8ENkLyZp4hgzLPlF",
+   "title": "GG to AA east Sitaram and Raju Paswan bicycle repairmen smile.JPG",
+   "folder": "GG to AA east Sitaram and Raju Paswan bicycle repairmen"
+  },
+  "GG to AA Rajesh Kumar Chaurasiya paan dukhan/GG to AA Rajesh Kumar Chaurasiya paan dukhan detail detail": {
+   "original": "1E3YsuY0225Fsi3td66ltMRcq0H2TtSNK",
+   "title": "GG to AA Rajesh Kumar Chaurasiya paan dukhan detail detail.JPG",
+   "folder": "GG to AA Rajesh Kumar Chaurasiya paan dukhan"
+  },
+  "GG to AA Rajesh Kumar Chaurasiya paan dukhan/GG to AA Rajesh Kumar Chaurasiya paan dukhan detail": {
+   "original": "1BhEKAtFy6wQDZLqb73mUX7ckuWYLiO00",
+   "title": "GG to AA Rajesh Kumar Chaurasiya paan dukhan detail.JPG",
+   "folder": "GG to AA Rajesh Kumar Chaurasiya paan dukhan"
+  },
+  "GG to AA Rajesh Kumar Chaurasiya paan dukhan/GG to AA Rajesh Kumar Chaurasiya paan dukhan enter": {
+   "original": "1jCcFA7KoGBWo0dEJVlsbS4sVbvPP-DFH",
+   "title": "GG to AA Rajesh Kumar Chaurasiya paan dukhan enter.JPG",
+   "folder": "GG to AA Rajesh Kumar Chaurasiya paan dukhan"
+  },
+  "GG to AA": {
+   "original": "1lMoUtDhq3s8jYXkLZCSAqOqUKczalZ8s",
+   "title": "GG to AA.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "K to G Pappu and Dhamendra_s chai shop/K to G detail 1": {
+   "original": "1M-Zl2jmfXB5Bj0y-WFwJcRs4Axl8fn32",
+   "title": "K to G detail 1.JPG",
+   "folder": "K to G Pappu and Dhamendra's chai shop"
+  },
+  "K to G Pappu and Dhamendra_s chai shop/K to G detail detail 1": {
+   "original": "15fzv_meJLGNrnibTqemWJxhdqkwkQqNA",
+   "title": "K to G detail detail 1.JPG",
+   "folder": "K to G Pappu and Dhamendra's chai shop"
+  },
+  "K to G Pappu and Dhamendra_s chai shop/K to G detail detail 2": {
+   "original": "1Q86BHtnux1JQFKk9fFBnH2STeeDPnhHL",
+   "title": "K to G detail detail 2.JPG",
+   "folder": "K to G Pappu and Dhamendra's chai shop"
+  },
+  "K to G Pappu and Dhamendra_s chai shop": null,
+  "M to BB": {
+   "original": "1UhMQQ1BFdpFSTfxwSbHvLjsUuQgbaxBX",
+   "title": "M to BB.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "M to G": {
+   "original": "1MPUK5fpjGKq3om_MXa8yCJxgV1tlz2RR",
+   "title": "M to G.JPG",
+   "folder": "labelled VV3 new images 2020s level"
+  },
+  "M to Marai": null
  }
 }
