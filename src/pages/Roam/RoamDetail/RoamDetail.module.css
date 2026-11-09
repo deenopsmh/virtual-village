@@ -22,8 +22,6 @@
   top: 0;
   z-index: 2;
   display: flex;
-  gap: 4px;
-  padding: 0 16px;
   background: var(--bg-surface);
   border-bottom: 1px solid var(--line);
 }
@@ -34,11 +32,13 @@
 
 .tabButton {
   position: relative;
+  /* each tab fills its share of the bar, label centred; the underline spans it all */
+  flex: 1;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
-  padding: 13px 6px 12px;
-  margin-right: 10px;
+  padding: 13px 12px 12px;
   border: 0;
   background: none;
   font-family: var(--font-sans);
@@ -79,7 +79,6 @@
   right: 0;
   bottom: -1px;
   height: 2px;
-  border-radius: 2px;
   background: var(--accent-secondary);
 }
 
