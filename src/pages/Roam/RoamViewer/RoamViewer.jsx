@@ -97,6 +97,22 @@ export default function RoamViewer({
     return () => clearTimeout(t);
   }, [activeHint]);
 
+  // First visit only (arrow-pad or map hint still unseen): the photo is dimmed and can't be
+  // touched while the hints play, then "Start Roaming" spreads out and the dimming lifts.
+  const [introOn] = useState(() => readStore(HINT_KEYS.pad) !== '1' || readStore(HINT_KEYS.map) !== '1');
+  const [introDone, setIntroDone] = useState(false);
+  const introDim = introOn && !introDone;
+  const introOutro = introDim && !activeHint;
+  useEffect(() => {
+    if (!introOutro) return undefined;
+    const t = setTimeout(() => setIntroDone(true), 2600); // safety net if animation events don't arrive
+    return () => clearTimeout(t);
+  }, [introOutro]);
+  const skipIntro = () => {
+    hintQueue.forEach((h) => writeStore(HINT_KEYS[h], '1'));
+    setHintQueue([]);
+  };
+
   const toggleMap = () => {
     const next = !isMapVisible;
     setIsMapVisible(next);
@@ -787,6 +803,25 @@ const handleContainerMouseUp = (e) => {
           </div>
         )}
 
+
+        {introDim && !isSplitViewOpen && (
+          <div
+            className={`${styles.introOverlay} ${introOutro ? styles.introOutro : ''}`}
+            onMouseDown={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+            onAnimationEnd={(e) => {
+              if (e.target === e.currentTarget && (e.animationName || '').includes('introOut')) setIntroDone(true);
+            }}
+          >
+            {introOutro ? (
+              <span className={styles.introTitle}>Start Roaming</span>
+            ) : (
+              <button type="button" className={styles.skipIntro} onClick={skipIntro}>
+                Skip intro
+              </button>
+            )}
+          </div>
+        )}
 
         {!isSplitViewOpen && (
           <div className={styles.bottomControlHudZone} onMouseDown={(e) => e.stopPropagation()}>
