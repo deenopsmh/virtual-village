@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "optimize-images":"node scripts/optimize-images.js",
-    "build":"npm run optimize-images && vite build",
+    "dev": "npm run roam:content && vite",
+    "optimize-images": "node scripts/optimize-images.js",
+    "build": "npm run roam:content && npm run optimize-images && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "roam:content": "node scripts/roam/build-roam-content.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.16",

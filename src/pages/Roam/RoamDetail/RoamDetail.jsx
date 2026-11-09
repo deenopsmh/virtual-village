@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styles from './RoamDetail.module.css';
 
 export default function RoamDetail({
+  era,
   activeNode,
   currentContext,
   currentActivities = [],
   breadcrumbPath = [],
+  siblingActivities = [],
+  currentActivityId,
+  onSiblingClick,
   onHotspotClick,
   onBackOneLevel,
   canGoBack,
@@ -76,6 +80,12 @@ export default function RoamDetail({
 
   const { description, interview } = currentContext;
 
+  // Neighbours at the level above, with this view's place among them (for Previous / Next).
+  const siblingIndex = siblingActivities.findIndex((a) => a.id === currentActivityId);
+  const hasSiblings = canGoBack && siblingActivities.length > 1 && siblingIndex !== -1;
+  const prevSibling = hasSiblings ? siblingActivities[siblingIndex - 1] : null;
+  const nextSibling = hasSiblings ? siblingActivities[siblingIndex + 1] : null;
+
   // Filter out activities that do not exist in the currently selected era
   const availableActivities = currentActivities.filter(
     (item) => item.isAvailableInEra !== false
@@ -89,6 +99,10 @@ export default function RoamDetail({
           className={`${styles.tabButton} ${activeTab === 'about' ? styles.tabActive : ''}`}
           onClick={() => setActiveTab('about')}
         >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 11v5M12 8h.01" />
+          </svg>
           About this place
         </button>
 
@@ -97,6 +111,10 @@ export default function RoamDetail({
             className={`${styles.tabButton} ${activeTab === 'interview' ? styles.tabActive : ''}`}
             onClick={() => setActiveTab('interview')}
           >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z" />
+              <path d="M19 11a7 7 0 0 1-14 0M12 18v3" />
+            </svg>
             Interview
           </button>
         )}
@@ -104,7 +122,14 @@ export default function RoamDetail({
 
       <div className={styles.contentBody}>
         <div className={styles.metaHeadings}>
-          <span className={styles.locationLabel}>You are at</span>
+          <div className={styles.locationRow}>
+            <span className={styles.locationLabel}>You are at</span>
+            {era && (
+              <span className={`${styles.eraLabel} ${era === '2000s' ? styles.eraLabelPast : ''}`}>
+                in the {era}
+              </span>
+            )}
+          </div>
           <h3 className={styles.locationTitle}>{currentLabel}</h3>
         </div>
 
@@ -140,6 +165,54 @@ export default function RoamDetail({
                 </ul>
               </div>
             )}
+
+            {hasSiblings && (
+              <nav className={styles.siblingSection} aria-label={`More at ${previousLabel}`}>
+                <div className={styles.siblingHeaderRow}>
+                  <h4 className={styles.todoHeader}>More at {previousLabel}</h4>
+                  <span className={styles.siblingCount}>
+                    {siblingIndex + 1} of {siblingActivities.length}
+                  </span>
+                </div>
+
+                <div className={styles.siblingStepper}>
+                  <button
+                    className={styles.stepButton}
+                    disabled={!prevSibling}
+                    onClick={() => prevSibling && onSiblingClick(prevSibling)}
+                    title={prevSibling ? prevSibling.label : undefined}
+                  >
+                    ‹ Previous
+                  </button>
+                  <button
+                    className={`${styles.stepButton} ${styles.stepNext}`}
+                    disabled={!nextSibling}
+                    onClick={() => nextSibling && onSiblingClick(nextSibling)}
+                    title={nextSibling ? nextSibling.label : undefined}
+                  >
+                    Next ›
+                  </button>
+                </div>
+
+                <ol className={styles.siblingList}>
+                  {siblingActivities.map((item) => {
+                    const isCurrent = item.id === currentActivityId;
+                    return (
+                      <li key={item.id}>
+                        <button
+                          className={`${styles.siblingItem} ${isCurrent ? styles.siblingCurrent : ''}`}
+                          onClick={() => !isCurrent && onSiblingClick(item)}
+                          aria-current={isCurrent ? 'location' : undefined}
+                        >
+                          {item.label}
+                          {isCurrent && <span className={styles.youAreHere}>You're here</span>}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </nav>
+            )}
           </div>
         ) : (
           <div className={styles.tabContentBlock}>
@@ -164,7 +237,7 @@ export default function RoamDetail({
                 className={styles.playButton}
                 onClick={() => alert('Audio Playback Engine Triggered')}
               >
-                ▶
+                Play
               </button>
               <div className={styles.waveformTrack}>
                 <div className={styles.progressBar} style={{ width: '35%' }} />

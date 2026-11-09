@@ -65,10 +65,12 @@
 }
 
 .textContent p {
+  max-width: var(--measure);
   font-size: 1.05rem;
   line-height: 1.75;
   margin-bottom: 20px;
-  opacity: 0.9;
+  /* muted via colour, not opacity, so the Wesleyan / Holy Cross names stay full strength */
+  color: color-mix(in srgb, var(--text-main) 90%, transparent);
 }
 
 /* IMAGE WORKPLACE */
@@ -82,7 +84,7 @@
   height: auto;
   max-height: 420px;
   object-fit: cover;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--line);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
@@ -113,7 +115,7 @@
 
 .featureCard {
   background: var(--bg-main);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--line);
   padding: 25px;
   transition: border-color 0.2s ease-in-out;
 }
@@ -137,7 +139,7 @@
 .divider {
   border: 0;
   height: 1px;
-  background-color: var(--border-color);
+  background-color: var(--line);
   margin: 60px 0;
 }
 
@@ -164,6 +166,7 @@
 }
 
 .acknowledgementsText {
+  max-width: var(--measure);
   font-size: 1.05rem;
   line-height: 1.8;
   opacity: 0.9;

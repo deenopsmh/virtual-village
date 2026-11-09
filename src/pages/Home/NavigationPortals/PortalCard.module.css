@@ -1,9 +1,12 @@
 .portalCard {
   position: relative;
+  display: block;
   overflow: hidden;
-  height: 270px;
+  height: clamp(260px, 28vw, 340px);
+  text-decoration: none;
+  border-radius: 6px;
 
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--line);
   background: var(--bg-surface);
 
   cursor: pointer;
@@ -42,59 +45,85 @@
 }
 
 
-.portalCard:hover .cardBg {
+.portalCard:hover .cardBg,
+.portalCard:focus-visible .cardBg {
   transform: scale(1.05);
+}
+
+.tint {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.05) 100%);
 }
 
 .cardContent {
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    padding: 24px;
-}
-
-.textContent {
-    min-height: 110px;   
-}
-
-.iconBadge {
-  width: 42px;
-  height: 42px;
-
-  border-radius: 50%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: rgba(255,255,255,.15);
-  backdrop-filter: blur(8px);
-
-  font-size: 20px;
+  position: absolute;
+  inset: 0;
+  /* fixed slots (title, description, cue) so titles line up across a row,
+     however long a title or description is */
+  display: grid;
+  grid-template-rows: 1fr auto auto auto;
+  row-gap: 8px;
+  padding: clamp(20px, 3vw, 32px);
 }
 
 .cardTitle {
-  margin: 0 0 8px;
-  color: white;
-  font-size: 1.20rem;
-  font-weight: 600;
+  grid-row: 2;
+  align-self: end;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.2vw, 1.9rem); /* same size on every card */
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
 }
 
 .cardDescription {
+  grid-row: 3;
+  min-height: 4.5em; /* room for three lines, so shorter descriptions don't lift the title */
   margin: 0;
+  max-width: 46ch;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
 
-  color: rgba(255,255,255,.85);
+.cta {
+  grid-row: 4;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
 
-  line-height: 1.6;
-  font-size: .9rem;
+.arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.portalCard:hover .arrow,
+.portalCard:focus-visible .arrow {
+  transform: translateX(6px);
+}
+
+.portalCard:focus-visible {
+  outline: 3px solid var(--accent-secondary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow, .cardBg { transition: none; }
 }

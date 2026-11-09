@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import RoamViewer from './RoamViewer/RoamViewer';
 import RoamDetail from './RoamDetail/RoamDetail';
 import { ROAM_DATA, POINT_DATA } from './RoamData';
@@ -33,7 +33,8 @@ function computeBreadcrumbPath(currentNode, breadcrumbIds, activeEra) {
 
   for (const id of breadcrumbIds) {
     const nextEntity = currentEntity?.activities?.[id];
-    if (!nextEntity) break;
+    // stop at the deepest view that exists in this era (time warp keeps you as close as possible)
+    if (!nextEntity || !nextEntity.eras?.[activeEra]) break;
 
     const eraDetails = nextEntity.eras?.[activeEra] || {};
     path.push({ id, label: eraDetails.label || id });
@@ -57,20 +58,51 @@ export default function Roam() {
 
   const currentNodeId = ROAM_DATA[nodeIdFromUrl] ? nodeIdFromUrl : DEFAULT_NODE_ID;
 
-  const [activeEra, setActiveEra] = useState("2020s");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Era lives in the URL (?era=2000s) so a time-warped view can be shared or reloaded.
+  const [searchParams] = useSearchParams();
+  const activeEra = searchParams.get('era') === '2000s' ? '2000s' : '2020s';
 
   const [selectedOriginId, setSelectedOriginId] = useState(null);
   const [lastVisitedOriginId, setLastVisitedOriginId] = useState('A');
 
-  const locationKeys = Object.keys(ROAM_DATA);
   const currentNode = ROAM_DATA[currentNodeId];
 
 
-  const navigateToPath = (nodeId, ids = [], options) => {
+  const navigateToPath = (nodeId, ids = [], options, era = activeEra) => {
     const path = ids.length ? `/roam/${nodeId}/${ids.join('/')}` : `/roam/${nodeId}`;
-    navigate(path, options);
+    navigate(era === '2000s' ? `${path}?era=2000s` : path, options);
   };
+
+  // Time warp: same place, other era. Stays on the twin view if there is one;
+  // the breadcrumb check below trims to the deepest view that exists in that era.
+  const otherEra = activeEra === '2020s' ? '2000s' : '2020s';
+  const canTimeWarp = Boolean(currentNode?.eras?.[otherEra]);
+  const breadcrumbKey = breadcrumbIds.join('/');
+  // Peek into the other era: the photo of the deepest view along the current breadcrumb
+  // that exists there (the same place time warp will land on).
+  const timeWarpPreview = useMemo(() => {
+    if (!canTimeWarp) return null;
+    let entity = currentNode;
+    let pick = currentNode.eras?.[otherEra];
+    for (const id of breadcrumbIds) {
+      entity = entity?.activities?.[id];
+      if (!entity?.eras?.[otherEra]) break;
+      pick = entity.eras[otherEra];
+    }
+    return { src: pick?.images?.[0]?.src || null, label: pick?.label || currentNode?.label || currentNodeId };
+  }, [canTimeWarp, currentNode, currentNodeId, otherEra, breadcrumbKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleTimeWarp = () => {
+    if (!canTimeWarp) return;
+    navigateToPath(currentNodeId, breadcrumbIds, undefined, otherEra);
+  };
+
+  // A view that only exists in the other era (e.g. a 2000s-only path) opens in that era.
+  useEffect(() => {
+    if (currentNode && !currentNode.eras?.[activeEra] && currentNode.eras?.[otherEra]) {
+      navigateToPath(currentNodeId, breadcrumbIds, { replace: true }, otherEra);
+    }
+  }, [currentNodeId, activeEra]);
 
   // Redirect bare "/roam" or an invalid nodeId segment to the default node's URL.
   useEffect(() => {
@@ -80,13 +112,6 @@ export default function Roam() {
   }, [nodeIdFromUrl]);
 
 
-  const prevEraRef = useRef(activeEra);
-  useEffect(() => {
-    if (prevEraRef.current !== activeEra) {
-      navigateToPath(currentNodeId, []);
-    }
-    prevEraRef.current = activeEra;
-  }, [activeEra]);
 
 
   const breadcrumbPath = useMemo(
@@ -123,6 +148,15 @@ export default function Roam() {
     };
   }, [currentNode, breadcrumbPath, activeEra]);
 
+  // Neighbouring views: the other things to do at the parent of the current view,
+  // so you can hop sideways without "Return to…" first (Peter's request).
+  const siblingActivities = useMemo(() => {
+    if (breadcrumbPath.length === 0) return [];
+    let parent = currentNode;
+    for (const crumb of breadcrumbPath.slice(0, -1)) parent = parent?.activities?.[crumb.id];
+    return toActivityArray(parent?.activities, activeEra).filter((a) => a.isAvailableInEra);
+  }, [currentNode, breadcrumbPath, activeEra]);
+
   const currentActivities = useMemo(
     () => toActivityArray(currentContext?.activities, activeEra),
     [currentContext, activeEra]
@@ -132,20 +166,19 @@ export default function Roam() {
     if (!selectedOriginId) return [];
 
     return Object.entries(ROAM_DATA || {})
-      .filter(([, data]) => data?.mapEndpoints?.from === selectedOriginId)
+      .filter(([, data]) => data?.mapEndpoints?.from === selectedOriginId && data?.eras?.[activeEra])
       .map(([key, data]) => ({
         pathKey: key,
         label: data.label || key,
         mapEndpoints: data.mapEndpoints,
       }));
-  }, [selectedOriginId]);
+  }, [selectedOriginId, activeEra]);
 
   const isSplitViewOpen = Boolean(selectedOriginId && activeOriginPaths.length > 0);
 
   const handleNodeTransition = (nodeId) => {
     if (ROAM_DATA[nodeId]) {
       navigateToPath(nodeId, []);
-      setIsMenuOpen(false);
     } else {
       console.error(`Route failed: Node ID "${nodeId}" does not exist in ROAM_DATA.`);
     }
@@ -164,6 +197,10 @@ export default function Roam() {
 
   const handleHotspotClick = (activity) => {
     navigateToPath(currentNodeId, [...breadcrumbIds, activity.id]);
+  };
+
+  const handleSiblingClick = (activity) => {
+    navigateToPath(currentNodeId, [...breadcrumbIds.slice(0, -1), activity.id]);
   };
 
   const handleBackOneLevel = () => {
@@ -188,60 +225,43 @@ export default function Roam() {
 
   return (
     <main className={styles.pageContainer}>
-      <div 
-        className={`${styles.overlay} ${isMenuOpen ? styles.overlayOpen : ''}`} 
-        onClick={() => setIsMenuOpen(false)} 
-      />
-      
-      <aside className={`${styles.drawer} ${isMenuOpen ? styles.drawerOpen : ''}`}>
-        <div className={styles.drawerHeader}>
-          <h2>Locations</h2>
-          <button className={styles.closeBtn} onClick={() => setIsMenuOpen(false)}>×</button>
-        </div>
-        <ul className={styles.nodeList}>
-          {locationKeys.map((key) => (
-            <li key={key}>
-              <button
-                className={`${styles.nodeBtn} ${key === currentNodeId ? styles.activeNodeBtn : ''}`}
-                onClick={() => handleNodeTransition(key)}
-              >
-                {key}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </aside>
-
       <nav className={styles.breadcrumbBar} aria-label="Breadcrumb">
-        <button 
-          className={styles.menuToggleBtn} 
-          onClick={() => setIsMenuOpen(true)}
-        >
-          ☰ Menu
-        </button>
-
-        <button
-          className={`${styles.breadcrumbItem} ${
-            breadcrumbPath.length === 0 ? styles.breadcrumbActive : ''
-          }`}
-          onClick={() => handleBreadcrumbNavigate(-1)}
-        >
-          {currentNode?.label || currentNodeId}
-        </button>
-
-        {breadcrumbPath.map((crumb, idx) => (
-          <React.Fragment key={crumb.id}>
-            <span className={styles.breadcrumbSeparator}>›</span>
+        <ol className={styles.trail}>
+          <li className={styles.crumbItem}>
             <button
-              className={`${styles.breadcrumbItem} ${
-                idx === breadcrumbPath.length - 1 ? styles.breadcrumbActive : ''
-              }`}
-              onClick={() => handleBreadcrumbNavigate(idx)}
+              className={`${styles.crumb} ${styles.crumbRoot} ${breadcrumbPath.length === 0 ? styles.crumbCurrent : ''}`}
+              onClick={() => handleBreadcrumbNavigate(-1)}
+              aria-current={breadcrumbPath.length === 0 ? 'location' : undefined}
+              title={currentNode?.label || currentNodeId}
             >
-              {crumb.label}
+              <svg className={styles.routeIcon} viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="6" cy="18" r="2.5" />
+                <circle cx="18" cy="6" r="2.5" />
+                <path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" />
+              </svg>
+              <span className={styles.crumbText}>{currentNode?.label || currentNodeId}</span>
             </button>
-          </React.Fragment>
-        ))}
+          </li>
+
+          {breadcrumbPath.map((crumb, idx) => {
+            const isCurrent = idx === breadcrumbPath.length - 1;
+            return (
+              <li key={crumb.id} className={styles.crumbItem}>
+                <svg className={styles.chevron} viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+                <button
+                  className={`${styles.crumb} ${isCurrent ? styles.crumbCurrent : ''}`}
+                  onClick={() => !isCurrent && handleBreadcrumbNavigate(idx)}
+                  aria-current={isCurrent ? 'location' : undefined}
+                  title={crumb.label}
+                >
+                  <span className={styles.crumbText}>{crumb.label}</span>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
       </nav>
 
       <div className={styles.splitGrid}>
@@ -263,13 +283,23 @@ export default function Roam() {
           activeOriginPaths={activeOriginPaths}
           isSplitViewOpen={isSplitViewOpen}
           onSelectPathChoice={handleSelectPathChoice}
+          otherEra={otherEra}
+          canTimeWarp={canTimeWarp}
+          onTimeWarp={handleTimeWarp}
+          timeWarpPreview={timeWarpPreview}
         />
 
+        {/* Same height as the scene on wide screens; the details scroll inside */}
+        <div className={styles.detailCell}>
         <RoamDetail
+          era={activeEra}
           activeNode={currentNode}
           currentContext={currentContext}
           currentActivities={currentActivities}
           breadcrumbPath={breadcrumbPath}
+          siblingActivities={siblingActivities}
+          currentActivityId={breadcrumbPath[breadcrumbPath.length - 1]?.id}
+          onSiblingClick={handleSiblingClick}
           onHotspotClick={handleHotspotClick}
           onBackOneLevel={handleBackOneLevel}
           canGoBack={breadcrumbPath.length > 0}
@@ -278,6 +308,7 @@ export default function Roam() {
           activeOriginPaths={activeOriginPaths}
           onSelectPathChoice={handleSelectPathChoice}
         />
+        </div>
       </div>
     </main>
   );

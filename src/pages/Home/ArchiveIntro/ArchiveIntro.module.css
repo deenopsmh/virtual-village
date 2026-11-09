@@ -1,6 +1,8 @@
 .sectionContainer {
   /* margin: 50px auto; */
-  padding: 50px 80px !important; 
+  padding: 50px var(--gutter) !important;
+  max-width: var(--page-max);
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   box-sizing: border-box;
@@ -79,11 +81,11 @@
   }
 }
 
-.wesleyan { border-left-color: #98002e; }
-.wesleyan .investigatorName { color: #98002e; } 
+.wesleyan { border-left-color: var(--wesleyan); }
+.wesleyan .investigatorName { color: var(--wesleyan); } 
 
-.holyCross { border-left-color: #602d8e; }
-.holyCross .investigatorName { color: #602d8e; } 
+.holyCross { border-left-color: var(--holy-cross); }
+.holyCross .investigatorName { color: var(--holy-cross); } 
 
 .dark .wesleyan .investigatorName { color: var(--text-main); }
 .dark .holyCross .investigatorName { color: var(--text-main); }
@@ -138,7 +140,7 @@
 .divider {
   width: 100%;
   border: 0;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--line);
   margin: 0 0 24px 0;
 }
 
@@ -160,6 +162,7 @@
 
 .textGroup p {
   margin: 0;
+  max-width: var(--measure);
 }
 
 .linkWrapper {

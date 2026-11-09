@@ -1,6 +1,6 @@
 .detailsContainer {
   background-color: var(--bg-main);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--line);
   border-radius: 16px;
   overflow-y: auto;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
@@ -9,48 +9,89 @@
   height: 500px;
 
   scrollbar-width: thin;
-  scrollbar-color: var(--text-main) transparent;
+  scrollbar-color: color-mix(in srgb, var(--text-main) 25%, transparent) transparent;
+}
+
+/* Stacked under the scene (tablets and phones): no box-in-a-box scrolling, the page scrolls */
+@media (max-width: 1023px) {
+  .detailsContainer {
+    height: auto;
+    overflow: visible;
+  }
 }
 
 .detailsContainer::-webkit-scrollbar-button {
   display: none !important;
 }
 
+/* Panel tabs: a standard tab bar pinned to the top of the panel while the text scrolls */
 .tabHeader {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--line);
 }
 
 .singleTabHeader {
-  grid-template-columns: 1fr;
+  /* one tab only: still reads as the panel's title bar */
 }
 
 .tabButton {
+  position: relative;
+  /* each tab fills its share of the bar, label centred; the underline spans it all */
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 13px 12px 12px;
+  border: 0;
   background: none;
-  border: none;
-  padding: 10px 16px;
-  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--text-main) 60%, transparent);
   cursor: pointer;
-  border-radius: 3px;
-  transition: all 0.2s ease;
-  color: #78716c;
-
-}
-.tabButton:hover {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.274);
-    color: var(--text-main);
-    border-radius: 0;
-
+  transition: color 0.2s ease;
 }
 
-.tabActive {
+.tabButton svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.tabButton:hover,
+.tabButton:focus-visible {
   color: var(--text-main);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.274);
-  border: 1px solid color-mix(in srgb, var(--border-color) 70%, transparent);
-  background: var(--bg-main);
+}
+
+.tabButton:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+/* active tab: accent text + underline sitting on the bar's bottom line */
+.tabActive {
+  color: var(--accent-secondary);
+}
+
+.tabActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent-secondary);
+}
+
+.tabActive:hover {
+  color: var(--accent-secondary);
 }
 
 .contentBody {
@@ -63,6 +104,39 @@
 .metaHeadings {
   display: flex;
   flex-direction: column;
+}
+
+.locationRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* which era you're looking at (not a link: plain label with a colour dot) */
+.eraLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--text-main);
+  opacity: 0.7;
+}
+
+.eraLabel::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5fc4c9;
+}
+
+.eraLabelPast::before {
+  background: #e0a35a;
 }
 
 .locationLabel {
@@ -131,7 +205,7 @@
 .todoItemButton {
   background: none;
   border: none;
-  padding: 0;
+  padding: 5px 0; /* comfortable tap target */
   font: inherit;
   cursor: pointer;
   text-align: left;
@@ -145,6 +219,123 @@
   text-decoration: underline;
   transform: translateX(2px);
 }
+
+/* Neighbouring views ("More at …"): hop sideways without returning first */
+.siblingSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--border-color) 18%, transparent);
+}
+
+.siblingHeaderRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.siblingCount {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.6;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.siblingStepper {
+  display: flex;
+  gap: 8px;
+}
+
+.stepButton {
+  flex: 1;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 45%, transparent);
+  background: transparent;
+  color: var(--accent-secondary);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.stepNext {
+  background: var(--accent-secondary);
+  color: var(--bg-main);
+}
+
+.stepButton:hover:not(:disabled),
+.stepButton:focus-visible {
+  background: var(--accent-secondary);
+  color: var(--bg-main);
+}
+
+.stepButton:disabled {
+  opacity: 0.35;
+  cursor: default;
+  background: transparent;
+  color: var(--text-main);
+  border-color: color-mix(in srgb, var(--text-main) 25%, transparent);
+}
+
+.siblingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-serif);
+  font-size: small;
+}
+
+.siblingItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 0;
+  border-left: 2px solid transparent;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.siblingItem:hover:not(.siblingCurrent),
+.siblingItem:focus-visible {
+  background: color-mix(in srgb, var(--text-main) 7%, transparent);
+  border-left-color: var(--accent-secondary);
+}
+
+.siblingCurrent {
+  cursor: default;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
+  border-left-color: var(--accent-secondary);
+}
+
+.youAreHere {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+  white-space: nowrap;
+}
+
 /* Interview UI Blocks */
 .interviewProfile {
   display: flex;
@@ -158,7 +349,7 @@
   border-radius: 12px;
   background-size: cover;
   background-position: center;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--line);
 }
 
 .profileMeta {

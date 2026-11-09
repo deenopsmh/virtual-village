@@ -1,6 +1,7 @@
 .sectionContainer {
   margin: 50px auto;
-  padding: 50px 80px;
+  padding: 50px var(--gutter);
+  max-width: var(--page-max);
 
   display: grid;
   grid-template-columns: 1fr;
@@ -29,7 +30,7 @@
 .footer_column {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px; /* same heading-to-content space in all three columns */
 }
 
 .mainTitle {
@@ -62,7 +63,7 @@
   display: inline-block;
   width: fit-content;
 
-  border-bottom: 1px solid rgba(28, 25, 23, 0.2);
+  border-bottom: 1px solid var(--line);
   padding-bottom: 2px;
 
   transition: all 0.2s ease;
@@ -76,30 +77,35 @@
 .detailsGrid {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .addressText {
+  margin: 0;
   font-style: normal;
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--text-main);
-  opacity: 0.85;
+  /* muted via colour, not opacity, so the Wesleyan / Holy Cross names inside stay full strength */
+  color: color-mix(in srgb, var(--text-main) 82%, transparent);
 }
 
 .topSpacing {
-  margin-top: 16px;
+  margin-top: 0; /* was 16px: pushed this column's content lower than the others */
 }
 
 .footerBranding {
-
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.875rem; /* same size as the addresses */
+  line-height: 1.6;
   color: var(--text-main);
-
+  opacity: 0.85;
 
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
+}
+
+.footerBranding p {
+  margin: 0; /* default paragraph margins pushed this column down */
 }

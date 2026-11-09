@@ -25,17 +25,13 @@ export default function About() {
             broad cultural contexts that cannot be separated from material and environmental realities.
           </p>
           <p>
-            Developed by Peter Gottschalk (Wesleyan University) and Mathew Schmalz (College of the Holy Cross), 
-            the platform is built entirely upon over twenty-five years of research in 
+            Developed by <span className="wesleyanText">Peter Gottschalk (Wesleyan University)</span> and <span className="holyCrossText">Mathew Schmalz (College of the Holy Cross)</span>, 
+            the platform is built upon over thirty years of research in 
             <strong> Chainpur</strong>—a village located in the state of Bihar, India.
           </p>
           <h3>Transitioning to Version 3.0</h3>
           <p>
-            While the second iteration of this site utilized the pseudonym "Arampur," Version 3.0 restores 
-            the actual name of the village, Chainpur The most compelling feature of this newly updated 
-            platform is the ability to seamlessly toggle between the images, descriptions, and oral histories 
-            of 2004 and the modern day, allowing researchers to evaluate two decades of environmental and 
-            societal transformations
+            While the second iteration of this site utilized the pseudonym "Arampur," Version 3.0 restores the actual name of the village, Chainpur. The most compelling feature of this newly updated platform is the ability to seamlessly toggle between the images and descriptions of the 2000s and the current day, allowing researchers to evaluate two decades of environmental, economic, and societal transformations.
           </p>
         </div>
 
@@ -60,15 +56,15 @@ export default function About() {
         <h2>Interactive Platforms & Features</h2>
         <div className={styles.featuresGrid}>
           <div className={styles.featureCard}>
-            <h4>🗺️ Roam & Navigate</h4>
+            <h4>Roam & Navigate</h4>
             <p>Virtually travel through Chainpur’s streets, enter local shops, homes, or Sufi temples, and interview residents in English, Hindi, Urdu, or Bhojpuri.</p>
           </div>
           <div className={styles.featureCard}>
-            <h4>📸 My Life Project</h4>
+            <h4>My Life Project</h4>
             <p>Disposable cameras given directly to five Chainpur residents capture self-curated photographic journals of day-to-day life and localized perspectives.</p>
           </div>
           <div className={styles.featureCard}>
-            <h4>📜 Thematic Deep Dives</h4>
+            <h4>Thematic Deep Dives</h4>
             <p>Comprehensive pages dedicated to the deep histories of gender roles, regional dialects, agricultural economies, and architectural heritage.</p>
           </div>
         </div>
@@ -80,11 +76,11 @@ export default function About() {
       <section className={styles.acknowledgementsSection}>
         <h3>Project Credits & Acknowledgments</h3>
         <div className={styles.creditsMeta}>
-          <p><strong>Dr. Peter Gottschalk</strong> — Project Director & Professor of Religion, Wesleyan University</p>
-          <p><strong>Dr. Mathew Schmalz</strong> — Co-Collaborator & Professor of Religious Studies, College of the Holy Cross </p>
+          <p><strong className="wesleyanText">Dr. Peter Gottschalk</strong> — Project Director & Professor of Religion, <span className="wesleyanText">Wesleyan University</span></p>
+          <p><strong className="holyCrossText">Dr. Mathew Schmalz</strong> — Professor of Religious Studies, <span className="holyCrossText">College of the Holy Cross</span></p>
         </div>
         <p className={styles.acknowledgementsText}>
-          This multi-year endeavor was made possible through the generous support of our funding agencies, institutional partners, and the enduring hospitality of the residents of Chainpur. We would like to extend our deepest gratitude to [Rachel, Charlie, Francesca, Mohammad] and the entire digital humanities development framework team whose expertise in system resuscitation brought this archive back to the open web.
+          This multi-year endeavor was made possible through the generous support of our funding agencies, institutional partners, and the enduring hospitality of the residents of Chainpur. First and foremost, we would like to express our deepest gratitude to the people of the Chainpur nexus who have opened their homes, businesses, and lives to us with generosity and affection. We would like to extend our vast appreciation to Mohammad Hasib, Rachel Schnepper, Charlie Coffey, Francesca Baird, Qura-Tul-Ain Khan, and the entire digital humanities development framework team whose expertise and hard work brought this archive back to the open web. And we also are grateful to the Indian Government for providing permission to engage in the work necessary for this project.
         </p>
       </section>
     </div>

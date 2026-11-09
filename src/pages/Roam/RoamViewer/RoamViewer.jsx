@@ -1,10 +1,41 @@
 import styles from './RoamViewer.module.css';
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import mapLight from '/src/assets/waypoint-map-light.png';
 import mapDark from '/src/assets/waypoint-map-dark.png';
 import ResponsiveImage from '../../../components/ResponsiveImage';
-import { HOTSPOT_TYPE_ICONS, DEFAULT_HOTSPOT_ICON } from '../RoamData';
-import { ROAM_DATA } from '../RoamData';
+import TimeWarp from './TimeWarp';
+import { HOTSPOT_TYPE_ICONS, DEFAULT_HOTSPOT_ICON, ROAM_DATA, POINT_DATA } from '../RoamData';
+import { createNavigator } from '../roamNavigation';
+
+// One navigator per era: arrows and map lines only lead to views that exist in that era
+// (e.g. DD-to-N is 2000s-only).
+const dataForEra = (era) =>
+  Object.fromEntries(Object.entries(ROAM_DATA).filter(([, d]) => d?.eras?.[era]));
+const NAVIGATORS = {
+  '2020s': createNavigator(dataForEra('2020s'), POINT_DATA),
+  '2000s': createNavigator(dataForEra('2000s'), POINT_DATA),
+};
+
+// Icons for the navigation pad (VV2 layout: arrows around a turn-around button)
+const NavIcon = ({ type }) => {
+  const common = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.4, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
+  switch (type) {
+    case 'forward': return <svg {...common}><path d="M12 20V5M6 11l6-6 6 6" /></svg>;
+    case 'back': return <svg {...common}><path d="M12 4v15M6 13l6 6 6-6" /></svg>;
+    case 'left': return <svg {...common}><path d="M18 20v-7a4 4 0 0 0-4-4H5M9 5L5 9l4 4" /></svg>;
+    case 'right': return <svg {...common}><path d="M6 20v-7a4 4 0 0 1 4-4h9M15 5l4 4-4 4" /></svg>;
+    case 'around': return <svg {...common}><path d="M19 12a7 7 0 1 1-2.05-4.95M19 4v4h-4" /></svg>;
+    default: return null;
+  }
+};
+
+const NAV_BUTTONS = [
+  { move: 'forward', verb: 'Walk forward', area: 'up' },
+  { move: 'left', verb: 'Turn left', area: 'left' },
+  { move: 'around', verb: 'Turn around', area: 'center' },
+  { move: 'right', verb: 'Turn right', area: 'right' },
+  { move: 'back', verb: 'Step back', area: 'down' },
+];
 
 export default function RoamViewer({
   activeNode,
@@ -24,14 +55,22 @@ export default function RoamViewer({
   activeOriginPaths = [],
   isSplitViewOpen,
   onSelectPathChoice,
+  otherEra,
+  canTimeWarp,
+  onTimeWarp,
+  timeWarpPreview,
 }) {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const [isMapVisible, setIsMapVisible] = useState(true);
+  // On phones the map would cover the whole photo, so it starts hidden there.
+  const [isMapVisible, setIsMapVisible] = useState(
+    () => typeof window === 'undefined' || !window.matchMedia || window.matchMedia('(min-width: 768px)').matches
+  );
 
   const [scale, setScale] = useState(1);
   const [maxPan, setMaxPan] = useState({ x: 0, y: 0 });
+  const [isPortrait, setIsPortrait] = useState(false);
   const [isRevealing, setIsRevealing] = useState(false);
 
   const [mapZoom, setMapZoom] = useState(1);
@@ -60,6 +99,12 @@ export default function RoamViewer({
   const customMapDrawing = isDarkMode ? mapDark : mapLight;
 
   const containerRef = useRef(null);
+  // The scene element as state too, so the time-warp overlay can render into it.
+  const [canvasEl, setCanvasEl] = useState(null);
+  const setCanvasRef = useCallback((el) => {
+    containerRef.current = el;
+    setCanvasEl(el);
+  }, []);
   const transformLayerRef = useRef(null);
   const miniMapContainerRef = useRef(null);
   const dragStart = useRef({ x: 0, y: 0 });
@@ -67,10 +112,23 @@ export default function RoamViewer({
   const mouseDownPos = useRef({ x: 0, y: 0 });
   const hasDraggedRef = useRef(false);
   const revealTimeoutRef = useRef(null);
+  // After a time warp the overlay already showed the full photo, so the new photo
+  // lands straight at its final framing instead of replaying the intro zoom.
+  const skipRevealRef = useRef(false);
+  const [isInstantFrame, setIsInstantFrame] = useState(false);
+  const handleTimeWarp = () => {
+    skipRevealRef.current = true;
+    setTimeout(() => { skipRevealRef.current = false; }, 6000); // in case no new photo loads
+    onTimeWarp();
+  };
   const loadedSrcRef = useRef(null);
 
   const currentImages = currentContext?.images || [];
   const currentImage = currentImages[activeImageIndex]?.src;
+  // Spinner while the main photo loads (Drive photos can take a few seconds the first time).
+  const imageKey = currentImage ? JSON.stringify(currentImage) : null;
+  const [settledImageKey, setSettledImageKey] = useState(null);
+  const isPhotoLoading = Boolean(imageKey) && settledImageKey !== imageKey;
 
   const isSinglePoint = (id) => Boolean(id && !id.includes('-to-'));
 
@@ -116,6 +174,8 @@ const handleBack = () => {
   }
 };
 
+  const getMoves = NAVIGATORS[era] || NAVIGATORS['2020s'];
+
   const pointLookup = (mapPoints || []).reduce((acc, point) => {
     acc[point.id] = point;
     return acc;
@@ -124,6 +184,7 @@ const handleBack = () => {
   const uniqueFromKeys = Array.from(
     new Set(
       Object.values(ROAM_DATA)
+        .filter((data) => data?.eras?.[era])
         .map((data) => data?.mapEndpoints?.from)
         .filter(Boolean)
     )
@@ -144,18 +205,18 @@ const handleBack = () => {
   const originPathsWithImages = useMemo(() => {
     return (activeOriginPaths || []).map((item) => {
       const data = ROAM_DATA[item.pathKey];
-      const era2020Images = data?.eras?.['2020s']?.images;
-      let imagePath = Array.isArray(era2020Images) && era2020Images.length > 0
-        ? era2020Images[0].src
+      const eraImages = data?.eras?.[era]?.images;
+      let imagePath = Array.isArray(eraImages) && eraImages.length > 0
+        ? eraImages[0].src
         : (data?.image || currentImage);
 
-      if (imagePath && !imagePath.startsWith('http') && !imagePath.startsWith('/')) {
+      if (typeof imagePath === 'string' && !imagePath.startsWith('http') && !imagePath.startsWith('/')) {
         imagePath = `/${imagePath}`;
       }
 
       return { ...item, image: imagePath };
     });
-  }, [activeOriginPaths, currentImage]);
+  }, [activeOriginPaths, currentImage, era]);
 
   const activeMinimapPaths = useMemo(() => {
     if (selectedOriginId) {
@@ -165,41 +226,20 @@ const handleBack = () => {
       }));
     }
 
-    const choicePaths = [];
-    const choiceEndpointPairs = new Set();
-
-    if (activeNode?.paths && Object.keys(activeNode.paths).length > 0) {
-      Object.entries(activeNode.paths).forEach(([, id]) => {
-        const nextKey = typeof id === 'string' ? id : id?.id;
-        if (!nextKey || nextKey === activeNodeId) return;
-
-        choicePaths.push({
-          pathKey: nextKey,
-          isCurrentSegment: false,
-        });
-
-        const targetEndpoints = ROAM_DATA[nextKey]?.mapEndpoints;
-        if (targetEndpoints?.from && targetEndpoints?.to) {
-          choiceEndpointPairs.add(`${targetEndpoints.from}-${targetEndpoints.to}`);
-          choiceEndpointPairs.add(`${targetEndpoints.to}-${targetEndpoints.from}`);
-        }
-      });
-    }
+    // Current view = animated line; every view the nav pad can reach = solid line.
+    const reachable = [...new Set(Object.values(getMoves(activeNodeId)).filter(Boolean))]
+      .filter((id) => id !== activeNodeId)
+      .map((pathKey) => ({ pathKey, isCurrentSegment: false }));
 
     const currentEndpoints = activeNode?.mapEndpoints || ROAM_DATA[activeNodeId]?.mapEndpoints;
-    const currentPairKey = currentEndpoints ? `${currentEndpoints.from}-${currentEndpoints.to}` : null;
-    const hasOpposingChoice = currentPairKey && choiceEndpointPairs.has(currentPairKey);
+    const current = currentEndpoints?.from && currentEndpoints?.to
+      ? [{ pathKey: activeNodeId, isCurrentSegment: true }]
+      : [];
 
-    const pathsList = [];
-    if (currentEndpoints?.from && currentEndpoints?.to && !hasOpposingChoice) {
-      pathsList.push({
-        pathKey: activeNodeId,
-        isCurrentSegment: true,
-      });
-    }
+    return [...reachable, ...current]; // current drawn last so it sits on top
+  }, [selectedOriginId, activeOriginPaths, activeNode, activeNodeId, getMoves]);
 
-    return [...pathsList, ...choicePaths];
-  }, [selectedOriginId, activeOriginPaths, activeNode, activeNodeId]);
+  const moves = useMemo(() => getMoves(activeNodeId), [activeNodeId, getMoves]);
 
   useEffect(() => {
     loadedSrcRef.current = null;
@@ -236,13 +276,19 @@ const handleBack = () => {
       renderedH = containerW / imageRatio;
     }
 
+    // Portrait photos are shown whole (contain) over a blurred backdrop: zooming them to
+    // fill a wide frame would crop most of the picture. Landscape photos fill the frame
+    // (cover) and can be dragged.
+    const isPortraitPhoto = imageRatio < 1;
+    setIsPortrait(isPortraitPhoto);
+
     const ZOOM_PAD = 1.03;
     const scaleX = (renderedW / containerW) * ZOOM_PAD;
     const scaleY = (renderedH / containerH) * ZOOM_PAD;
-    const targetScale = Math.max(scaleX, scaleY);
+    const targetScale = isPortraitPhoto ? 1 : Math.max(scaleX, scaleY);
 
-    const limitX = Math.max(0, (renderedW * ZOOM_PAD - containerW) / 2);
-    const limitY = Math.max(0, (renderedH * ZOOM_PAD - containerH) / 2);
+    const limitX = isPortraitPhoto ? 0 : Math.max(0, (renderedW * ZOOM_PAD - containerW) / 2);
+    const limitY = isPortraitPhoto ? 0 : Math.max(0, (renderedH * ZOOM_PAD - containerH) / 2);
 
     setMaxPan({ x: limitX, y: limitY });
     setPan({ x: 0, y: 0 });
@@ -254,7 +300,7 @@ const handleBack = () => {
     let targetPanX = 0;
     let targetPanY = 0;
 
-    if (focusPoint) {
+    if (focusPoint && !isPortraitPhoto) {
       const focusPxX = (focusPoint.left / 100) * containerW;
       const focusPxY = (focusPoint.top / 100) * containerH;
 
@@ -268,6 +314,21 @@ const handleBack = () => {
 
     if (revealTimeoutRef.current) {
       clearTimeout(revealTimeoutRef.current);
+    }
+
+    if (isPortraitPhoto) return; // already framed: whole photo, nothing to zoom or drag
+
+    if (skipRevealRef.current) {
+      skipRevealRef.current = false;
+      // Next tick: a cached photo can load before the "new photo → reset zoom" effect runs,
+      // which would undo this framing.
+      revealTimeoutRef.current = setTimeout(() => {
+        setIsInstantFrame(true);
+        setScale(targetScale);
+        setPan({ x: targetPanX, y: targetPanY });
+        revealTimeoutRef.current = setTimeout(() => setIsInstantFrame(false), 80); // animated zoom again
+      }, 0);
+      return;
     }
 
     revealTimeoutRef.current = setTimeout(() => {
@@ -402,14 +463,24 @@ const handleContainerMouseUp = (e) => {
   return (
     <div className={styles.viewerWrapper}>
       <div
-        className={`${styles.canvasContainer} ${isDragging ? styles.grabbing : styles.grab}`}
-        ref={containerRef}
+        className={`${styles.canvasContainer} ${isPortrait ? styles.noDrag : isDragging ? styles.grabbing : styles.grab}`}
+        ref={setCanvasRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleContainerMouseUp}
         onMouseLeave={() => setIsDragging(false)}
+        // touch: drag sideways to look around a photo (vertical swipes still scroll the page)
+        onTouchStart={(e) => {
+          const t = e.touches[0];
+          if (t) handleMouseDown({ target: e.target, clientX: t.clientX, clientY: t.clientY });
+        }}
+        onTouchMove={(e) => {
+          const t = e.touches[0];
+          if (t) handleMouseMove({ clientX: t.clientX, clientY: t.clientY });
+        }}
+        onTouchEnd={() => setIsDragging(false)}
       >
-        <div className={styles.backgroundImage}>
+        <div className={`${styles.backgroundImage} ${isPortrait ? styles.backgroundPortrait : ''}`}>
           <ResponsiveImage
             src={currentImage}
             alt=""
@@ -418,6 +489,19 @@ const handleContainerMouseUp = (e) => {
             draggable="false"
           />
         </div>
+
+        {!currentImage && !isSplitViewOpen && (
+          <div className={styles.noPhotoNotice} role="status">
+            No {era} photo for this view yet
+          </div>
+        )}
+
+        {isPhotoLoading && !isSplitViewOpen && (
+          <div className={styles.photoLoading} role="status" aria-live="polite">
+            <span className={styles.photoLoadingSpinner} aria-hidden="true" />
+            <span>Loading photo…</span>
+          </div>
+        )}
 
         {isSplitViewOpen ? (
           <div className={styles.splitChoiceContainer} onMouseDown={(e) => e.stopPropagation()}>
@@ -459,7 +543,7 @@ const handleContainerMouseUp = (e) => {
             className={styles.transformLayer}
             style={{
               transform: `translate(${pan.x}px, ${pan.y}px) scale(${scale})`,
-              transition: isDragging
+              transition: isDragging || isInstantFrame
                 ? 'none'
                 : isRevealing
                 ? 'transform 2s ease-in-out'
@@ -474,7 +558,13 @@ const handleContainerMouseUp = (e) => {
               priority={activeImageIndex === 0}
               draggable="false"
               onLoad={handleImageLoad}
+              onSettled={() => setSettledImageKey(imageKey)}
               onDoubleClick={handleImageDoubleClick}
+              fallback={
+                <div className={styles.noPhotoNotice} role="status">
+                  This {era} photo can't be shown yet
+                </div>
+              }
             />
 
             {availableActivities.map((item) => {
@@ -549,7 +639,7 @@ const handleContainerMouseUp = (e) => {
 
                   if (!fromPoint || !toPoint) return null;
 
-                  const isSolid = item.isCurrentSegment;
+                  const isCurrent = item.isCurrentSegment;
                   const toIsViewPoint = isSinglePoint(endpoints.to) && Boolean(ROAM_DATA[endpoints.to]);
                   const targetGap = toIsViewPoint ? 2.1 : 1.3;
 
@@ -574,7 +664,7 @@ const handleContainerMouseUp = (e) => {
                       <path d={path} className={styles.arrowHitArea} />
                       <path
                         d={path}
-                        className={isSolid ? styles.solidArrowPath : styles.movingArrowPath}
+                        className={isCurrent ? styles.currentViewPath : styles.availablePath}
                       />
                     </g>
                   );
@@ -661,58 +751,52 @@ const handleContainerMouseUp = (e) => {
           </div>
         )}
 
+
         {!isSplitViewOpen && (
           <div className={styles.bottomControlHudZone} onMouseDown={(e) => e.stopPropagation()}>
-            <div className={styles.navigationDock}>
-              <button
-                className={styles.navArrow}
-                disabled={!activeNode?.paths?.left}
-                onClick={() => activeNode?.paths?.left && onNavigate(activeNode.paths.left)}
-                onMouseDown={(e) => e.stopPropagation()}
-                title="Go Left"
-              >
-                ←
-              </button>
+            <TimeWarp
+              era={era}
+              otherEra={otherEra}
+              canWarp={canTimeWarp}
+              preview={timeWarpPreview}
+              onWarp={handleTimeWarp}
+              isPhotoLoading={isPhotoLoading}
+              containerRef={containerRef}
+              portalTarget={canvasEl}
+            />
 
-              <div className={styles.verticalAxisGroup}>
-                <button
-                  className={styles.navCenterUp}
-                  disabled={!activeNode?.paths?.up}
-                  onClick={() => activeNode?.paths?.up && onNavigate(activeNode.paths.up)}
-                  onMouseDown={(e) => e.stopPropagation()}
-                  title="Go Forward"
-                >
-                  ↑
-                </button>
-                <button
-                  className={styles.navCenterDown}
-                  disabled={!activeNode?.paths?.down}
-                  onClick={() => activeNode?.paths?.down && onNavigate(activeNode.paths.down)}
-                  onMouseDown={(e) => e.stopPropagation()}
-                  title="Go Backward"
-                >
-                  ↓
-                </button>
-              </div>
+            <nav className={styles.navigationPad} aria-label="Move through Chainpur">
+              {NAV_BUTTONS.map(({ move, verb, area }) => {
+                const target = moves[move];
+                const label = target ? `${verb}: ${ROAM_DATA[target]?.label || target}` : `${verb} (not available here)`;
+                return (
+                  <button
+                    key={move}
+                    className={`${styles.padButton} ${move === 'around' ? styles.padAround : ''}`}
+                    style={{ gridArea: area }}
+                    disabled={!target}
+                    onClick={() => target && onNavigate(target)}
+                    onMouseDown={(e) => e.stopPropagation()}
+                    title={label}
+                    aria-label={label}
+                  >
+                    <NavIcon type={move} />
+                  </button>
+                );
+              })}
+            </nav>
 
-              <button
-                className={styles.navArrow}
-                disabled={!activeNode?.paths?.right}
-                onClick={() => activeNode?.paths?.right && onNavigate(activeNode.paths.right)}
-                onMouseDown={(e) => e.stopPropagation()}
-                title="Go Right"
-              >
-                →
-              </button>
-            </div>
 
             <button
               className={`${styles.mapToggleButton} ${isMapVisible ? styles.mapToggleActive : styles.mapToggleMuted}`}
               onClick={() => setIsMapVisible(!isMapVisible)}
               onMouseDown={(e) => e.stopPropagation()}
-              title={isMapVisible ? 'Hide Map Overlay' : 'Show Map Overlay'}
             >
-              🗺️
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M9 4L3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4z" />
+                <path d="M9 4v13M15 6.5v13" />
+              </svg>
+              {isMapVisible ? 'Hide map' : 'Show map'}
             </button>
           </div>
         )}

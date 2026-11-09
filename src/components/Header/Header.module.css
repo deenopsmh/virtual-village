@@ -5,7 +5,7 @@
   align-items: center;
   height: 100px;
   padding: 0 5vw;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--line);
   background: var(--bg-main);
 }
 
@@ -45,6 +45,14 @@
   color: var(--text-main);
   font-weight: 500;
   transition: 0.2s ease-in-out;
+}
+
+/* the page you're on: orange accent with an underline (NavLink adds .active) */
+.nav a:global(.active), .nav-text-container a:global(.active) {
+  color: var(--accent-secondary);
+  font-weight: 600;
+  text-decoration: underline 2px solid var(--accent-secondary);
+  text-underline-offset: 6px;
 }
 
 .nav a:hover, .nav-text-container a:hover  {

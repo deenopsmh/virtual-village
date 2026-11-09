@@ -26,3 +26,5 @@ dist-ssr
 .env
 src/assets/VV3 Images - Copy/
 public/images/optimized/**/*.hash
+# Private client correspondence (emails, Drive exports)
+client-notes/

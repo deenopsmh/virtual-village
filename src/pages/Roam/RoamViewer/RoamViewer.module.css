@@ -8,7 +8,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--line);
   background: transparent;
   border-radius: 20px;
   overflow: hidden;
@@ -34,6 +34,17 @@
 .grab { cursor: grab; }
 .grabbing { cursor: grabbing; }
 
+/* Portrait photo: shown whole, so the backdrop does more work — blur it right down */
+.backgroundPortrait .backgroundImg {
+  filter: blur(28px) saturate(1.2) brightness(0.75);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.noDrag {
+  cursor: default;
+}
+
 .transformLayer {
   position: absolute;
   width: 100%;
@@ -51,6 +62,10 @@
   pointer-events: none;
 }
 
+.backgroundPortrait ~ .transformLayer .panImage {
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45));
+}
+
 .miniMapWrapper {
   position: absolute;
   bottom: 20px;
@@ -58,7 +73,7 @@
   width: 400px;
   aspect-ratio: 1000 / 1150;
   background-color: var(--bg-surface, #fcfbfa);
-  border: 1px solid var(--border-color, #ffffff);
+  border: 1px solid var(--line);
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   z-index: 10;
@@ -113,7 +128,7 @@
   width: 26px;
   height: 26px;
   border-radius: 6px;
-  border: 1px solid var(--border-color, #e7e5e0);
+  border: 1px solid var(--line);
   background-color: var(--bg-surface, rgba(252, 251, 250, 0.95));
   color: var(--text-main, #1c1917);
   font-size: 15px;
@@ -140,7 +155,7 @@
   width: 26px;
   height: 26px;
   border-radius: 6px;
-  border: 1px solid var(--border-color, #e7e5e0);
+  border: 1px solid var(--line);
   background-color: var(--bg-surface, rgba(252, 251, 250, 0.95));
   color: var(--text-main, #1c1917);
   font-size: 12px;
@@ -304,27 +319,37 @@
   pointer-events: stroke;
 }
 
-.solidArrowPath {
+/* Mini-map lines (Peter, Sep 13): the direction you're looking = moving dashes
+   in red (yellow in dark mode); the other directions you can go = solid blue. */
+.miniMapWrapper {
+  --line-current: #dc2626;
+  --line-available: #2563eb;
+}
+
+:global(html.dark) .miniMapWrapper {
+  --line-current: #facc15;
+  --line-available: #60a5fa;
+}
+
+.currentViewPath {
   fill: none;
-  stroke: var(--path-stroke-solid);
-  stroke-width: 0.55;
+  stroke: var(--line-current);
+  stroke-width: 0.6;
   stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0px 0px 1.5px var(--path-shadow));
-  opacity: 0.65;
+  stroke-dasharray: 1 0.8;
+  animation: marchingAnts 1.2s linear infinite;
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.45));
   pointer-events: none;
 }
 
-.movingArrowPath {
+.availablePath {
   fill: none;
-  stroke: var(--path-stroke-moving);
-  stroke-width: 0.35;
+  stroke: var(--line-available);
+  stroke-width: 0.5;
   stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 0.9 0.9;
-  opacity: 0.7;
-  animation: marchingAnts 1.6s linear infinite;
-  transition: opacity 0.2s ease, stroke-width 0.2s ease, stroke 0.2s ease;
+  opacity: 0.85;
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.35));
+  transition: opacity 0.2s ease, stroke-width 0.2s ease;
   pointer-events: none;
 }
 
@@ -334,121 +359,190 @@
   }
 }
 
-:global(html:not(.dark)) .solidArrowPath {
-  stroke: var(--path-stroke-solid);
-  stroke-width: 0.65;
-  filter: drop-shadow(0px 1px 2px var(--path-shadow));
-  opacity: 0.85;
-}
-
-:global(html:not(.dark)) .movingArrowPath {
-  stroke-width: 0.45;
-  opacity: 0.9;
-}
-
-.interactivePath:hover .movingArrowPath {
+.interactivePath:hover .availablePath {
   opacity: 1;
-  stroke-width: 0.5;
-  stroke: var(--path-stroke-moving);
+  stroke-width: 0.75;
 }
 
-:global(html:not(.dark)) .interactivePath:hover .movingArrowPath {
-  stroke: var(--path-stroke-moving);
-  stroke-width: 0.6;
+@media (prefers-reduced-motion: reduce) {
+  .currentViewPath {
+    animation: none;
+  }
 }
 
 .bottomControlHudZone {
   position: absolute;
-  bottom: 20px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: flex-end;
+  gap: 8px;
   z-index: 30;
 }
 
 @media (min-width: 768px) {
   .bottomControlHudZone {
-    left: 24px;
+    left: 16px;
     transform: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 }
 
-.navigationDock {
-  display: flex;
-  align-items: center;
+/* Navigation pad — VV2 layout: forward/back/turn arrows around a turn-around button */
+.navigationPad {
+  display: grid;
+  grid-template-columns: repeat(3, 30px);
+  grid-template-rows: repeat(3, 28px);
+  grid-template-areas:
+    ".    up     ."
+    "left center right"
+    ".    down   .";
+  place-items: center;
+  padding: 4px;
   background-color: var(--hero-overlay, rgba(252, 251, 250, 0.95));
   backdrop-filter: blur(8px);
-  border: 1px solid var(--border-color, #e7e5e0);
-  padding: 4px 12px;
-  border-radius: 30px;
-  gap: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid color-mix(in srgb, var(--border-color, #e7e5e0) 35%, transparent);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-.verticalAxisGroup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.navArrow,
-.navCenterUp,
-.navCenterDown {
-  background: none;
-  border: none;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-main, #1c1917);
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
+.padButton {
+  width: 28px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-main, #1c1917);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
-.navCenterUp,
-.navCenterDown {
-  padding: 2px 12px;
-  font-size: 1rem;
-}
-
-.navArrow:hover,
-.navCenterUp:hover,
-.navCenterDown:hover {
+.padButton:hover:not(:disabled),
+.padButton:focus-visible {
   background-color: var(--bg-surface, #f5f4f0);
   color: var(--accent-secondary, #92400e);
 }
 
-.navArrow:disabled,
-.navCenterUp:disabled,
-.navCenterDown:disabled {
-  color: #d6d3d153;
-  cursor: not-allowed;
-  background: none !important;
+.padButton:active:not(:disabled) {
+  transform: scale(0.92);
 }
 
-.mapToggleButton {
-  width: 48px;
-  height: 48px;
+.padButton:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 1px;
+}
+
+.padButton:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.padAround {
+  width: 26px;
   border-radius: 50%;
-  border: none;
+  border: 1.5px solid currentColor;
+}
+
+.noPhotoNotice {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  padding: 24px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: repeating-linear-gradient(
+    135deg,
+    var(--bg-surface),
+    var(--bg-surface) 12px,
+    color-mix(in srgb, var(--border-color) 6%, var(--bg-surface)) 12px,
+    color-mix(in srgb, var(--border-color) 6%, var(--bg-surface)) 24px
+  );
+  pointer-events: none;
+}
+
+/* Shown while the main photo loads; appears after a short delay so cached photos don't flash it */
+.photoLoading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 20; /* above the mini-map (10–12), below the nav HUD (30) */
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: color-mix(in srgb, var(--bg-main) 82%, transparent);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+  opacity: 0;
+  animation: photoLoadingIn 0.3s ease-out 0.25s forwards;
+}
+
+.photoLoadingSpinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2.5px solid color-mix(in srgb, var(--text-main) 20%, transparent);
+  border-top-color: var(--accent-secondary);
+  animation: photoSpin 0.8s linear infinite;
+}
+
+@keyframes photoLoadingIn {
+  to { opacity: 1; }
+}
+
+@keyframes photoSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photoLoadingSpinner { animation-duration: 2.4s; }
+}
+
+.mapToggleButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px 0 10px;
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.mapToggleButton svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
 }
 
 .mapToggleActive {
   background-color: var(--hero-overlay, rgba(252, 251, 250, 0.95));
   backdrop-filter: blur(8px);
+  color: var(--text-main, #1c1917);
   opacity: 1;
 }
 
@@ -471,7 +565,7 @@
   padding: 6px 12px;
   border-radius: 20px;
   background-color: var(--bg-surface, rgba(252, 251, 250, 0.95));
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.5));
+  border: 1px solid var(--line);
   color: var(--text-main, #44403c);
   font-size: 11px;
   font-weight: 700;
@@ -526,7 +620,7 @@
   top: 16px;
   left: 16px;
   background-color: var(--bg-surface, rgba(252, 251, 250, 0.95));
-  border: 1px solid var(--border-color, #e7e5e0);
+  border: 1px solid var(--line);
   padding: 8px 14px;
   border-radius: 20px;
   font-size: 12px;
@@ -565,7 +659,7 @@
   align-items: center;
   padding: 1rem 2rem;
   background: var(--hero-overlay);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--line);
   color: var(--text-main);
   z-index: 2;
 }
@@ -582,7 +676,7 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  border-right: 1px solid var(--border-color);
+  border-right: 1px solid var(--line);
   transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -674,4 +768,55 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 767px) {
+  /* a taller scene so the photo has room next to the controls */
+  .canvasContainer {
+    aspect-ratio: 1 / 1;
+    touch-action: pan-y;
+  }
+
+  /* map: centred over the scene, above the controls, sized to the scene */
+  .miniMapWrapper {
+    top: 12px;
+    bottom: auto;
+    right: 50%;
+    transform: translateX(50%);
+    width: auto;
+    height: calc(100% - 124px); /* clear of the controls below */
+  }
+
+  .miniMapHidden {
+    transform: translateX(50%) translateY(10px) scale(0.95);
+  }
+
+  /* thumb-sized arrow buttons */
+  .navigationPad {
+    grid-template-columns: repeat(3, 34px);
+    grid-template-rows: repeat(3, 30px);
+    padding: 3px;
+  }
+
+  .padButton {
+    width: 32px;
+    height: 28px;
+  }
+
+  .padAround {
+    width: 28px;
+  }
+
+  .bottomControlHudZone {
+    bottom: 10px;
+    gap: 8px;
+    max-width: calc(100% - 16px);
+  }
+
+  .mapToggleButton {
+    height: 30px;
+    padding: 0 10px 0 8px;
+    font-size: 0.72rem;
+  }
 }

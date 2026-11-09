@@ -2,16 +2,29 @@
 @import "tailwindcss";
 
 :root {
+  /* layout: content never stretches past these on wide screens; gutters shrink on phones */
+  --page-max: 1280px;
+  --gutter: clamp(16px, 5vw, 80px);
+  --measure: 72ch; /* comfortable reading line length */
+
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 
-  --bg-main: #fff4e3;
-  --bg-surface: #F3EFEA;
+  /* warm paper, not peach; surface is the same hue a step darker */
+  --bg-main: #FBF6EE;
+  --bg-surface: #F3EADC;
   --text-main: #1C2624;
   --accent-primary: #234E52;
   --accent-secondary: #C8460F;
   --border-color: #2D3B38;
-  --hero-overlay: rgba(250, 248, 245, 0.72);
+  --hero-overlay: rgba(251, 246, 238, 0.82);
+
+  /* soft structural lines (cards, panels, dividers); full --border-color was too heavy */
+  --line: color-mix(in srgb, var(--border-color) 18%, transparent);
+
+  /* the two institutions (home page colours); used wherever Peter/Wesleyan or Mat/Holy Cross appear */
+  --wesleyan: #98002e;
+  --holy-cross: #602d8e;
 
   --waypoint-fill: #c2410c;
   --waypoint-stroke: #ffffff;
@@ -29,6 +42,12 @@ html.dark {
   --accent-secondary: #E59A6E;
   --border-color: #E2DED9;
   --hero-overlay: rgba(15, 22, 21, 0.78);
+
+  --line: color-mix(in srgb, var(--border-color) 16%, transparent);
+
+  /* same red and purple, lifted just enough to read on the dark background */
+  --wesleyan: #d23a5e;
+  --holy-cross: #a57be0;
 
 --waypoint-fill: #fdfcfb;
   --waypoint-stroke: #0f766e;
@@ -57,3 +76,41 @@ h1, h2, h3, h4, h5, h6 {
               fill 0.35s ease,
               stroke 0.35s ease;
 }
+/* Images (ResponsiveImage): shimmer while loading, fade in when ready */
+.vvImg[data-loaded="false"] {
+  background-color: var(--bg-surface);
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in srgb, var(--text-main) 7%, transparent) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: vvShimmer 1.4s linear infinite;
+}
+
+.vvImg[data-loaded="true"] {
+  animation: vvFadeIn 0.45s ease-out;
+}
+
+@keyframes vvShimmer {
+  from { background-position: 150% 0; }
+  to { background-position: -50% 0; }
+}
+
+@keyframes vvFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vvImg[data-loaded="false"],
+  .vvImg[data-loaded="true"] {
+    animation: none;
+  }
+}
+
+/* Institution colours: Peter / Wesleyan in Wesleyan red, Mat / Holy Cross in Holy Cross purple */
+:root .wesleyanText { color: var(--wesleyan); }  /* :root beats section styles like .addressText strong */
+:root .holyCrossText { color: var(--holy-cross); }
+a.wesleyanText:hover, a.holyCrossText:hover { text-decoration: underline; text-underline-offset: 3px; }
