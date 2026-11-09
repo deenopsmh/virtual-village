@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Contexts.module.css";
 import ResponsiveImage from "../../components/ResponsiveImage";
 import { CONTEXT_SECTIONS } from "./contextsData";
@@ -163,6 +164,21 @@ export default function Contexts() {
       </nav>
 
       {CONTEXT_SECTIONS.map((s) => <Section key={s.id} section={s} />)}
+
+      {/* where to go next, instead of a dead end before the footer */}
+      <aside className={styles.nextSteps} aria-label="Keep exploring">
+        <span className={styles.overline}>Keep exploring</span>
+        <h2 className={styles.nextTitle}>See Chainpur for yourself</h2>
+        <p className={styles.nextText}>
+          Walk the village's streets as they were in the 2000s and are today, or learn how A Virtual Village came to be.
+        </p>
+        <div className={styles.nextActions}>
+          <Link to="/roam" className={`${styles.nextBtn} ${styles.nextPrimary}`}>
+            Roam the village <span aria-hidden="true">→</span>
+          </Link>
+          <Link to="/about" className={styles.nextBtn}>About the project</Link>
+        </div>
+      </aside>
     </div>
   );
 }
