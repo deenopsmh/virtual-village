@@ -822,13 +822,18 @@
 }
 
 
-/* First-visit hint beside the map button (styled like the time-warp hint) */
+/* First-visit hints beside the arrow pad and the map button (styled like the time-warp hint) */
+.padWrap {
+  position: relative;
+  display: inline-flex;
+}
+
 .mapToggleWrap {
   position: relative;
   display: inline-flex;
 }
 
-.mapHint {
+.hudHint {
   position: absolute;
   left: calc(100% + 12px);
   top: 50%;
@@ -844,10 +849,10 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   pointer-events: none;
   transform: translateY(-50%);
-  animation: mapHintInOut 7s ease forwards;
+  animation: hudHintInOut 4s ease forwards;
 }
 
-.mapHint::before {
+.hudHint::before {
   content: "";
   position: absolute;
   left: -6px;
@@ -858,11 +863,11 @@
   border-right-color: color-mix(in srgb, var(--bg-main) 92%, transparent);
 }
 
-.mapHint strong {
+.hudHint strong {
   color: var(--accent-secondary);
 }
 
-@keyframes mapHintInOut {
+@keyframes hudHintInOut {
   0% { opacity: 0; transform: translate(-6px, -50%); }
   8%, 88% { opacity: 1; transform: translate(0, -50%); }
   100% { opacity: 0; transform: translate(0, -50%); }
@@ -870,23 +875,33 @@
 
 /* phones: the controls are a row in the middle, so the hint sits above the button */
 @media (max-width: 767px) {
-  .mapHint {
+  .hudHint {
     left: auto;
     right: 0;
     top: auto;
     bottom: calc(100% + 12px);
     transform: none;
-    animation-name: mapHintInOutUp;
+    animation-name: hudHintInOutUp;
   }
-  .mapHint::before { display: none; }
+  .hudHint::before { display: none; }
 }
 
-@keyframes mapHintInOutUp {
+@keyframes hudHintInOutUp {
   0% { opacity: 0; }
   8%, 88% { opacity: 1; }
   100% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mapHint { animation: none; } /* shown still; it is removed after 7 s */
+  .hudHint { animation: none; } /* shown still; it is removed after 4 s */
+}
+
+/* phones: the arrow pad sits in the middle of the row, so its hint is centred above it */
+@media (max-width: 767px) {
+  .padHint {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    animation-name: hudHintInOutUp;
+  }
 }

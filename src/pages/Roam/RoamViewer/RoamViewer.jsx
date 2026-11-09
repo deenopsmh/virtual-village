@@ -31,8 +31,9 @@ const NavIcon = ({ type }) => {
 
 // Remembered per visitor (try/catch: storage can be blocked, the page must still work)
 const MAP_OPEN_KEY = 'vv.mapOpen';
-const MAP_HINT_KEY = 'vv.mapHintSeen';
-const TIME_WARP_HINT_KEY = 'vv.timeWarpHintSeen';
+// first-visit hints, shown one after another, each once per visitor
+const HINT_KEYS = { warp: 'vv.timeWarpHintSeen', pad: 'vv.padHintSeen', map: 'vv.mapHintSeen' };
+const HINT_MS = 4000;
 const readStore = (key) => {
   try { return window.localStorage.getItem(key); } catch { return null; }
 };
@@ -78,28 +79,28 @@ export default function RoamViewer({
   // open last time gets it open again.
   const [isMapVisible, setIsMapVisible] = useState(() => readStore(MAP_OPEN_KEY) === '1');
 
-  // First visit: a short hint beside the map button, after the time-warp hint (so they never overlap).
-  const [mapHint, setMapHint] = useState(() =>
-    readStore(MAP_HINT_KEY) === '1' || readStore(MAP_OPEN_KEY) === '1' ? 'done' : 'waiting'
+  // First visit: three short hints in turn (time warp, arrow pad, map), 4 s each, each once.
+  // Using a control dismisses its hint early; the map hint is skipped if the map is already open.
+  const [hintQueue, setHintQueue] = useState(() =>
+    ['warp', 'pad', 'map'].filter((h) => readStore(HINT_KEYS[h]) !== '1' && !(h === 'map' && readStore(MAP_OPEN_KEY) === '1'))
   );
+  // no time warp on this view: skip that hint for now (not marked seen, so it can show later)
+  const activeHint = hintQueue.find((h) => h !== 'warp' || canTimeWarp) || null;
+  const dismissHint = (h) => {
+    writeStore(HINT_KEYS[h], '1');
+    setHintQueue((q) => q.filter((x) => x !== h));
+  };
   useEffect(() => {
-    if (mapHint === 'waiting') {
-      const delay = readStore(TIME_WARP_HINT_KEY) === '1' ? 800 : 7600;
-      const t = setTimeout(() => setMapHint('showing'), delay);
-      return () => clearTimeout(t);
-    }
-    if (mapHint === 'showing') {
-      const t = setTimeout(() => { writeStore(MAP_HINT_KEY, '1'); setMapHint('done'); }, 7000);
-      return () => clearTimeout(t);
-    }
-    return undefined;
-  }, [mapHint]);
+    if (!activeHint) return undefined;
+    const t = setTimeout(() => dismissHint(activeHint), HINT_MS);
+    return () => clearTimeout(t);
+  }, [activeHint]);
 
   const toggleMap = () => {
     const next = !isMapVisible;
     setIsMapVisible(next);
     writeStore(MAP_OPEN_KEY, next ? '1' : '0');
-    if (next) { writeStore(MAP_HINT_KEY, '1'); setMapHint('done'); }
+    if (next) dismissHint('map');
   };
 
   const [scale, setScale] = useState(1);
@@ -797,8 +798,11 @@ const handleContainerMouseUp = (e) => {
               isPhotoLoading={isPhotoLoading}
               containerRef={containerRef}
               portalTarget={canvasEl}
+              showHint={activeHint === 'warp'}
+              onHintDismiss={() => dismissHint('warp')}
             />
 
+            <span className={styles.padWrap}>
             <nav className={styles.navigationPad} aria-label="Move through Chainpur">
               {NAV_BUTTONS.map(({ move, verb, area }) => {
                 const target = moves[move];
@@ -809,7 +813,7 @@ const handleContainerMouseUp = (e) => {
                     className={`${styles.padButton} ${move === 'around' ? styles.padAround : ''}`}
                     style={{ gridArea: area }}
                     disabled={!target}
-                    onClick={() => target && onNavigate(target)}
+                    onClick={() => { if (target) { dismissHint('pad'); onNavigate(target); } }}
                     onMouseDown={(e) => e.stopPropagation()}
                     title={label}
                     aria-label={label}
@@ -819,6 +823,12 @@ const handleContainerMouseUp = (e) => {
                 );
               })}
             </nav>
+            {activeHint === 'pad' && (
+              <span className={`${styles.hudHint} ${styles.padHint}`} role="note">
+                Walk with the arrows: <strong>up</strong> to go forward, the <strong>middle</strong> to turn around.
+              </span>
+            )}
+            </span>
 
 
             <span className={styles.mapToggleWrap}>
@@ -833,8 +843,8 @@ const handleContainerMouseUp = (e) => {
               </svg>
               {isMapVisible ? 'Hide map' : 'Show map'}
             </button>
-            {mapHint === 'showing' && !isMapVisible && (
-              <span className={styles.mapHint} role="note">
+            {activeHint === 'map' && !isMapVisible && (
+              <span className={styles.hudHint} role="note">
                 See where you are: click <strong>Show map</strong> for the full village map.
               </span>
             )}

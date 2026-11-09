@@ -17,30 +17,14 @@ const ERA_ORDER = ['2000s', '2020s']; // oldest first
 const OPEN_TIMEOUT_MS = 2500; // give up on the animation if the photo is slow
 const LAND_TIMEOUT_MS = 4000;
 
-const HINT_KEY = 'vv.timeWarpHintSeen';
-const readHintSeen = () => {
-  try { return window.localStorage.getItem(HINT_KEY) === '1'; } catch { return false; }
-};
-const writeHintSeen = () => {
-  try { window.localStorage.setItem(HINT_KEY, '1'); } catch { /* storage blocked: fine */ }
-};
-
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPhotoLoading, containerRef, portalTarget }) {
+// showHint / onHintDismiss: the first-visit hint is timed by RoamViewer's hint sequence
+export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPhotoLoading, containerRef, portalTarget, showHint = false, onHintDismiss }) {
   const [phase, setPhase] = useState('idle');
   const [warp, setWarp] = useState(null); // { to, src, origin: {x, y}, portrait }
   const portalRef = useRef(null);
-  const [showHint, setShowHint] = useState(() => !readHintSeen());
-
-  // The hint shows for a few seconds on someone's first visit, then never again.
-  useEffect(() => {
-    if (!showHint || !canWarp) return undefined;
-    const t = setTimeout(() => { writeHintSeen(); setShowHint(false); }, 7000);
-    return () => clearTimeout(t);
-  }, [showHint, canWarp]);
-
   const finish = () => {
     setPhase('idle');
     setWarp(null);
@@ -66,8 +50,7 @@ export default function TimeWarp({ era, otherEra, canWarp, preview, onWarp, isPh
 
   const startWarp = () => {
     if (!canWarp || phase !== 'idle') return;
-    writeHintSeen();
-    setShowHint(false);
+    onHintDismiss?.();
     if (!preview?.src || prefersReducedMotion()) {
       onWarp();
       return;
